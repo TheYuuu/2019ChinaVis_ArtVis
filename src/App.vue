@@ -78,5 +78,6 @@ html {
 
 .title-time{
   font-size: 2rem;
+  font-weight: bold;
 }
 </style>
