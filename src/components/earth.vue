@@ -10,7 +10,6 @@ export default {
   mounted() {
     var width = document.getElementById("earth").offsetWidth,
     height = document.getElementById("earth").offsetHeight;
-    console.log(width, height)
     d3.json("../static/map.json").then(world=>{
           console.log(world)
           var options = {name: "Natural Earth", projection: d3.geoNaturalEarth()}
@@ -40,12 +39,13 @@ export default {
               .attr("class", "fill")
               .attr("xlink:href", "#sphere");
 
-
-          svg.selectAll("path")
+          console.log(world.features)
+          
+          svg.selectAll(".block")
               .data(world.features)
               .enter().append("path")
                 .attr("d", path)
-                .attr("class","block")
+                .attr("class",'block')
                 .on("mouseover",function(d) {
                   // console.log(d3.select(d));
                   d3.select(this)
