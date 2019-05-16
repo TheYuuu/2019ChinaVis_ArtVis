@@ -1,5 +1,9 @@
 <template>
   <div id="app">
+    <div class="satic-area">
+      <div class="dynamic-area1"></div>
+      <div class="dynamic-area2"></div>
+    </div>
     <div class="content-box" id="content">
       <svg id="earth_svg"></svg>
     </div> 
@@ -44,12 +48,12 @@ export default {
 
 
           svg.selectAll("path")
-                .data(world.features)
+              .data(world.features)
               .enter().append("path")
-                .style('z-index',99)
                 .attr("d", path)
+                .attr("class","block")
                 .on("mouseover",function(d) {
-                  // console.log("just had a mouseover", d3.select(d));
+                  // console.log(d3.select(d));
                   d3.select(this)
                     .classed("active",true)
                 })
@@ -109,5 +113,11 @@ export default {
   fill: none;
   stroke: #fff;
   stroke-width: .5px;
+}
+.block{
+  fill:black
+}
+.block.active{
+  fill:yellow
 }
 </style>
