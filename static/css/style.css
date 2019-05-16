@@ -1,9 +1,14 @@
 .satic-area {
-  position: relative;
+  border-radius: calc(100vw);
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(50%,50%);
   width: calc(100vw / 2);
   height: calc(100vh / 2);
-  background: url(../img/poster-about.jpg) no-repeat center;
   background-size: cover;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .dynamic-area1   {
