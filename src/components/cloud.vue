@@ -4,9 +4,6 @@
       <div class="dynamic-area1"></div>
       <div class="dynamic-area2"></div>
     </div>
-    <div class="content-box" id="content">
-      <svg id="earth_svg"></svg>
-    </div> 
   </div>
 </template>
 
@@ -19,5 +16,14 @@ export default {
 </script>
 
 <style>
-
+#cloud{
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  pointer-events: none;
+  z-index: 99;
+}
 </style>

@@ -1,22 +1,25 @@
 .satic-area {
-  border-radius: calc(100vw);
   position: absolute;
   top: 0;
   left: 0;
-  transform: translate(50%,50%);
-  width: calc(100vw / 2);
-  height: calc(100vh / 2);
+  bottom: 0;
+  right: 0;
+  margin: auto;
+
+  width: calc(100vh / 2);
+  height: calc(100vh / 3);
+
+  background: #4183ca1f;
   background-size: cover;
+  box-shadow: 2px 2px 50px #4183ca29;
+  border-radius: 50%;
   overflow: hidden;
-  pointer-events: none;
 }
 
 .dynamic-area1   {
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
   background: url(../img/poster-drop-animate2.png) repeat-x 0px 0px;
   background-size: cover;
   animation: posterDrop1 6000s linear infinite;
@@ -31,8 +34,6 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  top: 0;
-  left: 0;
   background: url(../img/poster-drop-animate1.png) repeat-x 0px 0px;
   background-size: cover;
   animation: posterDrop2 8000s linear infinite;
