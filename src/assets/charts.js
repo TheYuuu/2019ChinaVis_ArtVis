@@ -119,7 +119,8 @@ charts.drawanimals = function(local,symbol){
 }
 
 charts.addEvents= function(){
-    const svg = this.svg;
+    const svg = this.svg
+    const step = this.step;
 
     var width = document.getElementById("earth").offsetWidth,
     height = document.getElementById("earth").offsetHeight
@@ -137,7 +138,7 @@ charts.addEvents= function(){
         .attr("fill","white")
 
         svg.append("circle")
-        .attr("class","waller")
+        .attr("class","waller_circle")
         .attr("cx",width/2)
         .attr("cy",height/2)
         .attr("r",0)
@@ -146,6 +147,30 @@ charts.addEvents= function(){
         .transition()
         .duration(1000)
         .attr("r",width/4)
+
+        svg.append("text")
+            .text(d.properties.CONTINENT)
+            .attr("class","waller")
+            .attr("font-size",step*4)
+            .attr("font-weight","bolder")
+            .attr("x", function(d){
+                return width/2 - this.getComputedTextLength() / 2;
+            })
+            .attr("y",height/4)
+            .on('click',function(d){
+                svg.selectAll(".waller").remove()
+
+                svg.selectAll('.waller_circle')
+                .attr("r",width/2)
+                .attr("stroke","none")
+                .transition()
+                .duration(1000)
+                .attr("r",0)
+                .remove()
+            })
+            .transition()
+            .duration(1000)
+            .attr("y",height/2 - step*15)
     })
 }
 
