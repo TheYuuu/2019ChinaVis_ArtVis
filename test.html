@@ -1,91 +1,73 @@
-<!doctype html>
-<html>
+<!DOCTYPE html>
 <head>
-<meta charset="utf-8">
-<title>天空飘着五朵云</title>
-<style>
-*{ margin: 0; padding: 0;}
- 
-body {
-overflow: hidden;
- 
+  <meta charset="utf-8">
+  <script src="https://d3js.org/d3.v4.js"></script>
+  <script src="https://d3js.org/topojson.v2.min.js"></script>
+  <script src="https://d3js.org/d3-tile.v0.0.min.js"></script>
+  <style>
+    body { margin:0;position:fixed;top:0;right:0;bottom:0;left:0; }
+    svg { width:100%; height: 100% }
+    .stroke {
+  fill: none;
+  stroke: #000;
+  stroke-width: .5;
 }
-#clouds{
-padding: 100px 0;
-background: #c9dbe9;
-background: linear-gradient(top, #c9dbe9 0%, #fff 100%);
-}
-.cloud {
-width: 200px; height: 60px;
-background: #fff;
-border-radius: 200px;
-position: relative;
-}
-.cloud:before , .cloud:after {
-content: '';
-background: #fff;
-width: 100px; height: 80px;
-position: absolute; top: -15px; left: 10px;
-border-radius: 100px;
-transform: rotate(30deg);
-}
-.cloud:after {
-width: 120px; height: 120px;
- 
-top: -55px; right: 15px;left: auto;
-}
- 
-.x1 {
-animation: moveclouds 15s linear infinite;
-}
- 
-.x2 {
-left: 200px;
-transform: scale(0.6);
-opacity: 0.6;
-animation: moveclouds 25s linear infinite;
- 
-}
-.x3 {
-left: -250px; top: -200px;
-transform: scale(0.8);
-opacity: 0.8;
-animation: moveclouds 20s linear infinite;
- 
-}
-.x4 {
-left: 470px; top: -250px;
-transform: scale(0.75);
-opacity: 0.75;
-animation: moveclouds 18s linear infinite;
- 
-}
-.x5 {
-left: 350px; top: -150px;
-transform: scale(0.8);
-opacity: 0.8;
-animation: moveclouds 20s linear infinite;
-}
- 
-@keyframes moveclouds {
-0% {margin-left: 1000px;}
-100% {margin-left: -1000px;}
-}
-</style>
- 
+  </style>
 </head>
- 
-<body>
-<div id="clouds">
-<div class="cloud x1"></div>
-<div class="cloud x2"></div>
-<div class="cloud x3"></div>
-<div class="cloud x4"></div>
-<div class="cloud x5"></div>
-</div>
- 
- 
-</body>
-</html>
-　　
 
+<body>
+  <script>
+    var width = 900;
+    var height = 500;
+    
+    var svg = d3.select("body").append("svg");
+    
+    var projection = d3.geoMercator();
+    
+    var path = d3.geoPath().projection(projection);
+    
+var tile = d3.tile()
+    .scale(projection.scale() * 2 * Math.PI)
+    .translate(projection([0, 0]))
+    .zoomDelta((window.devicePixelRatio || 1) - .5);
+    
+    var url = "https://gist.githubusercontent.com/mbostock/4090846/raw/d534aba169207548a8a3d670c9c2cc719ff05c47/world-50m.json";
+    
+d3.json(url, function(error, world) {
+  if (error) throw error;
+
+  var tiles = tile();
+
+  var defs = svg.append("defs");
+
+  defs.append("path")
+      .attr("id", "land")
+      .datum(topojson.feature(world, world.objects.countries))
+      .attr("d", path);
+
+  defs.append("clipPath")
+      .attr("id", "clip")
+    .append("use")
+      .attr("xlink:href", "#land");
+
+  svg.append("g")
+      .attr("clip-path", "url(#clip)")
+    .selectAll("image")
+      .data(tiles)
+    .enter().append("image")
+      .attr("xlink:href", function(d) { return "http://" + ["a", "b", "c", "d"][Math.random() * 4 | 0] + ".tiles.mapbox.com/v3/mapbox.natural-earth-2/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; })
+      .attr("width", Math.round(tiles.scale))
+      .attr("height", Math.round(tiles.scale))
+      .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
+      .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); });
+
+  svg.append("use")
+      .attr("xlink:href", "#land")
+      .attr("class", "stroke");
+  
+  
+});
+    
+
+  </script>
+</body>

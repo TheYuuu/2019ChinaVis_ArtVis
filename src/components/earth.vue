@@ -9,14 +9,18 @@
 </template>
 
 <script>
+import { setInterval, clearTimeout } from 'timers';
 export default {
   name: 'earth',
   mounted() {
     var width = document.getElementById("earth").offsetWidth,
-    height = document.getElementById("earth").offsetHeight;
+    height = document.getElementById("earth").offsetHeight,
+    sens = 0.25;
+
+    var autoR;
     d3.json("../static/map.json").then(world=>{
-      console.log(world)
-      var options = {name: "Natural Earth", projection: d3.geoNaturalEarth()}
+      console.log(world)  //geoNaturalEarth geoOrthographic
+      var options = {name: "Natural Earth", projection: d3.geoOrthographic()}
       var i = 0;
       var projection = options.projection
                               .rotate([0, 0])
@@ -24,8 +28,12 @@ export default {
                               .fitSize([width/2, height/2], world);
 
       var path = d3.geoPath(projection);
-
       var graticule = d3.geoGraticule();
+
+      var tile = d3.tile()
+                    .scale(projection.scale() * 2 * Math.PI)
+                    .translate(projection([0, 0]))
+                    .zoomDelta((window.devicePixelRatio || 1) - .5);
 
       var svg = d3.select("#earth_svg").append('g')
                 .attr('transform',"translate(" +  width/4 + "," + height/4 + ")")
@@ -44,7 +52,7 @@ export default {
           .attr("xlink:href", "#sphere");
 
       console.log(world.features)
-          
+         
       svg.selectAll(".block")
           .data(world.features)
           .enter().append("path")
@@ -58,12 +66,62 @@ export default {
             .on("mouseout",function(d){
               d3.select(this)
                 .classed("active",false)
-            })
+            })   
+            .call(d3.drag()
+            .subject(function() { var r = projection.rotate(); return {x: r[0] / sens, y: -r[1] / sens}; })
+            .on("drag", function() {
+              clearTimeout(autoR);
+              var rotate = projection.rotate();
+              projection.rotate([d3.event.x * sens, -d3.event.y * sens, rotate[2]]);
+              svg.selectAll("path.block").attr("d", path);
+            }))
+
+      var markers = [
+        {long: 9.083, lat: 42.149}, // corsica
+        {long: 7.26, lat: 43.71}, // nice
+        {long: 2.349, lat: 48.864}, // Paris
+        {long: -1.397, lat: 43.664}, // Hossegor
+        {long: 3.075, lat: 50.640}, // Lille
+        {long: -3.83, lat: 58}, // Morlaix
+      ];
+    svg
+      .selectAll("animals")
+      .data(markers)
+      .enter()
+      .append("text")
+        .attr('class','animals')
+        .html("&#128051")
+        .attr("x", function(d){ return projection([d.long, d.lat])[0] })
+        .attr("y", function(d){ return projection([d.long, d.lat])[1] })
+
+      //  var tiles = tile();
+      //  svg.append("g")
+      //     .attr("clip-path", "url(#clip)")
+      //     .selectAll("image")
+      //     .data(tiles)
+      //      .enter().append("image")
+      //     .attr("xlink:href", function(d) { return "http://" + ["a", "b", "c", "d"][Math.random() * 4 | 0] + ".tiles.mapbox.com/v3/mapbox.natural-earth-2/" + d[2] + "/" + d[0] + "/" + d[1] + ".png"; })
+      //     .attr("width", Math.round(tiles.scale))
+      //     .attr("height", Math.round(tiles.scale))
+      //     .attr("x", function(d) { return Math.round((d[0] + tiles.translate[0]) * tiles.scale); })
+      //     .attr("y", function(d) { return Math.round((d[1] + tiles.translate[1]) * tiles.scale); });
 
       svg.append("path")
           .datum(graticule)
           .attr("class", "graticule")
           .attr("d", path)
+
+      var ro=0;
+      autoR = setInterval(()=>{
+        ro+=0.25;
+        var rotate = projection.rotate();
+        projection.rotate([ro,0]);
+        svg.selectAll("path.block").attr("d", path);
+
+        svg.selectAll('.animals')
+        .attr("x", function(d){ return projection([d.long, d.lat])[0] })
+        .attr("y", function(d){ return projection([d.long, d.lat])[1] })
+      },10)
     })
   },
 }

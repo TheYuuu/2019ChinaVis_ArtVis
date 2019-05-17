@@ -47,7 +47,7 @@ export default {
   padding:0;
   margin:0;
   box-sizing: border-box;
-  transform: translate3d(0);
+  /* transform: translate3d(0); */
   font-family: Patriciana;
 }
 

@@ -1,5 +1,6 @@
 <template>
   <div id="ozone">
+    
   </div>
 </template>
 
@@ -14,12 +15,12 @@ export default {
     svg.append("circle")
       .attr("cx",width/2)
       .attr("cy",height/2)
-      .attr("r",width/4)
+      .attr("r",width/4+20)
       .attr("stroke","#6c05ff0a")
       .attr("fill","#5546b921")
       .attr('filter',"url(#f1)")
     
-    var nodes = d3.range(20).map(function(d, i) {
+    var nodes = d3.range(10).map(function(d, i) {
         return { name: i, radius: 30};
       });
     var root = {
