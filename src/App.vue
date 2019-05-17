@@ -59,6 +59,7 @@ html {
   width: 100vh;
   height: 100vh;
   overflow: hidden;
+  border:1px solid lavender;
 
   position: absolute;
   top: 0;
