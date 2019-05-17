@@ -52,29 +52,29 @@ charts.drawEarth = function(world){
     .attr("d", path)
     .attr("class",'block')
     .on("mouseover",function(d) {
-    // console.log(d3.select(d));
-    d3.select(this)
-    .classed("active",true)
+        // console.log(d3.select(d));
+        d3.select(this)
+        .classed("active",true)
     })
     .on("mouseout",function(d){
-    d3.select(this)
-    .classed("active",false)
+        d3.select(this)
+        .classed("active",false)
     })   
-    .call(d3.drag()
-    .subject(function() { var r = projection.rotate(); return {x: r[0] / sens, y: -r[1] / sens}; })
-    .on("drag", function() {
-    clearTimeout(autoR);
-    var rotate = projection.rotate();
-    projection.rotate([d3.event.x * sens, -d3.event.y * sens, rotate[2]]);
-    earththsvg.selectAll("path.block").attr("d", path);
+    // .call(d3.drag()
+    // .subject(function() { var r = projection.rotate(); return {x: r[0] / sens, y: -r[1] / sens}; })
+    // .on("drag", function() {
+    // clearTimeout(autoR);
+    // var rotate = projection.rotate();
+    // projection.rotate([d3.event.x * sens, -d3.event.y * sens, rotate[2]]);
+    // earththsvg.selectAll("path.block").attr("d", path);
 
-    earththsvg.selectAll('.animals')
-    .attr("x", function(d){ return projection([d.long, d.lat])[0] })
-    .attr("y", function(d){ return projection([d.long, d.lat])[1] })
-    }))
+    // earththsvg.selectAll('.animals')
+    // .attr("x", function(d){ return projection([d.long, d.lat])[0] })
+    // .attr("y", function(d){ return projection([d.long, d.lat])[1] })
+    // }))
 
     //  var tiles = tile();
-    //  svg.append("g")
+    //  earththsvg.append("g")
     //     .attr("clip-path", "url(#clip)")
     //     .selectAll("image")
     //     .data(tiles)
@@ -119,7 +119,34 @@ charts.drawanimals = function(local,symbol){
 }
 
 charts.addEvents= function(){
+    const svg = this.svg;
 
+    var width = document.getElementById("earth").offsetWidth,
+    height = document.getElementById("earth").offsetHeight
+
+    svg.selectAll('.block').on('click',function(d){
+        console.log(d)
+
+        svg.append("rect")
+        .attr("x",0)
+        .attr("y",0)
+        .attr("width",width)
+        .attr("height",height)
+        .attr("stroke","#6c05ff0a")
+        .attr("class","waller")
+        .attr("fill","white")
+
+        svg.append("circle")
+        .attr("class","waller")
+        .attr("cx",width/2)
+        .attr("cy",height/2)
+        .attr("r",0)
+        .attr("stroke","black")
+        .attr("fill","white")
+        .transition()
+        .duration(1000)
+        .attr("r",width/4)
+    })
 }
 
 charts.addDescription = function(local, str){
@@ -179,10 +206,18 @@ charts.on = function(){
             {long: 40.0000, lat: 90.0000},
             {long: 60.0000, lat: 90.0000},
         ];
+
+        var Pollutionlocal = [
+            {long: 79.185509, lat: -21.263971},
+            {long: 85.185509, lat: -15.263971},
+            {long: 70.185509, lat: -25.263971},
+            {long: 90.185509, lat: -21.263971},
+        ];
     
         this.drawEarth(world);
         this.drawanimals(Whalelocal,'&#128011');
         this.drawanimals(Bearlocal,'&#128059');
+        this.drawanimals(Pollutionlocal,'&#x2622');
 
         const projection = that.projection
         const width = that.width
@@ -198,8 +233,7 @@ charts.on = function(){
                 [9,-9],
                 [15,-9]
             ]
-        },
-        {
+        },{
             localtype:'earth',
             local: projection([20, 90]),
             name: 'Polar Bear',
@@ -207,8 +241,31 @@ charts.on = function(){
                 [15,-15],
                 [20,-15]
             ]
-        },
-        {
+        },{
+            localtype:'earth',
+            local: projection([3.4653, 62.2159]),
+            name:'Amazon Rainforest',
+            lineLocal:[
+                [-25,-5],
+                [-45,-5]
+            ]
+        },{
+            localtype:'earth',
+            local: projection([-133.611696, -26.201145]),
+            name:'Sea Level',
+            lineLocal:[
+                [-10,10],
+                [-20,10]
+            ]
+        },{
+            localtype:'earth',
+            local: projection([79.185509, -21.263971]),
+            name:'Marine Pollution',
+            lineLocal:[
+                [15,10],
+                [20,10]
+            ]
+        },{
             localtype:'Entire',
             local: [width/2 - step*10, height/2 - step*20],
             name:'Air Quality',
@@ -216,8 +273,7 @@ charts.on = function(){
                 [-9,-9],
                 [-20,-9]
             ]
-        },
-        {
+        },{
             localtype:'Entire',
             local: [width/2, height/4*3 + step],
             name:'Ozonosphere Hole',
@@ -226,8 +282,9 @@ charts.on = function(){
                 [-20,5]
             ]
         })
-        
+
         charts.addDescription(Description)
+        charts.addEvents()
     })
 }
 

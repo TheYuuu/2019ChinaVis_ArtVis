@@ -62,9 +62,9 @@ export default {
   stroke-width: .5px;
 }
 .block{
-  fill:black
+  fill:#8e7761
 }
 .block.active{
-  fill:yellow
+  fill:#6c8665
 }
 </style>

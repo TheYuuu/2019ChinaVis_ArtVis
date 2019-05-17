@@ -2,6 +2,7 @@
   <div id="app">
     <div class="content-box" id="content">
       <div class="time-block">
+        <p class="title-time">What's going on on Earth?</p>
         <p class="title-time">{{time}}</p>
       </div>
       <cloud></cloud>
@@ -47,8 +48,9 @@ export default {
   padding:0;
   margin:0;
   box-sizing: border-box;
-  /* transform: translate3d(0); */
+  transform: translate3d(0);
   font-family: Patriciana;
+  user-select: none;
 }
 
 html {
@@ -71,7 +73,7 @@ html {
 
 .time-block{
   display: table-cell;
-  height: calc(100vh /4);
+  height: calc(100vh /8);
   width: 100vh;
   text-align: center;
   vertical-align: middle;
