@@ -1,10 +1,79 @@
 var charts = {};
+charts.init = function(){
+    var width = document.getElementById("earth").offsetWidth,
+    height = document.getElementById("earth").offsetHeight;
+    let step = width/100;
+    var autoR;
+    var Description = [];
+    Description.push({
+        localtype:'earth',
+        local: [138.302001, 35.456019],
+        name: 'Whale',
+        lineLocal:[
+            [9,-9],
+            [15,-9]
+        ]
+    },{
+        localtype:'earth',
+        local: [20, 90],
+        name: 'Polar Bear',
+        lineLocal:[
+            [15,-15],
+            [20,-15]
+        ]
+    },{
+        localtype:'earth',
+        local: [3.4653, 62.2159],
+        name:'Amazon Rainforest',
+        lineLocal:[
+            [-25,-5],
+            [-45,-5]
+        ]
+    },{
+        localtype:'earth',
+        local: [-133.611696, -26.201145],
+        name:'Sea Level',
+        lineLocal:[
+            [-10,10],
+            [-20,10]
+        ]
+    },{
+        localtype:'earth',
+        local: [79.185509, -21.263971],
+        name:'Marine Pollution',
+        lineLocal:[
+            [15,10],
+            [20,10]
+        ]
+    },{
+        localtype:'Entire',
+        local: [width/2 - step*10, height/2 - step*20],
+        name:'Air Quality',
+        lineLocal:[
+            [-9,-9],
+            [-20,-9]
+        ]
+    },{
+        localtype:'Entire',
+        local: [width/2, height/4*3 + step],
+        name:'Ozonosphere Hole',
+        lineLocal:[
+            [-9,5],
+            [-20,5]
+        ]
+    })
+
+    this.step = step;
+    this.width = width;
+    this.height = height;
+    this.Description = Description;
+}
 
 charts.drawEarth = function(world){
-    var width = document.getElementById("earth").offsetWidth,
-    height = document.getElementById("earth").offsetHeight,
-    sens = 0.25;
-    var autoR;
+    const width = this.width
+    const height = this.height
+    const step = this.step
+
     var options = {name: "Natural Earth", projection: d3.geoNaturalEarth()}
 
     var svg = d3.select("#earth_svg")
@@ -15,13 +84,6 @@ charts.drawEarth = function(world){
     .rotate([0, 0])
     .center([width/2, height/2])
     .fitSize([width/2, height/2], world);
-
-    this.svg = svg;
-    this.earththsvg = earththsvg;
-    this.projection = projection;
-    this.step = width/100;
-    this.width = width;
-    this.height = height;
 
     var path = d3.geoPath(projection);
     var graticule = d3.geoGraticule();
@@ -90,17 +152,10 @@ charts.drawEarth = function(world){
         .attr("class", "graticule")
         .attr("d", path)
 
-    var ro=0;
-    // autoR = setInterval(()=>{
-    //   ro+=0.25;
-    //   var rotate = projection.rotate();
-    //   projection.rotate([ro,0]);
-    //   svg.selectAll("path.block").attr("d", path);
-
-    //   svg.selectAll('.animals')
-    //   .attr("x", function(d){ return projection([d.long, d.lat])[0] })
-    //   .attr("y", function(d){ return projection([d.long, d.lat])[1] })
-    // },10)
+    this.svg = svg;
+    this.earththsvg = earththsvg;
+    this.projection = projection;
+    this.path = path;
 }
 
 charts.drawanimals = function(local,symbol){
@@ -118,7 +173,93 @@ charts.drawanimals = function(local,symbol){
     .attr("y", function(d){ return projection([d.long, d.lat])[1] })
 }
 
-charts.addEvents= function(){
+charts.addDescription = function(local, str){
+    const earth = this.earththsvg.append('g')
+    const Entire = this.svg.append('g')
+    const step = this.step
+    const projection = this.projection
+
+    let color = '#ff9a9a'
+    for (let i=0;i<local.length;i++){
+        let svg = local[i].localtype == 'earth'?earth:Entire;
+        let locals = local[i].localtype == 'earth'? projection(local[i].local):local[i].local;
+
+        let x = locals[0]
+        let y = locals[1]
+        let setpX = 
+
+        svg.append('circle')
+            .attr('class',function(){
+                if (local[i].localtype == 'earth'){
+                    return 'eventDot earth_eventDot_circle '
+                }else{
+                    return 'eventDot eventDot_circle'
+                }
+            })
+            .attr("cx", x)
+            .attr("cy", y)
+            .attr('r', 5)
+            .attr('fill',color)
+
+        svg.append('line')
+            .attr("x1", x)
+            .attr("y1", y)
+            .attr("x2", x + step*local[i].lineLocal[0][0])
+            .attr("y2", y + step*local[i].lineLocal[0][1])
+            .attr('stroke',color)
+            .attr("class","move_line")
+
+        svg.append('line')
+            .attr("x1", x + step*local[i].lineLocal[0][0])
+            .attr("y1", y + step*local[i].lineLocal[0][1])
+            .attr("x2", x + step*local[i].lineLocal[1][0])
+            .attr("y2", y + step*local[i].lineLocal[1][1])
+            .attr('stroke',color)
+
+        svg.append('text')
+            .html(local[i].name)   
+            .attr("x", x + step*local[i].lineLocal[1][0])
+            .attr("y", y + step*local[i].lineLocal[1][1])
+
+        this.counting(local[i].name)
+    }
+}
+
+charts.counting = function(name, local){
+    console.log()
+    // svg.append('text')
+    //     .html(local[i].name)   
+    //     .attr("x", x + step*local[i].lineLocal[1][0])
+    //     .attr("y", y + step*local[i].lineLocal[1][1])
+}
+
+charts.earthMove = function(projection,svg,path){    
+    const that = this
+    var ro=0;
+    return function(){
+        const earth = that.earththsvg
+        const Description = that.Description
+        // console.log(that)
+        ro+=0.35;
+        projection.rotate([ro,0]);
+        svg.selectAll("path.block").attr("d", path);
+
+        svg.selectAll('.animals')
+        .attr("x", function(d){return projection([d.long, d.lat])[0] })
+        .attr("y", function(d){ return projection([d.long, d.lat])[1] })
+
+        earth.selectAll('.earth_eventDot_circle')
+        .attr("cx", function(d,i){return projection(Description[i].local)[0] })
+        .attr("cy", function(d,i){return projection(Description[i].local)[1] })
+
+        earth.selectAll('.move_line')
+        .attr("x1", function(d,i){return projection(Description[i].local)[0] })
+        .attr("y1", function(d,i){return projection(Description[i].local)[1] })
+    }
+}
+
+charts.addEvents = function(){
+    const that = this;
     const svg = this.svg
     const step = this.step;
 
@@ -126,6 +267,7 @@ charts.addEvents= function(){
     height = document.getElementById("earth").offsetHeight
 
     svg.selectAll('.block').on('click',function(d){
+        clearInterval(that.autoR)
         console.log(d)
 
         svg.append("rect")
@@ -174,44 +316,13 @@ charts.addEvents= function(){
     })
 }
 
-charts.addDescription = function(local, str){
-    const earth = this.earththsvg.append('g')
-    const Entire = this.svg.append('g')
-    const step = this.step
-
-    for (let i=0;i<local.length;i++){
-        let svg = local[i].localtype == 'earth'?earth:Entire;
-
-        let x = local[i].local[0]
-        let y = local[i].local[1]
-
-        svg.append('circle')
-            .attr('class','animals eventDot')
-            .attr("cx", x)
-            .attr("cy", y)
-            .attr('r', 5)
-            .attr('fill','#f3c4c4')
-
-        svg.append('line')
-            .attr("x1", x)
-            .attr("y1", y)
-            .attr("x2", x + step*local[i].lineLocal[0][0])
-            .attr("y2", y + step*local[i].lineLocal[0][1])
-            .attr('stroke','#f3c4c4')
-
-        svg.append('line')
-            .attr("x1", x + step*local[i].lineLocal[0][0])
-            .attr("y1", y + step*local[i].lineLocal[0][1])
-            .attr("x2", x + step*local[i].lineLocal[1][0])
-            .attr("y2", y + step*local[i].lineLocal[1][1])
-            .attr('stroke','#f3c4c4')
-
-        svg.append('text')
-            .html(local[i].name)            
-            .attr("x", x + step*local[i].lineLocal[1][0])
-            .attr("y", y + step*local[i].lineLocal[1][1])
-    }
-
+charts.requestAnimationFrame= function(fns){
+    requestAnimationFrame(function(){
+        fns.forEach(d=>{
+            d()
+        })
+        charts.requestAnimationFrame(fns);
+    })
 }
 
 charts.on = function(){
@@ -238,78 +349,21 @@ charts.on = function(){
             {long: 70.185509, lat: -25.263971},
             {long: 90.185509, lat: -21.263971},
         ];
-    
-        this.drawEarth(world);
-        this.drawanimals(Whalelocal,'&#128011');
-        this.drawanimals(Bearlocal,'&#128059');
-        this.drawanimals(Pollutionlocal,'&#x2622');
+        charts.init()
+        charts.drawEarth(world);
+
+        charts.drawanimals(Whalelocal,'&#128011');
+        charts.drawanimals(Bearlocal,'&#128059');
+        charts.drawanimals(Pollutionlocal,'&#x2622');
 
         const projection = that.projection
-        const width = that.width
-        const height = that.height
-        const step = that.step
-
-        var Description = [];
-        Description.push({
-            localtype:'earth',
-            local: projection([138.302001, 35.456019]),
-            name: 'Whale',
-            lineLocal:[
-                [9,-9],
-                [15,-9]
-            ]
-        },{
-            localtype:'earth',
-            local: projection([20, 90]),
-            name: 'Polar Bear',
-            lineLocal:[
-                [15,-15],
-                [20,-15]
-            ]
-        },{
-            localtype:'earth',
-            local: projection([3.4653, 62.2159]),
-            name:'Amazon Rainforest',
-            lineLocal:[
-                [-25,-5],
-                [-45,-5]
-            ]
-        },{
-            localtype:'earth',
-            local: projection([-133.611696, -26.201145]),
-            name:'Sea Level',
-            lineLocal:[
-                [-10,10],
-                [-20,10]
-            ]
-        },{
-            localtype:'earth',
-            local: projection([79.185509, -21.263971]),
-            name:'Marine Pollution',
-            lineLocal:[
-                [15,10],
-                [20,10]
-            ]
-        },{
-            localtype:'Entire',
-            local: [width/2 - step*10, height/2 - step*20],
-            name:'Air Quality',
-            lineLocal:[
-                [-9,-9],
-                [-20,-9]
-            ]
-        },{
-            localtype:'Entire',
-            local: [width/2, height/4*3 + step],
-            name:'Ozonosphere Hole',
-            lineLocal:[
-                [-9,5],
-                [-20,5]
-            ]
-        })
-
+        const Description = that.Description
+        
         charts.addDescription(Description)
         charts.addEvents()
+        charts.requestAnimationFrame([
+            charts.earthMove(projection,that.svg,that.path)
+        ])
     })
 }
 
