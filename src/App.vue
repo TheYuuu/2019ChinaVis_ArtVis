@@ -1,5 +1,6 @@
 <template>
   <div id="app">
+    <guide></guide>
     <div class="content-box" id="content">
       <div class="time-block">
         <p class="title-time">What's going on on Earth?</p>
@@ -16,13 +17,15 @@
 import earth from './components/earth'
 import cloud from './components/cloud'
 import ozone from './components/ozone'
+import guide from './components/guide'
 
 export default {
   name: 'App',
   components:{
     earth,
     cloud,
-    ozone
+    ozone,
+    guide
   },
   data:function(){
       return {
@@ -48,7 +51,6 @@ export default {
   padding:0;
   margin:0;
   box-sizing: border-box;
-  transform: translate3d(0);
   font-family: Patriciana;
   user-select: none;
 }
