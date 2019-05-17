@@ -114,7 +114,6 @@ charts.drawEarth = function(world){
     .attr("d", path)
     .attr("class",'block')
     .on("mouseover",function(d) {
-        // console.log(d3.select(d));
         d3.select(this)
         .classed("active",true)
     })
@@ -265,12 +264,10 @@ charts.addEvents = function(){
     const that = this;
     const svg = this.svg
     const step = this.step;
-
-    var width = document.getElementById("earth").offsetWidth,
-    height = document.getElementById("earth").offsetHeight
+    const width = this.width;
+    const height = this.height;
 
     svg.selectAll('.block').on('click',function(d){
-        clearInterval(that.autoR)
         console.log(d)
 
         svg.append("rect")
@@ -287,11 +284,12 @@ charts.addEvents = function(){
         .attr("cx",width/2)
         .attr("cy",height/2)
         .attr("r",0)
-        .attr("stroke","black")
         .attr("fill","white")
-        .transition()
-        .duration(1000)
         .attr("r",width/4)
+
+        setTimeout(()=>{
+            charts.drawForce();
+        },1000)
 
         svg.append("text")
             .text(d.properties.CONTINENT)
@@ -303,21 +301,165 @@ charts.addEvents = function(){
             })
             .attr("y",height/4)
             .on('click',function(d){
-                svg.selectAll(".waller").remove()
+                console.log(svg.selectAll(".item_circle") );
 
-                svg.selectAll('.waller_circle')
-                .attr("r",width/2)
-                .attr("stroke","none")
-                .transition()
-                .duration(1000)
-                .attr("r",0)
-                .remove()
+                svg.selectAll(".item_circle")                
+                    .transition()
+                    .duration(1000)
+                    .attr("r",0)
+                    .remove()
+                
+                    setTimeout(()=>{
+                        svg.selectAll(".waller").remove()
+
+                        svg.selectAll('.waller_circle')
+                        .attr("r",width/2)
+                        .attr("stroke","none")
+                        .transition()
+                        .duration(1000)
+                        .attr("r",0)
+                        .remove()
+                    },1000)
+
             })
             .transition()
             .duration(1000)
             .attr("y",height/2 - step*15)
     })
 }
+
+charts.drawForce = function(){
+    const svg = this.svg
+    const width = this.width;
+    const height = this.height;
+    const step = this.step;
+
+    svg.selectAll(".nodes").remove()
+
+    var nodes = d3.range(20).map(function(d, i) {
+        return { name: i, radius: 20 };
+    });
+
+    var root = {
+        name: -1,
+        radius: height / 4
+    };
+
+    nodes.unshift(root);
+
+    var simulation = d3
+            .forceSimulation()
+            .force("forceX",d3.forceX().strength(0.1).x(width * 0.5))
+            .force("forceY",d3.forceY().strength(0.1).y(height * 0.5))
+            .force("center",d3.forceCenter().x(width * 0.5).y(height * 0.5))
+            .force("charge", function(d, i) {
+              return i ? 0 : -2000;
+            });
+
+          var color = d3.scaleOrdinal(d3.schemeCategory10);
+
+          simulation
+            .nodes(nodes)
+            .force("collide",d3.forceCollide().strength(0.5).radius(function(d) {
+                  if (d.name == -1) return d.radius + step*5;
+                  return d.radius + 5;
+                })
+                .iterations(1)
+                .strength(0.3)
+            )
+            .on("tick", ticked);
+
+          node = svg
+            .append("g")
+            .attr("class", "nodes")
+            .selectAll("none")
+            .data(nodes)
+            .enter()
+            .append("circle")
+            .attr("class","item_circle")
+            .attr("stroke", "black")
+            .attr("stroke-dasharray", "5,5")
+            .attr("fill", "none")
+            .attr("cx", function(d) {
+              return d.x;
+            })
+            .attr("cy", function(d) {
+              return d.y;
+            })
+            .call(d3
+                .drag()
+                .on("start", dragstarted)
+                .on("drag", dragged)
+                .on("end", dragended)
+            )
+            .attr("r", function(d) {
+              return d.radius;
+            });
+
+        function ticked() {
+                node.attr("cx", function(d) {
+                if (d.x - d.radius < 0) {
+                    d.x += 10;
+                    return d.x;
+                } else if (d.x + d.radius > width) {
+                    d.x -= 10;
+                    return d.x;
+                }
+                return d.x;
+                })
+                .attr("cy", function(d) {
+                if (d.y - d.radius < 0) {
+                    d.y += 10;
+                    return d.y;
+                } else if (d.y + d.radius > height) {
+                    d.y -= 10;
+                    return d.y;
+                }
+
+                if (d.name == "-1") {
+                    d.fy = height / 2;
+                    d.fx = width / 2;
+                }
+                return d.y;
+                });
+            }
+      
+        function dragstarted(d) {
+            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = d.x;
+            d.fy = d.y;
+        }
+      
+        function dragged(d) {
+            d.fx = d3.event.x;
+            d.fy = d3.event.y;
+            if (d.y - d.radius < 0) {
+                d.y += 10;
+                d.vy = 10;
+                return d.y;
+            } else if (d.y + d.radius > height) {
+                d.y -= 10;
+                d.vy = 10;
+                return d.y;
+            }
+            if (d.x - d.radius < 0) {
+                d.x += 10;
+                d.vx = 10;
+                return d.x;
+            } else if (d.x + d.radius > width) {
+                d.x -= 10;
+                d.vx = 10;
+                return d.x;
+            }
+        }
+      
+        function dragended(d) {
+            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
+            d.fx = null;
+            d.fy = null;
+        }
+}
+
 
 charts.requestAnimationFrame= function(fns){
     requestAnimationFrame(function(){

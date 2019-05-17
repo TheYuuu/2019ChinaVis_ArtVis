@@ -1,8 +1,8 @@
 <template>
   <div id="earth">
-    <div class="warper">
+    <!-- <div class="warper">
 
-    </div>
+    </div> -->
     <svg id="earth_svg">
       <filter id="f1" x="0" y="0">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
@@ -64,8 +64,13 @@ export default {
   stroke: #fff;
   stroke-width: .5px;
 }
+
 .block{
   fill:#8e7761
+}
+
+.block.active{
+  fill:#3c6b52;
 }
 
 .warper{
