@@ -16,7 +16,7 @@ charts.init = function(){
     },{
         localtype:'earth',
         local: [20, 90],
-        name: 'Polar Bear',
+        name: 'Polar_Bear',
         lineLocal:[
             [15,-15],
             [20,-15]
@@ -24,7 +24,7 @@ charts.init = function(){
     },{
         localtype:'earth',
         local: [3.4653, 62.2159],
-        name:'Amazon Rainforest',
+        name:'Amazon_Rainforest',
         lineLocal:[
             [-25,-5],
             [-45,-5]
@@ -32,7 +32,7 @@ charts.init = function(){
     },{
         localtype:'earth',
         local: [-133.611696, -26.201145],
-        name:'Sea Level',
+        name:'Sea_Level',
         lineLocal:[
             [-10,10],
             [-20,10]
@@ -40,7 +40,7 @@ charts.init = function(){
     },{
         localtype:'earth',
         local: [79.185509, -21.263971],
-        name:'Marine Pollution',
+        name:'Marine_Pollution',
         lineLocal:[
             [15,10],
             [20,10]
@@ -48,7 +48,7 @@ charts.init = function(){
     },{
         localtype:'Entire',
         local: [width/2 - step*10, height/2 - step*20],
-        name:'Air Quality',
+        name:'Air_Quality',
         lineLocal:[
             [-9,-9],
             [-20,-9]
@@ -56,7 +56,7 @@ charts.init = function(){
     },{
         localtype:'Entire',
         local: [width/2, height/4*3 + step],
-        name:'Ozonosphere Hole',
+        name:'Ozonosphere_Hole',
         lineLocal:[
             [-9,5],
             [-20,5]
@@ -174,6 +174,7 @@ charts.drawanimals = function(local,symbol){
 }
 
 charts.addDescription = function(local, str){
+    var counting = [];
     const earth = this.earththsvg.append('g')
     const Entire = this.svg.append('g')
     const step = this.step
@@ -217,20 +218,22 @@ charts.addDescription = function(local, str){
             .attr('stroke',color)
 
         svg.append('text')
-            .html(local[i].name)   
+            .html(local[i].name + ":10000")   
             .attr("x", x + step*local[i].lineLocal[1][0])
             .attr("y", y + step*local[i].lineLocal[1][1])
-
-        this.counting(local[i].name)
+            .attr('class', "inf_" + local[i].name)
+        counting.push("inf_" + local[i].name)
     }
+    return counting;
 }
 
-charts.counting = function(name, local){
-    console.log()
-    // svg.append('text')
-    //     .html(local[i].name)   
-    //     .attr("x", x + step*local[i].lineLocal[1][0])
-    //     .attr("y", y + step*local[i].lineLocal[1][1])
+charts.counting = function(name){
+    var text;
+    return function(){
+        text = d3.select('.'+name).text().split(":");
+        text[1] = +text[1]-1
+        d3.select('.'+name).html(text.join(":"))
+    }
 }
 
 charts.earthMove = function(projection,svg,path){    
@@ -240,7 +243,7 @@ charts.earthMove = function(projection,svg,path){
         const earth = that.earththsvg
         const Description = that.Description
         // console.log(that)
-        ro+=0.35;
+        ro+=0.15;
         projection.rotate([ro,0]);
         svg.selectAll("path.block").attr("d", path);
 
@@ -359,11 +362,14 @@ charts.on = function(){
         const projection = that.projection
         const Description = that.Description
         
-        charts.addDescription(Description)
+        var counts = charts.addDescription(Description)
+        console.log(counts)
         charts.addEvents()
-        charts.requestAnimationFrame([
-            charts.earthMove(projection,that.svg,that.path)
-        ])
+
+        charts.requestAnimationFrame(counts.map(v=>charts.counting(v)).concat([
+                charts.earthMove(projection,that.svg,that.path)
+            ]
+        ))
     })
 }
 
