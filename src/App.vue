@@ -53,6 +53,7 @@ export default {
   box-sizing: border-box;
   font-family: Patriciana;
   user-select: none;
+  /* transition: all 1s; */
 }
 
 html {

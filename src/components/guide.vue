@@ -48,14 +48,12 @@ export default {
     showView($event){
       if (d3.select($event.target).html().indexOf("Click me")!=-1){
         d3.select(".warper")
-          .remove()
+          .style("opacity",0)
       }
     }
 
   },
   mounted() {
-    d3.select("#guide").selectAll("p")[6]
-    
     setTimeout(()=>{
       // d3.select("#content").style("background","black")
     },100)
@@ -67,7 +65,8 @@ export default {
 #guide{
   width: calc(100vw / 2 - 100vh / 2 );
   height: 100vh;
-  padding:10px
+  padding:10px;
+  overflow: auto;
 }
 
 @keyframes cursor { 
