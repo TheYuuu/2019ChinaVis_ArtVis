@@ -28,7 +28,15 @@ charts.init = function(){
         lineLocal:[
             [-25,-5],
             [-45,-5]
-        ]
+        ],
+        decline:{
+            lastRecord:{
+                number:7000000,
+                year:1978
+            },
+            danwei:"km2",
+            speed:-0.00055
+        }
     },{
         localtype:'earth',
         local: [-133.611696, -26.201145],
@@ -60,7 +68,15 @@ charts.init = function(){
         lineLocal:[
             [-9,5],
             [-20,5]
-        ]
+        ],
+        decline:{
+            lastRecord:{
+                number:0,
+                year:1979
+            },
+            danwei:"km2",
+            speed:0.0164
+        }
     })
 
     this.step = step;
@@ -288,7 +304,7 @@ charts.addEvents = function(){
         .attr("r",width/4)
 
         setTimeout(()=>{
-            charts.drawForce();
+            charts.drawForce(d.properties.CONTINENT.split(" ").join("_"));
         },1000)
 
         svg.append("text")
@@ -301,8 +317,6 @@ charts.addEvents = function(){
             })
             .attr("y",height/4)
             .on('click',function(d){
-                console.log(svg.selectAll(".item_circle") );
-
                 svg.selectAll(".item_circle")                
                     .transition()
                     .duration(1000)
@@ -328,40 +342,45 @@ charts.addEvents = function(){
     })
 }
 
-charts.drawForce = function(){
+charts.drawForce = function(CONTINENT){
+    const PicView = this.PicView
     const svg = this.svg
     const width = this.width;
     const height = this.height;
     const step = this.step;
 
-    svg.selectAll(".nodes").remove()
+    d3.json("../..//static/data/data.json").then(d=>{
+        console.log(d,CONTINENT)
+        var nodes = d[CONTINENT].animals.concat(d[CONTINENT].plantes)
+        svg.selectAll(".nodes").remove()
 
-    var nodes = d3.range(20).map(function(d, i) {
-        return { name: i, radius: 20 };
-    });
+        nodes.forEach((d,i)=>{
+            d.radius = step*3;
+            d.index = i;
+        })
 
-    var root = {
-        name: -1,
-        radius: height / 4
-    };
+        var root = {
+            index: 0,
+            radius: height / 4
+        };
 
-    nodes.unshift(root);
+        nodes.unshift(root);
 
-    var simulation = d3
-            .forceSimulation()
-            .force("forceX",d3.forceX().strength(0.1).x(width * 0.5))
-            .force("forceY",d3.forceY().strength(0.1).y(height * 0.5))
-            .force("center",d3.forceCenter().x(width * 0.5).y(height * 0.5))
-            .force("charge", function(d, i) {
-              return i ? 0 : -2000;
-            });
+        var simulation = d3
+                .forceSimulation()
+                .force("forceX",d3.forceX().strength(0.1).x(width * 0.5))
+                .force("forceY",d3.forceY().strength(0.1).y(height * 0.5))
+                .force("center",d3.forceCenter().x(width * 0.5).y(height * 0.5))
+                .force("charge", function(d, i) {
+                return i ? 0 : -2000;
+                });
 
-          var color = d3.scaleOrdinal(d3.schemeCategory10);
+        var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-          simulation
+        simulation
             .nodes(nodes)
             .force("collide",d3.forceCollide().strength(0.5).radius(function(d) {
-                  if (d.name == -1) return d.radius + step*5;
+                  if (d.index == 0) return d.radius + step*5;
                   return d.radius + 5;
                 })
                 .iterations(1)
@@ -369,7 +388,7 @@ charts.drawForce = function(){
             )
             .on("tick", ticked);
 
-          node = svg
+        node = svg
             .append("g")
             .attr("class", "nodes")
             .selectAll("none")
@@ -379,84 +398,60 @@ charts.drawForce = function(){
             .attr("class","item_circle")
             .attr("stroke", "black")
             .attr("stroke-dasharray", "5,5")
-            .attr("fill", "none")
+            .attr("fill", function(d,i){
+                if (d.index != 0){
+                    return "white"
+                }else{
+                    return "none";
+                }
+            })            
+            .attr("r", function(d) {
+                return d.radius;
+              })
             .attr("cx", function(d) {
               return d.x;
             })
             .attr("cy", function(d) {
               return d.y;
             })
-            .call(d3
-                .drag()
-                .on("start", dragstarted)
-                .on("drag", dragged)
-                .on("end", dragended)
-            )
-            .attr("r", function(d) {
-              return d.radius;
-            });
+            .on("click",function(d){
+                PicView.showMe(nodes.slice(1,nodes.length), d.index - 1);
+            })
 
-        function ticked() {
-                node.attr("cx", function(d) {
-                if (d.x - d.radius < 0) {
-                    d.x += 10;
-                    return d.x;
-                } else if (d.x + d.radius > width) {
-                    d.x -= 10;
-                    return d.x;
-                }
-                return d.x;
-                })
-                .attr("cy", function(d) {
-                if (d.y - d.radius < 0) {
-                    d.y += 10;
-                    return d.y;
-                } else if (d.y + d.radius > height) {
-                    d.y -= 10;
-                    return d.y;
-                }
-
-                if (d.name == "-1") {
-                    d.fy = height / 2;
-                    d.fx = width / 2;
-                }
-                return d.y;
-                });
-            }
-      
-        function dragstarted(d) {
-            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-            d.fx = d.x;
-            d.fy = d.y;
-        }
-      
-        function dragged(d) {
-            d.fx = d3.event.x;
-            d.fy = d3.event.y;
-            if (d.y - d.radius < 0) {
-                d.y += 10;
-                d.vy = 10;
-                return d.y;
-            } else if (d.y + d.radius > height) {
-                d.y -= 10;
-                d.vy = 10;
-                return d.y;
-            }
+    })
+    
+    function ticked() {
+            node.attr("cx", function(d) {
             if (d.x - d.radius < 0) {
                 d.x += 10;
-                d.vx = 10;
                 return d.x;
             } else if (d.x + d.radius > width) {
                 d.x -= 10;
-                d.vx = 10;
                 return d.x;
             }
-        }
-      
-        function dragended(d) {
-            if (!d3.event.active) simulation.alphaTarget(0.3).restart();
-            d.fx = null;
-            d.fy = null;
+
+            if (d.index == "0") {
+                d.fy = height / 2;
+                d.fx = width / 2;
+            }
+
+            return d.x;
+            })
+            .attr("cy", function(d) {
+            if (d.y - d.radius < 0) {
+                d.y += 10;
+                return d.y;
+            } else if (d.y + d.radius > height) {
+                d.y -= 10;
+                return d.y;
+            }
+
+            if (d.index == "0") {
+                d.fy = height / 2;
+                d.fx = width / 2;
+            }
+            return d.y;
+            });
         }
 }
 
@@ -470,8 +465,9 @@ charts.requestAnimationFrame= function(fns){
     })
 }
 
-charts.on = function(){
+charts.on = function(PicView){
     const that = this;
+    that.PicView = PicView;
     d3.json("../../static/map.json").then(world=>{
         var Whalelocal = [
             {long: 139.485582, lat: 34.078783}, 

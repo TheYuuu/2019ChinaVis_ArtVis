@@ -1,0 +1,657 @@
+{
+  "Asia": {
+    "plantes": [
+      {
+        "name": "Bruguiera hainesii",
+        "Description": "This species is very rare and has a limited and patchy distribution. There are approximately 200 known mature individuals remaining in Singapore, Malaysia, and Papua New Guinea, and there has been at least 27% loss of mangrove area in this species range over a 25 year period (less than one generation length) due to extensive coastal development. Is it listed as Critically Endangered. More research is needed to determine this status of this species population in Thailand, Indonesia, Myanmar, Philippines, and Viet Nam.",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/bruguiera-hainesii/images/full/bruguiera-hainesii.jpg",
+        "population": 200,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Nepenthes rigidifolia",
+        "Description": "the remaining plants and reintroduce artificially propagated plants to the site. The 90% decline in numbers of mature individuals over the past 30 years is due primarily to collection of plants by enthusiasts, and as the only known population is very small, even low rates of off-take will&#160;have had significant impacts on population size. It is suspected that the species could go extinct in the wild within the next 30 years (three generations). It is feasible that other, undetected subpopulations exist in north Sumatra, but despite extensive searches of apparently suitable habitats around Lake Toba, this species has yet to be found elsewhere. For this reason, it is important to survey other areas of potentially suitable habitat in North Sumatra to try to find other populations of this species, as other conservation measures may not be effective in time to save the remaining plants at the type locality.",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/nepenthes-rigidifolia1/images/full/nepenthes_rigidifolia.jpg",
+        "population": 10,
+        "ExtinctSpeed": 0.01
+      }
+    ],
+    "animals": [
+      {
+        "name": "Batagur kachuga",
+        "Description": "Batagur kachuga is a large, exploited riverine turtle with selective habitat requirements, slow recruitment (generation time estimated over 25 years) and threatened by incidental exploitation and systemic impacts on main river habitat, which has been documented to have had steep population declines. Quantitative data are not available, but an inferred decline of well over 80% in the past 50 years, and projected to continue, appears realistic. This qualifies the species for listing as Critically Endangered under criteria A2cd+4cd.",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/batagur-kachuga/images/full/batagur-kachuga.jpg",
+        "population": 500,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Batagur trivittata",
+        "Description": "Batagur trivittata is assessed as Critically Endangered as it has experienced a catastrophic population decline over the past three generations (conservatively assumed to be 25-30 years generation time, i.e. the past 75 to 90 years) as a result of egg collection and direct take of adults and juveniles, declining from thousands of adults to fewer than 10 mature animals left in the wild, representing about a 99% decline. Correspondingly, the species has disappeared from nearly its entire geographical range, being restricted to one remnant subpopulation. The remaining confirmed subpopulation is currently under threat from local dredging for gold at its nesting site, and possibly from the entire region being flooded by a planned reservoir.",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/batagur-trivittata/images/full/batagur-trivittata.jpg",
+        "population": 10,
+        "ExtinctSpeed": 1
+      },
+      {
+        "name": "Batagur baska",
+        "Description": "Batagur baska, has declined from abundant in the 19th century to likely fewer than 100 mature animals remaining. All remaining wild subpopulations have fewer than 50 mature individuals and have had observed declines qualifying for listing as Critically Endangered (CR) under criteria C1+2a(i). At an estimated generation time of 25 years (by analogy with B. affinis), total population decline has exceeded 90% over the past three generations (here estimated as three times the time of maturity) as a result of exploitation of eggs and adults as well as habitat loss, degradation and fragmentation and the decline is projected to continue into the future, hence the species also qualifies for listing as CR under criteria A2acd+4cd. ",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/batagur-baska/images/full/batagur-baska.jpg",
+        "population": 100,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Barbourula kalimantanensis",
+        "Description": "Listed as Endangered, as this species has an extent of occurrence (EOO) of 4,395 km2, it occurs in three to five threat-defined locations, and there is continuing decline in the quality of its habitat in Kalimantan mainly due to gold mining, illegal logging, and pollution.",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/barbourula-kalimantanensis/images/full/barbourula-kalimantanensis.jpg",
+        "population": 5,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Leptophryne cruentata",
+        "Description": "Listed as Critically Endangered under criterion C2a(i) in view of the previously documented disappearance of the species, possibly involving chytridiomycosis, and inferred continuing population decline caused by tourist activities and possibly disease. The total number of mature individuals in the population is likely fewer than 250, and each of the subpopulations is estimated to contain fewer than 50 mature individuals.",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/leptophryne-cruentata/images/full/leptophryne-cruentata.jpg",
+        "population": 249,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Ochotona iliensis",
+        "Description": "",
+        "img": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=983851370,23599392&fm=15&gp=0.jpg",
+        "population": 250,
+        "ExtinctSpeed": 0.0581
+      },
+      {
+        "name": "Bubalus arnee",
+        "Description": "Wild Water Buffalo is listed as Endangered A2de+3de; C1. The remaining world population totals under 4,000, with an estimate of fewer than 2,500 mature individuals. An inferred population reduction of at least 50% over the last three generations (generation length estimated at 8–10 years) seems likely given the severity of the threats, especially hybridization; it is projected to continue into the future.",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/bubalus-arnee/images/full/bubalus-arnee.jpg",
+        "population": "2500",
+        "ExtinctSpeed": 0.05
+      },
+      {
+        "name": "Saiga tatarica",
+        "Description": "Although the Saiga currently does not meet the Red List Criteria thresholds for Critically Endangered, the previous assessment of CR A2acd is retained in this assessment because this reassessment falls under the IUCN’s five year rule. This rule applies to taxa that appear to be genuinely improving in status, and states that “a taxon may be moved from a category of higher threat to a category of lower threat if and when none of the criteria of the higher category has been met for five years or more”. The Saiga is considered to have crossed the thresholds between CR and EN around 2015, therefore its status will be re-evaluated again in 2020. Saiga currently meets the thresholds for Endangered under criterion A4 based on observed, estimated and projected declines of >50% over 11 years (three generations), commencing from May 2015, due to the risk of mass mortality events (MME) resulting from outbreaks of disease, exacerbated by climatic and environmental factors, and taking place alongside ongoing poaching pressure for the illegal trade in horns. Saiga populations are inherently vulnerable to mass mortality from a range of diseases. Since 2010, four disease outbreaks have caused large-scale mortality in Saiga. The most severe resulted in the death of over 200,000 Saiga in the course of three weeks in May 2015. The cause of this outbreak (and suspected in the earlier two) has been shown to be haemorrhagic septicaemia caused by the bacterium Pasteurella multocida, which is endemic in Saiga. Lethal levels of infection are believed to have been triggered by environmental conditions including abnormally high humidity and temperature. Warm and wet climatic conditions are expected to increase in frequency due to effects of recorded and predicted climate change. The most recent MME occurred in the Mongolian population in early 2017, caused by PPR, and killed an estimated 54% of the population. Saiga are also subject to strong commercial hunting pressure and the survival of viable populations is entirely dependent on stringent implementation of conservation measures.",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/saiga-tatarica/images/full/saiga-tatarica.jpg",
+        "population": 124200,
+        "ExtinctSpeed": 0.054
+      },
+      {
+        "name": "Arabitragus jayakari",
+        "Description": "Listed as Endangered because the total population size is estimated to number fewer than 2,500 mature individuals, and no subpopulation contains more than 250 mature individuals. Recent camera trapping surveys suggest a continuing decline in area of occupancy, and therefore the number of mature individuals.",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/arabitragus-jayakari/images/full/arabitragus-jayakari.jpg",
+        "population": 2324,
+        "ExtinctSpeed": 0.04
+      },
+      {
+        "name": "Pithecophaga jefferyi",
+        "Description": "This long-lived species qualifies as Critically Endangered because it has an extremely small population, as a result of extremely rapid declines in the past three generations (56 years), owing to extensive deforestation. Recruitment to the adult population currently appears to be very low indicating that declines may continue into the future. Confirmation of trends is required and may lead to a change in status in the future.",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/pithecophaga-jefferyi/images/full/pithecophaga-jefferyi.jpg",
+        "population": 500,
+        "ExtinctSpeed": 0.014
+      },
+      {
+        "name": "Houbaropsis bengalensis",
+        "Description": "This bustard has a very small, declining population; a trend that has recently become extremely rapid and is predicted to continue in the near future, largely as a result of the widespread and on-going modification of its grassland habitat as well as its conversion to agriculture. It therefore qualifies as Critically Endangered.",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/houbaropsis-bengalensis/images/full/houbaropsis-bengalensis.jpg",
+        "population": 999,
+        "ExtinctSpeed": 0.08
+      },
+      {
+        "name": "Vanellus gregarius",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/vanellus-gregarius/images/full/vanellus-gregarius.jpg",
+        "population": 11200,
+        "ExtinctSpeed": 0.018
+      },
+      {
+        "name": "Vanellus gregarius",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/vanellus-gregarius/images/full/vanellus-gregarius.jpg",
+        "population": 11200,
+        "ExtinctSpeed": 0.018
+      },
+      {
+        "name": "Thalasseus bernsteini",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/sterna-bernsteini/images/full/sterna-bernsteini.jpg",
+        "population": 49,
+        "ExtinctSpeed": 0.0368
+      },
+      {
+        "name": "Pseudibis davisoni",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/pseudibis-davisoni/images/full/pseudibis-davisoni.jpg",
+        "population": 670,
+        "ExtinctSpeed": 0.011
+      },
+      {
+        "name": "Ardea insignis",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/ardea-insignis/images/full/ardea_insignis.jpg",
+        "population": 249,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Calidris pygmaea",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/eurynorhynchus-pygmeus/images/full/eurynorhynchus-pygmeus.jpg",
+        "population": 456,
+        "ExtinctSpeed": 0.26
+      }
+    ]
+  },
+  "Oceania": {
+    "plantes": [
+      {
+        "name": "Bruguiera hainesii",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/bruguiera-hainesii/images/full/bruguiera-hainesii.jpg",
+        "population": 200,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Dacrydium guillauminii",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/dacrydium-guillauminii/images/full/dacrydium-guillauminii.jpg",
+        "population": 99,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Serianthes nelsonii",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/serianthes-nelsonii/images/full/serianthes-nelsonii.jpg",
+        "population": 60,
+        "ExtinctSpeed": 0.0755
+      }
+    ],
+    "anmials": [
+      {
+        "name": "Petroica multicolor",
+        "Description": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Petroica_multicolor_-Norfolk_Island%2C_Australia-8_%281%29.jpg/220px-Petroica_multicolor_-Norfolk_Island%2C_Australia-8_%281%29.jpg",
+        "population": 979,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Ptilinopus chrysogaster",
+        "Description": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/PtilonopusChrysogasterWolf.jpg/220px-PtilonopusChrysogasterWolf.jpg",
+        "population": 2474,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Alopecoenas sanctaecrucis",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1729524118.jpg",
+        "population": 1070,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Pezoporus occidentalis",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1007910596.jpg",
+        "population": 249,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Pterodroma sandwichensis",
+        "Description": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/PterodromaSandwichensis.jpg/220px-PterodromaSandwichensis.jpg",
+        "population": 16600,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Phalacrocorax featherstoni",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/913831828.jpg",
+        "population": 812,
+        "ExtinctSpeed": 0.0634
+      },
+      {
+        "name": "Megadyptes antipodes",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/42771007.jpg",
+        "population": 20000,
+        "ExtinctSpeed": 0.021
+      },
+      {
+        "name": "Pterodroma alba",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1145951168.jpg",
+        "population": 20000,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Pterodroma baraui",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1501836238.jpg",
+        "population": 40000,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Thalassarche chrysostoma",
+        "Description": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Greyhead.jpg/250px-Greyhead.jpg",
+        "population": 250000,
+        "ExtinctSpeed": 0.008
+      },
+      {
+        "name": "Phoebetria fusca",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1075611078.jpg",
+        "population": 28656,
+        "ExtinctSpeed": 0.006
+      },
+      {
+        "name": "Nesofregetta fuliginosa",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1090288198.jpg",
+        "population": 999,
+        "ExtinctSpeed": 0.016
+      },
+      {
+        "name": "Diomedea antipodensis",
+        "Description": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Diomedea_gibsoni_2_-_SE_Tasmania.jpg/220px-Diomedea_gibsoni_2_-_SE_Tasmania.jpg",
+        "population": 50000,
+        "ExtinctSpeed": 0.073
+      },
+      {
+        "name": "Diomedea sanfordi",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1677651976.jpg",
+        "population": 17000,
+        "ExtinctSpeed": 0.04
+      },
+      {
+        "name": "Thalassarche carteri",
+        "Description": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Thalassarche_carteri_-_SE_Tasmania.jpg/250px-Thalassarche_carteri_-_SE_Tasmania.jpg",
+        "population": 82000,
+        "ExtinctSpeed": 0.013
+      }
+    ]
+  },
+  "Antarctica": {
+    "plantes": [],
+    "animals": [
+      {
+        "name": "Pterodroma phaeopygia",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/978524100.jpg",
+        "population": 10500,
+        "ExtinctSpeed": 0.088
+      },
+      {
+        "name": "Puffinus auricularis",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/72063353.jpg",
+        "population": 999,
+        "ExtinctSpeed": 0.04
+      },
+      {
+        "name": "Phocarctos hookeri",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/715661126.jpg",
+        "population": 3031,
+        "ExtinctSpeed": 0.039
+      }
+    ]
+  },
+  "Europe": {
+    "plantes": [
+      {
+        "name": "Onopordum nogalesii",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1980818492.png",
+        "population": 70,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Globularia ascanii",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/335613483.png",
+        "population": 38,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Salvia herbanica",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/919595920.png",
+        "population": 212,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Crambe sventenii",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1821284417.png",
+        "population": 476,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Bencomia sphaerocarpa",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1787670633.png",
+        "population": 24,
+        "ExtinctSpeed": 0.01
+      }
+    ],
+    "animals": [
+      {
+        "name": "Atlantica calathoides",
+        "Description": "",
+        "img": "",
+        "population": 50,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Charpentieria crassicostata",
+        "Description": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Charpentiera dyodon.jpg/200px-Charpentieria_dyodon.jpg",
+        "population": 30,
+        "ExtinctSpeed": 0.01
+      }
+    ]
+  },
+  "Africa": {
+    "plantes": [
+      {
+        "name": "Serapias stenopetala",
+        "Description": "Serapias stenopetala is assessed as Critically Endangered because it has a very small population (<250 individuals), with fewer than 50 mature individuals in each subpopulation along with continuing declines and extreme fluctuations.",
+        "img": "https://s2r.iucnredlist.org/sis2_images/25162173.jpg",
+        "population": 250,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Charpentieria crassicostata",
+        "Description": "",
+        "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Charpentiera dyodon.jpg/200px-Charpentieria_dyodon.jpg",
+        "population": 30,
+        "ExtinctSpeed": 0.01
+      }
+    ],
+    "animals": [
+      {
+        "name": "Afrithelphusa monodosa",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/afrithelphusa-monodosa/images/full/afrithelphusa-monodosa.jpg",
+        "population": 20,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Tarentola chazaliae",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1589221321.jpg",
+        "population": 9,
+        "ExtinctSpeed": 0.01
+      }
+    ]
+  },
+  "South_America": {
+    "plantes": [
+      {
+        "name": "Puya raimondii",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/puya-raimondii/images/full/puya_raimondii.jpg",
+        "population": 835000,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Plantago moorei",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/239349182.jpg",
+        "population": 1000,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Micranthocereus streckeri",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/20794798.jpg",
+        "population": 1000,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Magnolio de Jardin",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/900277884.jpg",
+        "population": 49,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Zamia restrepoi",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/zamia-restrepoi/images/full/zamia-restrepoi.jpg",
+        "population": 50,
+        "ExtinctSpeed": 0.01
+      }
+    ],
+    "animals": [
+      {
+        "name": "Antilophia bokermanni",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/antilophia-bokermanni/images/full/antilophia-bokermanni.jpg",
+        "population": 700,
+        "ExtinctSpeed": 0.012
+      },
+      {
+        "name": "Eriocnemis nigrivestis",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/eriocnemis-nigrivestis/images/full/eriocnemis-nigrivestis.jpg",
+        "population": 180,
+        "ExtinctSpeed": 0.017
+      },
+      {
+        "name": "Procyon pygmaeus",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/procyon-pygmaeus/images/full/procyon-pygmaeus.jpg",
+        "population": 192,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Tapirus pinchaque",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/tapirus-pinchaque/images/full/tapirus-pinchaque.jpg",
+        "population": 2500,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Ameerega cainarachi",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/ameerega-cainarachi/images/full/ameerega-cainarachi.jpg",
+        "population": 50,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Lycalopex fulvipes",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/pseudalopex-fulvipes/images/full/pseudalopex-fulvipes.jpg",
+        "population": 2499,
+        "ExtinctSpeed": 0.017
+      },
+      {
+        "name": "Picumnus steindachneri",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1221785012.jpg",
+        "population": 15000,
+        "ExtinctSpeed": 0.052
+      },
+      {
+        "name": "Priodontes maximus",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/priodontes-maximus/images/full/priodontes-maximus.jpg",
+        "population": 7,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Cinclodes aricomae",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/cinclodes-aricomae/images/full/cinclodes-aricomae.jpg",
+        "population": 249,
+        "ExtinctSpeed": 0.01
+      }
+    ]
+  },
+  "North_America": {
+    "plantes": [
+      {
+        "name": "Hesperomannia arbuscula",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1238115865.jpg",
+        "population": 25,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Schiedea lychnoides",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1296994603.jpg",
+        "population": 85,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Labordia helleri",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1109697340.jpg",
+        "population": 100,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Geranium kauaiense",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/2144765545.jpg",
+        "population": 120,
+        "ExtinctSpeed": 0.01
+      }
+    ],
+    "animals": [
+      {
+        "name": "Marmota vancouverensis",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/marmota-vancouverensis/images/full/marmota-vancouverensis.jpg",
+        "population": 90,
+        "ExtinctSpeed": 0.088
+      },
+      {
+        "name": "Centrocercus minimus",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/centrocercus-minimus/images/full/centrocercus-minimus.jpg",
+        "population": 1700,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Neomonachus schauinslandi",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/monachus-schauinslandi/images/full/monachus-schauinslandi.JPG",
+        "population": 632,
+        "ExtinctSpeed": 0.009
+      },
+      {
+        "name": "Leptoxis plicata",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1864007755.jpg",
+        "population": -1,
+        "ExtinctSpeed": 0.09
+      },
+      {
+        "name": "Leptoxis plicata",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1406219857.jpg",
+        "population": 49,
+        "ExtinctSpeed": 0.009
+      },
+      {
+        "name": "Leptoxis plicata",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1406219857.jpg",
+        "population": 49,
+        "ExtinctSpeed": 0.009
+      },
+      {
+        "name": "Hemignathus wilsoni",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/617249962.jpg",
+        "population": 800,
+        "ExtinctSpeed": 0.026
+      },
+      {
+        "name": "Palmeria dolei",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/palmeria-dolei/images/full/palmeria-dolei.jpg",
+        "population": 3800,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Loxops caeruleirostris",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/484756778.jpg",
+        "population": 1000,
+        "ExtinctSpeed": 0.03
+      }
+    ]
+  },
+  "Arctic_Sea": {
+    "plantes": [
+      {
+        "name": "Ruppia maritima",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/1027082003.jpg",
+        "population": -1,
+        "ExtinctSpeed": 0.01
+      }
+    ],
+    "animals": [
+      {
+        "name": "Ursus maritimus",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/amazing-species/ursus-maritimus/images/full/ursus-maritimus.jpg",
+        "population": 25000,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Zostera marina",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/232711675.jpg",
+        "population": -1,
+        "ExtinctSpeed": 0.14
+      },
+      {
+        "name": "Phocoena phocoena",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/141303906.jpg",
+        "population": -1,
+        "ExtinctSpeed": 0.01
+      }
+    ]
+  },
+  "Atlantic": {
+    "plantes": [
+      {
+        "name": "Zostera capensis",
+        "Description": "",
+        "img": "https://s2r.iucnredlist.org/sis2_images/501985170.jpg",
+        "population": -1,
+        "ExtinctSpeed": 0.01
+      },
+      {
+        "name": "Halophila baillonii",
+        "Description": "",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/halophila-baillonii/images/full/halophila-baillonii.jpg",
+        "population": -1,
+        "ExtinctSpeed": 0.01
+      }
+    ],
+    "animals": [
+    ]
+  },
+  "Indian Ocean": {
+    "plantes": [],
+    "animals": []
+  },
+  "Mediterranean and Black": {
+    "plantes": [],
+    "animals": [
+    ]
+  },
+  "Pacific": {
+    "plantes": [],
+    "animals": [
+    ]
+  }
+}

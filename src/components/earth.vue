@@ -1,23 +1,27 @@
 <template>
   <div id="earth">
     <div class="warper">
-
     </div>
     <svg id="earth_svg">
       <filter id="f1" x="0" y="0">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
       </filter>
     </svg>
+    <ViewPic ref="ViewPic"></ViewPic>
   </div>
 </template>
 
 <script>
 import { setInterval, clearTimeout } from 'timers';
 import charts from '../assets/charts'
+import ViewPic from './ViewPic'
 export default {
   name: 'earth',
+  components:{
+    ViewPic
+  },
   mounted() {
-      charts.on();
+      charts.on(this.$refs.ViewPic);
   },
 }
 </script>
