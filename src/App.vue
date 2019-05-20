@@ -29,13 +29,13 @@ export default {
   },
   data:function(){
       return {
-        time:new Date().toUTCString()
+        time:new Date().toLocaleString().replace("下午","PM ").replace("上午","PM ")
       }
   },
   mounted() {
     const that = this;
     setInterval(()=>{
-      that.time=new Date().toUTCString();
+      that.time=new Date().toLocaleString().replace("下午","PM ").replace("上午","PM ");
     },1000)
   },
 }

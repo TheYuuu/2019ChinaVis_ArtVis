@@ -456,13 +456,12 @@ charts.drawForce = function(CONTINENT){
 }
 
 
-charts.requestAnimationFrame= function(fns){
-    requestAnimationFrame(function(){
+charts.requestAnimationFrame = function(fns){
+    this.AnimationFrame = setInterval(()=>{
         fns.forEach(d=>{
             d()
         })
-        charts.requestAnimationFrame(fns);
-    })
+    },100)
 }
 
 charts.on = function(PicView){
