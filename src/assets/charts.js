@@ -296,13 +296,14 @@ charts.addDescription = function(local, str){
 }
 
 charts.counting = function(obj){
+    const that = this;
     var text;
     var danwei;
     return function(){
         danwei = d3.select('.' + obj.name).text().split(" ")[1];
         text = d3.select('.' + obj.name).text().split(" ")[0].split(":");
         if (obj.obj.decline != undefined){
-            text[1] = +text[1] + obj.obj.decline.speed
+            text[1] = +text[1] + obj.obj.decline.speed * that.TimeMachine / 1000
         }
         d3.select('.' + obj.name).html(text.join(":") + " " + danwei)
     }
@@ -529,7 +530,7 @@ charts.CONTINENT_Data_change = function(){
                 if (that.CONTINENT_Data[k].animals != undefined){
                     that.CONTINENT_Data[k].animals.forEach(d=>{
                         if (!d.ExtinctStatus){
-                            d.population - d.ExtinctSpeed
+                            d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
                             if (d.population<=0){
                                 d.ExtinctStatus = true
                                 that.AddDeadList(that.DateNow.getFullYear(), d.name);
@@ -539,7 +540,13 @@ charts.CONTINENT_Data_change = function(){
                 }
                 if (that.CONTINENT_Data[k].plantes != undefined){
                     that.CONTINENT_Data[k].plantes.forEach(d=>{
-                        d.population - d.ExtinctSpeed;
+                        if (!d.ExtinctStatus){
+                            d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
+                            if (d.population<=0){
+                                d.ExtinctStatus = true
+                                that.AddDeadList(that.DateNow.getFullYear(), d.name);
+                            }
+                        }
                     })
                 }
         }
