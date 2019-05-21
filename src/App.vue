@@ -86,8 +86,10 @@ html {
 }
 
 .title-time{
+  position: relative;
   font-size: 2rem;
   font-weight: bold;
+  z-index: 999;
 }
 
 /* 设置滚动条的样式 */

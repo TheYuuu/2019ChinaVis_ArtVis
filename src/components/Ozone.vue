@@ -13,12 +13,20 @@ export default {
     var svg = d3.select("#earth_svg");
 
     svg.append("circle")
+      .attr("id", "ozone")
       .attr("cx",width/2)
       .attr("cy",height/2)
       .attr("r",width/4+20)
       .attr("stroke","#6c05ff0a")
       .attr("fill","#5546b921")
       .attr('filter',"url(#f1)")
+
+    svg.append("circle")
+      .attr("id", "ozone_shield")
+      .attr("cx",width/2)
+      .attr("cy",0)
+      .attr("r",width/4+50)
+      .attr("fill","white")
     
     // var nodes = d3.range(10).map(function(d, i) {
     //     return { name: i, radius: 30};

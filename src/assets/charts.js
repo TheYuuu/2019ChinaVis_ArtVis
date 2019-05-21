@@ -134,12 +134,12 @@ charts.drawEarth = function(world){
 
     var svg = d3.select("#earth_svg")
     var earththsvg=svg.append('g')
-    earththsvg.attr('transform',"translate(" +  width/4 + "," + height/4 + ")")
+    earththsvg.attr('transform',"translate(" +  (width/4 + 10) + "," + height/4 + ")")
     
     var projection = options.projection
     .rotate([0, 0])
     .center([width/2, height/2])
-    .fitSize([width/2, height/2], world);
+    .fitSize([width/2-20, height/2], world);
 
     var path = d3.geoPath(projection);
     var graticule = d3.geoGraticule();
@@ -521,7 +521,11 @@ charts.Air_change = function(){
 }
 
 charts.Ozonosphere_change = function(){
-    
+    const height = this.height;
+    d3.select("#ozone_shield")
+        .transition()
+        .duration(20000)
+        .attr("cy",height/2)
 }
 
 charts.requestAnimationFrame = function(fns){
@@ -571,7 +575,10 @@ charts.on = function(Vue, CONTINENT_Data){
         
         var counts = charts.addDescription(Description)
         charts.addEvents()
+
         charts.Air_change()
+        charts.Ozonosphere_change()
+
         charts.requestAnimationFrame(counts.map(v=>charts.counting(v)).concat([
                 charts.earthMove(projection,that.svg,that.path),
                 charts.CONTINENT_Data_change()
