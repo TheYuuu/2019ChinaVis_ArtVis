@@ -88,7 +88,7 @@ charts.init = function(){
     },{
         localtype:'Entire',
         local: [width/2 - step*10, height/2 - step*20],
-        name:'Air_Quality',
+        name:'SO2',
         lineLocal:[
             [-9,-9],
             [-20,-9]
@@ -96,10 +96,10 @@ charts.init = function(){
         decline:{
             lastRecord:{
                 number:0,
-                year:1979
+                year:1850
             },
-            danwei:"km2",
-            speed:0.0164
+            danwei:"g",
+            speed:1.88745
         }
     },{
         localtype:'Entire',
@@ -118,7 +118,14 @@ charts.init = function(){
             speed:0.0164
         }
     })
-
+    
+    var currentTime = new Date()
+    Description.map( d => {
+        var oldTime = new Date(d.decline.lastRecord.year, 1, 1)
+        var curTime = new Date()
+        d.decline.lastRecord.number = d.decline.lastRecord.number + (curTime - oldTime) * d.decline.speed
+        console.log(d.decline.lastRecord.number)
+    })
     this.step = step;
     this.width = width;
     this.height = height;
@@ -272,26 +279,32 @@ charts.addDescription = function(local, str){
             .attr('stroke',color)
         
         svg.append('text')
-            .html(local[i].name + ":" + local[i].decline.lastRecord.number)   
+            .html(() => {
+                return local[i].name + ":" + local[i].decline.lastRecord.number + " " + local[i].decline.danwei
+            })   
             .attr("x", x + step*local[i].lineLocal[1][0])
             .attr("y", y + step*local[i].lineLocal[1][1])
             .attr('class', "inf_" + local[i].name)
+
         counting.push({
             name:"inf_" + local[i].name,
             obj:local[i]
         })
     }
+    console.log(counting)
     return counting;
 }
 
 charts.counting = function(obj){
     var text;
+    var danwei;
     return function(){
-        text = d3.select('.' + obj.name).text().split(":");
+        danwei = d3.select('.' + obj.name).text().split(" ")[1];
+        text = d3.select('.' + obj.name).text().split(" ")[0].split(":");
         if (obj.obj.decline != undefined){
             text[1] = +text[1] + obj.obj.decline.speed
         }
-        d3.select('.' + obj.name).html(text.join(":"))
+        d3.select('.' + obj.name).html(text.join(":") + " " + danwei)
     }
 }
 
