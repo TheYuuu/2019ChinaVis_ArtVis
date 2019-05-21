@@ -38,6 +38,14 @@ export default {
       data: []
     };
   },
+  methods:{
+    AddDeadList(year,name){
+      this.$emit('AddDeadList',{
+        year,
+        name
+      })
+    }
+  },
   mounted() {
     var that = this;
     d3.json("../static/data/data.json").then(d=>{

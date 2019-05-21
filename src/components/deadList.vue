@@ -1,5 +1,6 @@
 <template>
   <div id="deadList">
+    <p class="Extinct_title">Extinction List</p>
     <div class="list_div" id="list_div">
       <transition-group>
         <template>
@@ -7,7 +8,7 @@
           <p class="year_p">
             {{item.year}} 
           </p>
-          <p v-for="i in item.list" :key=i class="item_p">
+          <p v-for="(i,index) in item.list" :key=index class="item_p">
             {{i}}
           </p>
         </div>
@@ -58,12 +59,11 @@ export default {
     }
   },        
   mounted() {
-    for (let i=0;i<10;i++){
-      setTimeout(()=>{
-        this.insert(1900+i,'as1231d')
-      },i*500)
-    }
-
+    // for (let i=0;i<10;i++){
+    //   setTimeout(()=>{
+    //     this.insert(1900+i,'as1231d')
+    //   },i*500)
+    // }
   }
 }
 </script>
@@ -79,6 +79,7 @@ export default {
 .list_div{
   width: 100%;
   height: auto;
+  margin-top: 30px;
 }
 
 #deadList p{
@@ -96,6 +97,10 @@ export default {
     position: relative; 
 }
 
+.Extinct_title{
+  font-weight: bolder;
+  margin-bottom: 20px;
+}
 /* .item_p{
 
 } */

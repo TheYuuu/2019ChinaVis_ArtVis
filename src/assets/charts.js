@@ -123,7 +123,7 @@ charts.init = function(){
     Description.map( d => {
         var oldTime = new Date(d.decline.lastRecord.year, 1, 1)
         var curTime = new Date()
-        d.decline.lastRecord.number = d.decline.lastRecord.number + (curTime - oldTime) * d.decline.speed
+        d.decline.lastRecord.number = d.decline.lastRecord.number + (curTime - oldTime) * d.decline.speed /1000
         console.log(d.decline.lastRecord.number)
     })
     this.step = step;
@@ -525,17 +525,23 @@ charts.drawForce = function(CONTINENT){
 charts.CONTINENT_Data_change = function(){
     var that = this;
     return function (){
-        for (let k in that.CONTINENT_Data){
-            if (that.CONTINENT_Data[k].animals != undefined){
-                that.CONTINENT_Data[k].animals.forEach(d=>{
-                    d.population - d.ExtinctSpeed;
-                })
-            }
-            if (that.CONTINENT_Data[k].plantes != undefined){
-                that.CONTINENT_Data[k].plantes.forEach(d=>{
-                    d.population - d.ExtinctSpeed;
-                })
-            }
+            for (let k in that.CONTINENT_Data){
+                if (that.CONTINENT_Data[k].animals != undefined){
+                    that.CONTINENT_Data[k].animals.forEach(d=>{
+                        if (!d.ExtinctStatus){
+                            d.population - d.ExtinctSpeed
+                            if (d.population<=0){
+                                d.ExtinctStatus = true
+                                that.AddDeadList(that.DateNow.getFullYear(), d.name);
+                            }
+                        }
+                    })
+                }
+                if (that.CONTINENT_Data[k].plantes != undefined){
+                    that.CONTINENT_Data[k].plantes.forEach(d=>{
+                        d.population - d.ExtinctSpeed;
+                    })
+                }
         }
     }
 }
@@ -555,7 +561,9 @@ charts.Ozonosphere_change = function(){
 }
 
 charts.requestAnimationFrame = function(fns){
+    var that = this;
     this.AnimationFrame = setInterval(()=>{
+        that.DateNow = new Date( +that.DateNow + that.TimeMachine )
         fns.forEach(d=>{
             d()
         })
@@ -565,7 +573,10 @@ charts.requestAnimationFrame = function(fns){
 charts.on = function(Vue, CONTINENT_Data){
     const that = this;
     that.PicView = Vue.$refs.ViewPic;
+    that.AddDeadList = Vue.AddDeadList;
     that.CONTINENT_Data = CONTINENT_Data;
+    that.DateNow = new Date();
+    that.TimeMachine = 1000;
     
     d3.json("../../static/map.json").then(world=>{
         var Whalelocal = [

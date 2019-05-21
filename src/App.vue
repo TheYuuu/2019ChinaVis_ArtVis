@@ -7,10 +7,10 @@
         <p class="title-time">{{time}}</p>
       </div>
       <cloud></cloud>
-      <earth></earth>
+      <earth @AddDeadList="AddDeadList"></earth>
       <ozone></ozone>
     </div> 
-    <deadList></deadList>
+    <deadList ref="deadList"></deadList>
   </div>
 </template>
 
@@ -29,6 +29,11 @@ export default {
     ozone,
     guide,
     deadList
+  },
+  methods:{
+    AddDeadList(obj){
+      this.$refs.deadList.insert(obj.year, obj.name)
+    }
   },
   data:function(){
       return {
