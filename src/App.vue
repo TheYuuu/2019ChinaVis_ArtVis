@@ -10,6 +10,7 @@
       <earth></earth>
       <ozone></ozone>
     </div> 
+    <deadList></deadList>
   </div>
 </template>
 
@@ -18,6 +19,7 @@ import earth from './components/earth'
 import cloud from './components/cloud'
 import ozone from './components/ozone'
 import guide from './components/guide'
+import deadList from './components/deadList'
 
 export default {
   name: 'App',
@@ -25,7 +27,8 @@ export default {
     earth,
     cloud,
     ozone,
-    guide
+    guide,
+    deadList
   },
   data:function(){
       return {
@@ -85,5 +88,25 @@ html {
 .title-time{
   font-size: 2rem;
   font-weight: bold;
+}
+
+/* 设置滚动条的样式 */
+::-webkit-scrollbar {
+width:6px;
+height: 6px;
+}
+/* 滚动槽 */
+::-webkit-scrollbar-track {
+-webkit-box-shadow:inset006pxrgba(0,0,0,0.3);
+border-radius:10px;
+}
+/* 滚动条滑块 */
+::-webkit-scrollbar-thumb {
+border-radius:10px;
+background:lavender;
+-webkit-box-shadow:inset006pxrgba(0,0,0,0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+background: lavender;
 }
 </style>

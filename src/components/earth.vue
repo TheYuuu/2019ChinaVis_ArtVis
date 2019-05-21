@@ -21,7 +21,12 @@ export default {
     ViewPic
   },
   mounted() {
-      charts.on(this.$refs.ViewPic);
+    var that = this;
+    d3.json("../static/data/data.json").then(d=>{
+      console.log(d)
+      charts.on(that,d);
+    })
+
   },
 }
 </script>

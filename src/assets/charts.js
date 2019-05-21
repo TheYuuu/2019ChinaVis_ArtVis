@@ -271,7 +271,6 @@ charts.addDescription = function(local, str){
             .attr("y2", y + step*local[i].lineLocal[1][1])
             .attr('stroke',color)
         
-        console.log(local[i]);
         svg.append('text')
             .html(local[i].name + ":" + local[i].decline.lastRecord.number)   
             .attr("x", x + step*local[i].lineLocal[1][0])
@@ -394,44 +393,42 @@ charts.drawForce = function(CONTINENT){
     const height = this.height;
     const step = this.step;
 
-    d3.json("../..//static/data/data.json").then(d=>{
-        console.log(d,CONTINENT)
-        var nodes = d[CONTINENT].animals.concat(d[CONTINENT].plantes)
-        svg.selectAll(".nodes").remove()
+    var nodes = this.CONTINENT_Data[CONTINENT].animals.concat(this.CONTINENT_Data[CONTINENT].plantes)
+    svg.selectAll(".nodes").remove()
 
-        nodes.forEach((d,i)=>{
-            d.radius = step*3;
-            d.index = i;
-        })
+    nodes.forEach((d,i)=>{
+        d.radius = step*3;
+        d.index = i;
+    })
 
-        var root = {
-            index: 0,
-            radius: height / 4
-        };
+    var root = {
+        index: 0,
+        radius: height / 4
+    };
 
-        nodes.unshift(root);
+    nodes.unshift(root);
 
-        var simulation = d3
-                .forceSimulation()
-                .force("forceX",d3.forceX().strength(0.1).x(width * 0.5))
-                .force("forceY",d3.forceY().strength(0.1).y(height * 0.5))
-                .force("center",d3.forceCenter().x(width * 0.5).y(height * 0.5))
-                .force("charge", function(d, i) {
-                return i ? 0 : -2000;
-                });
+    var simulation = d3
+            .forceSimulation()
+            .force("forceX",d3.forceX().strength(0.1).x(width * 0.5))
+            .force("forceY",d3.forceY().strength(0.1).y(height * 0.5))
+            .force("center",d3.forceCenter().x(width * 0.5).y(height * 0.5))
+            .force("charge", function(d, i) {
+            return i ? 0 : -2000;
+            });
 
-        var color = d3.scaleOrdinal(d3.schemeCategory10);
+    var color = d3.scaleOrdinal(d3.schemeCategory10);
 
-        simulation
-            .nodes(nodes)
-            .force("collide",d3.forceCollide().strength(0.5).radius(function(d) {
-                  if (d.index == 0) return d.radius + step*5;
-                  return d.radius + 5;
-                })
-                .iterations(1)
-                .strength(0.3)
-            )
-            .on("tick", ticked);
+    simulation
+        .nodes(nodes)
+        .force("collide",d3.forceCollide().strength(0.5).radius(function(d) {
+                if (d.index == 0) return d.radius + step*5;
+                return d.radius + 5;
+            })
+            .iterations(1)
+            .strength(0.3)
+        )
+        .on("tick", ticked);
 
         node = svg
             .append("g")
@@ -463,7 +460,6 @@ charts.drawForce = function(CONTINENT){
                 PicView.showMe(nodes.slice(1,nodes.length), d.index - 1);
             })
 
-    })
     
     function ticked() {
             node.attr("cx", function(d) {
@@ -500,6 +496,24 @@ charts.drawForce = function(CONTINENT){
         }
 }
 
+charts.CONTINENT_Data_change = function(){
+    var that = this;
+    return function (){
+        for (let k in that.CONTINENT_Data){
+            if (that.CONTINENT_Data[k].animals != undefined){
+                that.CONTINENT_Data[k].animals.forEach(d=>{
+                    d.population - d.ExtinctSpeed;
+                })
+            }
+            if (that.CONTINENT_Data[k].plantes != undefined){
+                that.CONTINENT_Data[k].plantes.forEach(d=>{
+                    d.population - d.ExtinctSpeed;
+                })
+            }
+        }
+    }
+}
+
 charts.requestAnimationFrame = function(fns){
     this.AnimationFrame = setInterval(()=>{
         fns.forEach(d=>{
@@ -508,9 +522,11 @@ charts.requestAnimationFrame = function(fns){
     },1000)
 }
 
-charts.on = function(PicView){
+charts.on = function(Vue, CONTINENT_Data){
     const that = this;
-    that.PicView = PicView;
+    that.PicView = Vue.$refs.ViewPic;
+    that.CONTINENT_Data = CONTINENT_Data;
+    
     d3.json("../../static/map.json").then(world=>{
         var Whalelocal = [
             {long: 139.485582, lat: 34.078783}, 
@@ -544,11 +560,11 @@ charts.on = function(PicView){
         const Description = that.Description
         
         var counts = charts.addDescription(Description)
-        console.log(counts)
         charts.addEvents()
 
         charts.requestAnimationFrame(counts.map(v=>charts.counting(v)).concat([
-                charts.earthMove(projection,that.svg,that.path)
+                charts.earthMove(projection,that.svg,that.path),
+                charts.CONTINENT_Data_change()
             ]
         ))
     })

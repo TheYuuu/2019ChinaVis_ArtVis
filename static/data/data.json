@@ -6,6 +6,7 @@
         "Description": "This species is very rare and has a limited and patchy distribution. There are approximately 200 known mature individuals remaining in Singapore, Malaysia, and Papua New Guinea, and there has been at least 27% loss of mangrove area in this species range over a 25 year period (less than one generation length) due to extensive coastal development. Is it listed as Critically Endangered. More research is needed to determine this status of this species population in Thailand, Indonesia, Myanmar, Philippines, and Viet Nam.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/bruguiera-hainesii/images/full/bruguiera-hainesii.jpg",
         "population": 200,
+        "date":"2008-3-7",
         "ExtinctSpeed": 0.01
       },
       {
@@ -13,7 +14,32 @@
         "Description": "the remaining plants and reintroduce artificially propagated plants to the site. The 90% decline in numbers of mature individuals over the past 30 years is due primarily to collection of plants by enthusiasts, and as the only known population is very small, even low rates of off-take will&#160;have had significant impacts on population size. It is suspected that the species could go extinct in the wild within the next 30 years (three generations). It is feasible that other, undetected subpopulations exist in north Sumatra, but despite extensive searches of apparently suitable habitats around Lake Toba, this species has yet to be found elsewhere. For this reason, it is important to survey other areas of potentially suitable habitat in North Sumatra to try to find other populations of this species, as other conservation measures may not be effective in time to save the remaining plants at the type locality.",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/nepenthes-rigidifolia1/images/full/nepenthes_rigidifolia.jpg",
         "population": 10,
+        "date":"2013-12-6",
         "ExtinctSpeed": 0.01
+      },
+      {
+       "name": "Nepenthes rigidifolia",
+        "Description": "This species is globally assessed as Extinct in the Wild and is only found in cultivation. It presumably went extinct because of habitat loss to expanding agriculture.",
+        "img":"https://s2r.iucnredlist.org/sis2_images/1346540984.jpg",
+        "population": 0,
+        "date":"2014-1-1",
+        "ExtinctSpeed": 0.01
+      },
+      {
+       "name": "Magnolia zenii",
+        "Description": "Magnolia zenii is classified as Critically Endangered as only a single population exists containing 18 individuals at the type locality on the north slopes of Mount Baohua, a provincial reserve but no specific protection is given to these trees. No natural regeneration has been observed. It was previously assessed as Critically Endangered in 1998 and, as there are no known conservation actions, it could be inferred that it may be extinct but needs to be confirmed by a survey. It exists in ex situ collections so has the potential to be propagated.",
+        "img":"https://s2r.iucnredlist.org/sis2_images/1784050141.jpg",
+        "population": 18,
+        "date":"2012-5-24",
+        "ExtinctSpeed": 0.01
+      },
+      {
+       "name": "Paphiopedilum emersonii",
+        "Description": "Paphiopedilum emersonii is very rare and very local with few disjunct fragmented subpopulations and a very restricted distribution in China and Viet Nam.The species has declined by 80-97% over the last decade and a decline of the same magnitude is projected to continue in the next three generations (20-25 years). The estimated number of mature individuals is less than 250.",
+        "img":"https://s2r.iucnredlist.org/sis2_images/121048383.jpg",
+        "population": 250,
+        "date":"2013-1-22",
+        "ExtinctSpeed": 0.1
       }
     ],
     "animals": [
@@ -22,6 +48,7 @@
         "Description": "Batagur kachuga is a large, exploited riverine turtle with selective habitat requirements, slow recruitment (generation time estimated over 25 years) and threatened by incidental exploitation and systemic impacts on main river habitat, which has been documented to have had steep population declines. Quantitative data are not available, but an inferred decline of well over 80% in the past 50 years, and projected to continue, appears realistic. This qualifies the species for listing as Critically Endangered under criteria A2cd+4cd.",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/batagur-kachuga/images/full/batagur-kachuga.jpg",
         "population": 500,
+        "date":"2018-3-13",
         "ExtinctSpeed": 0.01
       },
       {
@@ -29,13 +56,15 @@
         "Description": "Batagur trivittata is assessed as Critically Endangered as it has experienced a catastrophic population decline over the past three generations (conservatively assumed to be 25-30 years generation time, i.e. the past 75 to 90 years) as a result of egg collection and direct take of adults and juveniles, declining from thousands of adults to fewer than 10 mature animals left in the wild, representing about a 99% decline. Correspondingly, the species has disappeared from nearly its entire geographical range, being restricted to one remnant subpopulation. The remaining confirmed subpopulation is currently under threat from local dredging for gold at its nesting site, and possibly from the entire region being flooded by a planned reservoir.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/batagur-trivittata/images/full/batagur-trivittata.jpg",
         "population": 10,
-        "ExtinctSpeed": 1
+        "date":"2018-3-14",
+        "ExtinctSpeed": 0.01
       },
       {
         "name": "Batagur baska",
         "Description": "Batagur baska, has declined from abundant in the 19th century to likely fewer than 100 mature animals remaining. All remaining wild subpopulations have fewer than 50 mature individuals and have had observed declines qualifying for listing as Critically Endangered (CR) under criteria C1+2a(i). At an estimated generation time of 25 years (by analogy with B. affinis), total population decline has exceeded 90% over the past three generations (here estimated as three times the time of maturity) as a result of exploitation of eggs and adults as well as habitat loss, degradation and fragmentation and the decline is projected to continue into the future, hence the species also qualifies for listing as CR under criteria A2acd+4cd. ",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/batagur-baska/images/full/batagur-baska.jpg",
         "population": 100,
+        "date":"2018-3-14",
         "ExtinctSpeed": 0.01
       },
       {
@@ -43,6 +72,7 @@
         "Description": "Listed as Endangered, as this species has an extent of occurrence (EOO) of 4,395 km2, it occurs in three to five threat-defined locations, and there is continuing decline in the quality of its habitat in Kalimantan mainly due to gold mining, illegal logging, and pollution.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/barbourula-kalimantanensis/images/full/barbourula-kalimantanensis.jpg",
         "population": 5,
+         "date":"2017-5-17",
         "ExtinctSpeed": 0.01
       },
       {
@@ -50,6 +80,7 @@
         "Description": "Listed as Critically Endangered under criterion C2a(i) in view of the previously documented disappearance of the species, possibly involving chytridiomycosis, and inferred continuing population decline caused by tourist activities and possibly disease. The total number of mature individuals in the population is likely fewer than 250, and each of the subpopulations is estimated to contain fewer than 50 mature individuals.",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/leptophryne-cruentata/images/full/leptophryne-cruentata.jpg",
         "population": 249,
+        "date":"2018-12-11",
         "ExtinctSpeed": 0.01
       },
       {
@@ -57,6 +88,7 @@
         "Description": "",
         "img": "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=983851370,23599392&fm=15&gp=0.jpg",
         "population": 250,
+         "date":"2018-5-15",
         "ExtinctSpeed": 0.0581
       },
       {
@@ -64,6 +96,7 @@
         "Description": "Wild Water Buffalo is listed as Endangered A2de+3de; C1. The remaining world population totals under 4,000, with an estimate of fewer than 2,500 mature individuals. An inferred population reduction of at least 50% over the last three generations (generation length estimated at 8–10 years) seems likely given the severity of the threats, especially hybridization; it is projected to continue into the future.",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/bubalus-arnee/images/full/bubalus-arnee.jpg",
         "population": "2500",
+         "date":"2016-5-12",
         "ExtinctSpeed": 0.05
       },
       {
@@ -71,6 +104,7 @@
         "Description": "Although the Saiga currently does not meet the Red List Criteria thresholds for Critically Endangered, the previous assessment of CR A2acd is retained in this assessment because this reassessment falls under the IUCN’s five year rule. This rule applies to taxa that appear to be genuinely improving in status, and states that “a taxon may be moved from a category of higher threat to a category of lower threat if and when none of the criteria of the higher category has been met for five years or more”. The Saiga is considered to have crossed the thresholds between CR and EN around 2015, therefore its status will be re-evaluated again in 2020. Saiga currently meets the thresholds for Endangered under criterion A4 based on observed, estimated and projected declines of >50% over 11 years (three generations), commencing from May 2015, due to the risk of mass mortality events (MME) resulting from outbreaks of disease, exacerbated by climatic and environmental factors, and taking place alongside ongoing poaching pressure for the illegal trade in horns. Saiga populations are inherently vulnerable to mass mortality from a range of diseases. Since 2010, four disease outbreaks have caused large-scale mortality in Saiga. The most severe resulted in the death of over 200,000 Saiga in the course of three weeks in May 2015. The cause of this outbreak (and suspected in the earlier two) has been shown to be haemorrhagic septicaemia caused by the bacterium Pasteurella multocida, which is endemic in Saiga. Lethal levels of infection are believed to have been triggered by environmental conditions including abnormally high humidity and temperature. Warm and wet climatic conditions are expected to increase in frequency due to effects of recorded and predicted climate change. The most recent MME occurred in the Mongolian population in early 2017, caused by PPR, and killed an estimated 54% of the population. Saiga are also subject to strong commercial hunting pressure and the survival of viable populations is entirely dependent on stringent implementation of conservation measures.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/saiga-tatarica/images/full/saiga-tatarica.jpg",
         "population": 124200,
+        "date":"2018-2-16",
         "ExtinctSpeed": 0.054
       },
       {
@@ -78,6 +112,7 @@
         "Description": "Listed as Endangered because the total population size is estimated to number fewer than 2,500 mature individuals, and no subpopulation contains more than 250 mature individuals. Recent camera trapping surveys suggest a continuing decline in area of occupancy, and therefore the number of mature individuals.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/arabitragus-jayakari/images/full/arabitragus-jayakari.jpg",
         "population": 2324,
+        "date":"2018-5-10",
         "ExtinctSpeed": 0.04
       },
       {
@@ -85,6 +120,7 @@
         "Description": "This long-lived species qualifies as Critically Endangered because it has an extremely small population, as a result of extremely rapid declines in the past three generations (56 years), owing to extensive deforestation. Recruitment to the adult population currently appears to be very low indicating that declines may continue into the future. Confirmation of trends is required and may lead to a change in status in the future.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/pithecophaga-jefferyi/images/full/pithecophaga-jefferyi.jpg",
         "population": 500,
+         "date":"2016-10-1",
         "ExtinctSpeed": 0.014
       },
       {
@@ -92,48 +128,47 @@
         "Description": "This bustard has a very small, declining population; a trend that has recently become extremely rapid and is predicted to continue in the near future, largely as a result of the widespread and on-going modification of its grassland habitat as well as its conversion to agriculture. It therefore qualifies as Critically Endangered.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/houbaropsis-bengalensis/images/full/houbaropsis-bengalensis.jpg",
         "population": 999,
+        "date":"2018-8-7",
         "ExtinctSpeed": 0.08
       },
       {
         "name": "Vanellus gregarius",
-        "Description": "",
+        "Description": "This species is listed as Critically Endangered because its population has undergone a very rapid reduction, for reasons that are poorly understood but are likely to be at least partly due to hunting along the migration flyway; this decline is projected to continue and increase in the future. Fieldwork in Kazakhstan (and counts in Turkey and the Middle East) has shown the population to be substantially larger than previously feared, but recent demographic studies have found low adult survival, possibly largely driven by hunting pressure along the migration routes and wintering grounds.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/vanellus-gregarius/images/full/vanellus-gregarius.jpg",
         "population": 11200,
-        "ExtinctSpeed": 0.018
-      },
-      {
-        "name": "Vanellus gregarius",
-        "Description": "",
-        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/vanellus-gregarius/images/full/vanellus-gregarius.jpg",
-        "population": 11200,
+         "date":"2018-8-7",
         "ExtinctSpeed": 0.018
       },
       {
         "name": "Thalasseus bernsteini",
-        "Description": "",
+        "Description": "This poorly known species qualifies as Critically Endangered because it is estimated to have a tiny population, which is in decline owing to egg-collection, disturbance and the loss of coastal wetlands.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/sterna-bernsteini/images/full/sterna-bernsteini.jpg",
         "population": 49,
+        "date":"2018-8-7",
         "ExtinctSpeed": 0.0368
       },
       {
         "name": "Pseudibis davisoni",
-        "Description": "",
+        "Description": "This species has a very small and fragmented population as a result of habitat loss, hydrological changes, hunting, disturbance and potentially a number of unknown factors, and is projected to undergo an extremely rapid population decline over the next three generations (25 years) owing to these on-going threats. It therefore qualifies as Critically Endangered. If conservation efforts succeed in bringing the largest remaining populations, in north-eastern Cambodia and along the Mekong channel, under effective protection and predicted rates of decline are therefore lower, the species may warrant downlisting.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/pseudibis-davisoni/images/full/pseudibis-davisoni.jpg",
         "population": 670,
+        "date":"2018-8-17",
         "ExtinctSpeed": 0.011
       },
       {
         "name": "Ardea insignis",
-        "Description": "",
+        "Description": "This heron is classified as Critically Endangered because it has an extremely small and rapidly declining population. This decline is projected to increase in the near future as a result of the loss and degradation of lowland forest and wetlands, and through direct exploitation and disturbance.",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/ardea-insignis/images/full/ardea_insignis.jpg",
         "population": 249,
+         "date":"2018-8-18",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Calidris pygmaea",
-        "Description": "",
+        "Description": "This species is listed as Critically Endangered because it has an extremely small population that is undergoing an extremely rapid decline. This is because of a number of factors, including habitat loss in its breeding, passage and wintering grounds, which are compounded by disturbance, pollution, hunting and the effects of climate change. Juvenile recruitment has, until recently, been very low, leading to fears that the population is ageing rapidly; action is now urgently required to prevent the extinction of this species.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/eurynorhynchus-pygmeus/images/full/eurynorhynchus-pygmeus.jpg",
         "population": 456,
+        "date":"2018-8-19",
         "ExtinctSpeed": 0.26
       }
     ]
@@ -142,9 +177,10 @@
     "plantes": [
       {
         "name": "Bruguiera hainesii",
-        "Description": "",
+         "Description": "This species is very rare and has a limited and patchy distribution. There are approximately 200 known mature individuals remaining in Singapore, Malaysia, and Papua New Guinea, and there has been at least 27% loss of mangrove area in this species range over a 25 year period (less than one generation length) due to extensive coastal development. Is it listed as Critically Endangered. More research is needed to determine this status of this species population in Thailand, Indonesia, Myanmar, Philippines, and Viet Nam.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/bruguiera-hainesii/images/full/bruguiera-hainesii.jpg",
         "population": 200,
+         "date":"2008-3-7",
         "ExtinctSpeed": 0.01
       },
       {
@@ -152,120 +188,137 @@
         "Description": "",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/dacrydium-guillauminii/images/full/dacrydium-guillauminii.jpg",
         "population": 99,
+        "date":"2009-11-11",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Serianthes nelsonii",
-        "Description": "",
+        "Description": "The extremely small extent of occurrence and area of occupancy (12 km²) and single location, coupled with a very small population size (less than 100 plants), the lack of regeneration and recent and projected continuing decline, qualify this species for listing as Critically Endangered.",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/serianthes-nelsonii/images/full/serianthes-nelsonii.jpg",
         "population": 60,
+        "date":"2019-9-1",
         "ExtinctSpeed": 0.0755
       }
     ],
-    "anmials": [
+    "animals": [
       {
         "name": "Petroica multicolor",
-        "Description": "",
+        "Description": "This species has a very small population size, restricted to Norfolk Island, and has been precautionarily assessed as being in decline. Therefore, the species is listed as Endangered.",
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Petroica_multicolor_-Norfolk_Island%2C_Australia-8_%281%29.jpg/220px-Petroica_multicolor_-Norfolk_Island%2C_Australia-8_%281%29.jpg",
         "population": 979,
+        "date":"2016-10-1",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Ptilinopus chrysogaster",
-        "Description": "",
+        "Description": "This recently-split species has a very small range within which it occurs on just five small islands. It is thought to be threatened by predation by the Swamp Harrier Circus approximans and the quality of its habitat is likely to be declining due to invasive plants. For these reasons it is listed as Endangered.",
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/PtilonopusChrysogasterWolf.jpg/220px-PtilonopusChrysogasterWolf.jpg",
         "population": 2474,
+        "date":"2018-9-7",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Alopecoenas sanctaecrucis",
-        "Description": "",
+        "Description": "This ground-dove remains extremely poorly known. It is precautionarily classified as Endangered, based on the assumption that after a recent catastrophic event its population is very small and suspected to be declining further. However, as the population size is only roughly estimated and no data on the rate of decline are currently available, the species might warrant further uplisting when clearer re-assessment becomes possible.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1729524118.jpg",
         "population": 1070,
+        "date":"2018-8-8",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Pezoporus occidentalis",
-        "Description": "",
+        "Description": "One was recorded in 2005 in the Pilbara region, and a dead immature bird was found in Diamantina National Park, Queensland in 2006. Sometime prior to 2013, a population was located in southwestern Queensland and an unknown number (suspected to be small) of individuals were detected every month during a survey between August 2013 and January 2016 (Murphy 2016). This population is thought to be part of a larger regional-scale extant population (Night Parrot Recovery Team, pers. comm. 2016 in TSSC 2016). The species is categorised as Endangered based on a very small population size with no evidence of recent decline.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1007910596.jpg",
         "population": 249,
+        "date":"2018-8-9",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Pterodroma sandwichensis",
-        "Description": "",
+        "Description": "This species has a very small breeding range, known from five locations in the main Hawaiian islands, and the future of at least two are in jeopardy (Mauna Loa and West Maui). Radar surveys show that the species is declining rapidly on at least one of the other islands where it breeds (Kaua'i), and declines are probable on other islands too. Therefore, it is assessed as Endangered.",
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/PterodromaSandwichensis.jpg/220px-PterodromaSandwichensis.jpg",
         "population": 16600,
+        "date":"2018-8-7",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Phalacrocorax featherstoni",
-        "Description": "",
+        "Description": "This species is listed as Endangered because it has a very small population which has declined rapidly, which is predicted to continue given current threats.",
         "img": "https://s2r.iucnredlist.org/sis2_images/913831828.jpg",
         "population": 812,
+        "date":"2018-8-8",
         "ExtinctSpeed": 0.0634
       },
       {
         "name": "Megadyptes antipodes",
-        "Description": "",
+        "Description": "This species is listed as Endangered because it is confined to a very small range when breeding, in which its forest/scrub habitat has declined in quality. Its population has undergone extreme fluctuations and has potentially undergone a very rapid decline over the past three generations (21 years) as a result of ongoing threats such as invasive predators and fisheries bycatch.",
         "img": "https://s2r.iucnredlist.org/sis2_images/42771007.jpg",
         "population": 20000,
+        "date":"2018-8-7",
         "ExtinctSpeed": 0.021
       },
       {
         "name": "Pterodroma alba",
-        "Description": "",
+        "Description": "This species has a small breeding range which is declining and probably consists of fewer than ten locations. Overall trends are difficult to assess as breeding is variable both within and between years, but the species is suspected to be in decline owing to predation by rats and cats. The majority of birds breed on Kiritimati on which House Rats are currently becoming established. A very rapid population reduction is consequently predicted and so this species is listed as Endangered.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1145951168.jpg",
         "population": 20000,
+        "date":"2018-8-7",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Pterodroma baraui",
-        "Description": "",
+        "Description": "This species may have undergone a rapid population decline owing to illegal shooting in the 1990s, but has apparently recovered. However, it has a very small range when breeding (probably at fewer than five locations) and a small population, both of which are thought to be declining. It is therefore classified as Endangered.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1501836238.jpg",
         "population": 40000,
+         "date":"2018-8-20",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Thalassarche chrysostoma",
-        "Description": "",
+        "Description": "This species is listed as Endangered as data from South Georgia (Georgias del Sur), which holds around half the global population, indicate a very rapid rate of decline of the world population over three generations (90 years), even if colonies lacking trend information are assumed to be stable. The major driver of declines is likely to be incidental mortality in longline fisheries.",
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Greyhead.jpg/250px-Greyhead.jpg",
         "population": 250000,
+        "date":"2018-8-7",
         "ExtinctSpeed": 0.008
       },
       {
         "name": "Phoebetria fusca",
-        "Description": "",
+        "Description": "This species qualifies as Endangered owing to a very rapid decline over three generations (90 years), probably due to interactions with fisheries. Since 1980, three sites (Crozet, Marion and Gough) have witnessed severe declines, although the population at Prince Edward may have increased between 2002-2009. However, high variability in population counts between years necessitates caution and further data are required before a change in status should be considered.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1075611078.jpg",
         "population": 28656,
+         "date":"2018-8-7",
         "ExtinctSpeed": 0.006
       },
       {
         "name": "Nesofregetta fuliginosa",
-        "Description": "",
+        "Description": "This species is classified as Endangered as it has a very small and fragmented population which is continuing to decline. It is clear that invasive species are the primary reason for this decline, and although eradication at some locations has been conducted and further eradication programmes are planned for the future, this species remains highly threatened.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1090288198.jpg",
         "population": 999,
+         "date":"2018-8-7",
         "ExtinctSpeed": 0.016
       },
       {
         "name": "Diomedea antipodensis",
-        "Description": "",
+        "Description": "This species is considered to be undergoing a very rapid decline in population size. For this reason it is assessed as Endangered.",
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/24/Diomedea_gibsoni_2_-_SE_Tasmania.jpg/220px-Diomedea_gibsoni_2_-_SE_Tasmania.jpg",
         "population": 50000,
+         "date":"2018-8-7",
         "ExtinctSpeed": 0.073
       },
       {
         "name": "Diomedea sanfordi",
-        "Description": "",
+        "Description": "This species is classified as Endangered because it is restricted to a small breeding range in which severe storms in the 1980s resulted in a decrease in habitat quality and poor breeding success. Based on this low breeding success, the population is estimated and projected to be undergoing a very rapid decline over three generations. Evidence suggests that the number of breeding pairs may have remained relatively stable; thus, the species might qualify for downlisting in the future. However, in the absence of recent substantive data upon which to assess trends or changes in productivity rates, projected declines are maintained as a precautionary measure. ",
         "img": "https://s2r.iucnredlist.org/sis2_images/1677651976.jpg",
         "population": 17000,
+        "date":"2018-8-7",
         "ExtinctSpeed": 0.04
       },
       {
         "name": "Thalassarche carteri",
-        "Description": "",
+        "Description": "This species is listed as Endangered on the basis of an estimated very rapid ongoing decline over three generations (71 years), based on data from the population stronghold on Amsterdam Island. This decline is the result of adult mortality and poor recruitment owing to interactions with fisheries and disease.",
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Thalassarche_carteri_-_SE_Tasmania.jpg/250px-Thalassarche_carteri_-_SE_Tasmania.jpg",
         "population": 82000,
+         "date":"2018-8-7",
         "ExtinctSpeed": 0.013
       }
     ]
@@ -275,23 +328,26 @@
     "animals": [
       {
         "name": "Pterodroma phaeopygia",
-        "Description": "",
+        "Description": "This species has undergone extremely rapid declines in the past three generations (60 years) and is therefore classified as Critically Endangered.",
         "img": "https://s2r.iucnredlist.org/sis2_images/978524100.jpg",
         "population": 10500,
+        "date":"2018-8-7",
         "ExtinctSpeed": 0.088
       },
       {
         "name": "Puffinus auricularis",
-        "Description": "",
+        "Description": "This species has been extirpated from two islands, and breeding is now restricted to an extremely small area on one island, where invasive species are contributing to a population decline. It therefore qualifies as Critically Endangered.",
         "img": "https://s2r.iucnredlist.org/sis2_images/72063353.jpg",
         "population": 999,
+        "date":"2018-8-17",
         "ExtinctSpeed": 0.04
       },
       {
         "name": "Phocarctos hookeri",
-        "Description": "",
+        "Description": "The New Zealand Sea Lion population is significantly reduced in size from historical levels and is projected to continue declining in the future. Threats to New Zealand Sea Lions have been identified (fishing related mortality, climate/nutritional stress, disease), they are not fully understood (Roberts and Doonan 2014). Management measures have been introduced to mitigate fisheries interactions, but declines in Sea Lion numbers have not ceased. The generation time is estimated to be 10.75 years with three generations being equivalent to approximately 32 years. Projecting the pup estimate from 1997/98 (3,021) at the Auckland Islands for three generations forward with a decline of 4%/year, the number of pups born in 2029/30 is estimated to be 840, which is a 72% reduction meeting the category Endangered under criterion A4bd. A population viability analysis (PVA) has also been carried out on the largest population (in the Aukland Islands), which predicts a 98% probability of extinction of this population within five generations (calculation based on model used in Chilvers 2012b).",
         "img": "https://s2r.iucnredlist.org/sis2_images/715661126.jpg",
         "population": 3031,
+        "date":"2014-10-18",
         "ExtinctSpeed": 0.039
       }
     ]
@@ -300,53 +356,52 @@
     "plantes": [
       {
         "name": "Onopordum nogalesii",
-        "Description": "",
+        "Description": "Onopordum nogalesii is listed as Critically Endangered because its area of occupancy is probably lower than 1 km², its population size is estimated to be between 50  and 150 mature individuals, all in one single location, and decreasing trends and extreme fluctuations in the number of mature individuals have been reported. Overgrazing and seed predation by insects limit the expansion of the species.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1980818492.png",
         "population": 70,
+        "date":"2011-3-13",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Globularia ascanii",
-        "Description": "",
+        "Description": "Globularia ascanii is listed as Critically Endangered because its extent of occurrence is lower than 100 km2, its area of occupancy is 4 km², its distribution is severely fragmented, and there is a continuing decline in the extent and quality of its habitat mainly due to grazing and recreational activities. The total population consists of 38 individuals in three subpopulations.",
         "img": "https://s2r.iucnredlist.org/sis2_images/335613483.png",
         "population": 38,
+        "date":"2011-2-15",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Salvia herbanica",
-        "Description": "",
+        "Description": "Salvia herbanica is listed as Critically Endangered because its restricted and fragmented distribution, with an area of occupancy lower than 10 km². Total population consists of 212 individuals with less than 50 individuals in each subpopulation. There is a continuing decline in quality of habitat and number of individuals mainly due to predation by herbivores.",
         "img": "https://s2r.iucnredlist.org/sis2_images/919595920.png",
         "population": 212,
+        "date":"2011-3-13",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Crambe sventenii",
-        "Description": "",
+        "Description": "Crambe sventenii is assessed as Critically Endangered because its area of occupancy (AOO) is less than 10 km², the population is severely fragmented and there is a continuing decline in the quality of the habitat as well as in the number of subpopulations due to livestock grazing, landslides and droughts.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1821284417.png",
         "population": 476,
+        "date":"2010-10-14",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Bencomia sphaerocarpa",
-        "Description": "",
+        "Description": "Bencomia sphaerocarpa is classed as Critically Endangered because its total population size is only 24 individuals. Natural hazards and predation lead to a continuing decline in its distribution range and number of individuals.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1787670633.png",
         "population": 24,
+         "date":"2011-3-27",
         "ExtinctSpeed": 0.01
       }
     ],
     "animals": [
       {
-        "name": "Atlantica calathoides",
-        "Description": "",
-        "img": "",
-        "population": 50,
-        "ExtinctSpeed": 0.01
-      },
-      {
         "name": "Charpentieria crassicostata",
-        "Description": "",
+        "Description": "This species is currently regarded as endemic to northwestern Sicily, Italy. It is assessed as Critically Endangered (CR B1ab(i,ii,iv,v); C2a(ii)) since it has a very restricted geographic range (extent of occurrence (EOO) is 30 km2), the population is severely fragmented and there is continuing decline in the EOO, area of occupancy (AOO), number of subpopulations and mature individuals. At least one subpopulation has completely disappeared due to over-collection by shell collectors and traders. The two known extant subpopulations are remarkably fragmented and localized over very small areas, with one further subpopulation considered extinct. The frequent shrub fires also represent a tangible threat for the species. Increasingly long drought periods in summer could be the cause of the reduction in the number of mature individuals recently detected (2014) compared with a 2005 survey. The species requires an extensive monitoring program, a protection plan and must be assessed again within a short period of time.",
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Charpentiera dyodon.jpg/200px-Charpentieria_dyodon.jpg",
         "population": 30,
+         "date":"2016-5-15",
         "ExtinctSpeed": 0.01
       }
     ]
@@ -358,29 +413,44 @@
         "Description": "Serapias stenopetala is assessed as Critically Endangered because it has a very small population (<250 individuals), with fewer than 50 mature individuals in each subpopulation along with continuing declines and extreme fluctuations.",
         "img": "https://s2r.iucnredlist.org/sis2_images/25162173.jpg",
         "population": 250,
+        "date":"2009-5-12",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Charpentieria crassicostata",
-        "Description": "",
+        "Description": "This species is currently regarded as endemic to northwestern Sicily, Italy. It is assessed as Critically Endangered (CR B1ab(i,ii,iv,v); C2a(ii)) since it has a very restricted geographic range (extent of occurrence (EOO) is 30 km2), the population is severely fragmented and there is continuing decline in the EOO, area of occupancy (AOO), number of subpopulations and mature individuals. At least one subpopulation has completely disappeared due to over-collection by shell collectors and traders. The two known extant subpopulations are remarkably fragmented and localized over very small areas, with one further subpopulation considered extinct. The frequent shrub fires also represent a tangible threat for the species. Increasingly long drought periods in summer could be the cause of the reduction in the number of mature individuals recently detected (2014) compared with a 2005 survey. The species requires an extensive monitoring program, a protection plan and must be assessed again within a short period of time.",
         "img": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Charpentiera dyodon.jpg/200px-Charpentieria_dyodon.jpg",
         "population": 30,
+        "date":"2016-5-15",
         "ExtinctSpeed": 0.01
       }
     ],
     "animals": [
+       {
+        "name": "Conraua goliath",
+        "Description": "Despite the recent discovery of a new population of this species, it is still currently known from only a few specimens and from only two localities in Guinea. It was previously known from a single specimen collected in Boke, Guinea in 1947. Because of this the extent of occurrence for this species is here revised upward to an estimated 5,000 sq km (EN B1a), with an estimated area of occupancy of less than 500 sq km (EN B2a) due to its restriction to year-round wetland areas in guinea savannah and altered rainforest. Because of the discovery of new populations of this species (and the promise of finding other populations), its conservation status is downgraded from CR to EN. Available information on population size and trends and on the number of mature individuals is insufficient to estimate actual population size (for criterion C), but the scarcity of specimens implies a small population size (estimated to be fewer than 2,500 mature individuals) with no subpopulation estimated to contain more than 250 individuals i.e. EN C2a(i). There is a likely trend towards declining numbers due to increased habitat destruction relating to expanding human populations and more intensive agriculture in northwest Guinea. No quantitative analysis of the probability of extinction has been carried out to assess the species under criterion E.",
+        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/conraua-goliath/images/full/conraua-goliath.jpg",
+        "population": 0,
+         "date":"2018-11-26",
+         "threat":"The main threats include deforestation for agricultural activities (including livestock and illegal crops), logging, and the introduction of alien predatory fish species in streams. ",
+          "ExtinctSpeed": 0.078
+      },
       {
         "name": "Afrithelphusa monodosa",
-        "Description": "",
+        "Description": "Despite the recent discovery of a new population of this species, it is still currently known from only a few specimens and from only two localities in Guinea. It was previously known from a single specimen collected in Boke, Guinea in 1947. Because of this the extent of occurrence for this species is here revised upward to an estimated 5,000 sq km (EN B1a), with an estimated area of occupancy of less than 500 sq km (EN B2a) due to its restriction to year-round wetland areas in guinea savannah and altered rainforest. Because of the discovery of new populations of this species (and the promise of finding other populations), its conservation status is downgraded from CR to EN. Available information on population size and trends and on the number of mature individuals is insufficient to estimate actual population size (for criterion C), but the scarcity of specimens implies a small population size (estimated to be fewer than 2,500 mature individuals) with no subpopulation estimated to contain more than 250 individuals i.e. EN C2a(i). There is a likely trend towards declining numbers due to increased habitat destruction relating to expanding human populations and more intensive agriculture in northwest Guinea. No quantitative analysis of the probability of extinction has been carried out to assess the species under criterion E.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/afrithelphusa-monodosa/images/full/afrithelphusa-monodosa.jpg",
         "population": 20,
+         "date":"2008-1-1",
+        "threat":"The major present and future threats to this species include habitat loss/degradation (human induced) due to human population increases, deforestation, and associated increased agriculture in northwest Guinea.",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Tarentola chazaliae",
-        "Description": "",
+        "Description": "Listed as Vulnerable applying Criterion B1ab(iii,v), as this species' global extent of occurrence is considered to be less than 20,000 km2 (although a more precise figure is not possible), it is known from fewer than 10 locations defined by threats from development and exploitation, and there is a continuing decline in the extent and quality of this lizard's habitat due to coastal development and decline in mature individuals to to collection for the pet trade. Additionally, rampant coastal development is increasingly threatening the northern half of this species' narrow coastal distribution range; almost total transformation of this coastal strip is expected in the coming decade and certainly within the next 19.5 years (three generations), with a corresponding population decline expected to exceed 30% over this time period which is made even worse by the collection for the pet trade, and it therefore also qualifies as Vulnerable applying Criterion A3cd.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1589221321.jpg",
         "population": 9,
+        "threat":"The species is threatened by the effects of projected climate change, primarily through ongoing and future decreases in sea ice concentration and thickness, as affected by wind speed and persistence, as well as changes in other climatic variables such as temperature and precipitation (Ainley et al. 2010).",
+         "date":"2004-7-18",
         "ExtinctSpeed": 0.01
       }
     ]
@@ -389,102 +459,116 @@
     "plantes": [
       {
         "name": "Puya raimondii",
-        "Description": "",
+        "Description": "The species is officially considered endangered in Peru (Law No 043- 2006-AG).  But in practical terms this means little, if anything and only the country’s best-known rodales (Puya communities) benefit from some protection.  Elsewhere, the plant can be the object of hostility and large stones are often thrown at them, lodging for years among the leaves. Cattle roam unfettered among many colonies which are not being regenerated because the animals either trample or may eat juveniles. In other sites, fires are set to create pastureland or the thorny leaves are burnt to facilitate access to the trunks' starch which becomes cattle fodder. Pith removal, of course, kills the plant.",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/puya-raimondii/images/full/puya_raimondii.jpg",
         "population": 835000,
+        "date":"2008-10-28",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Plantago moorei",
-        "Description": "",
+        "Description": "Moore's Plantain (Plantago moorei) has a severely restricted range with an extent of occurrence (EOO) of about 59 km² and an area of occupancy (AOO) of well under 28 km² (possibly as small as 13 km² which is very close to the threshold for Critically Endangered). It is only known to occur at four locations. At present the major threats to these are an invasive plant species, livestock trampling, climate change, accidental fires (caused by people or lightning strikes) and storms which could rapidly accelerate the current rate of coastal erosion.Given the current absence of control measures, there is projected to be a continuing decline in the EOO, AOO and number of individuals of this species in the long term owing to the continued spread of the invasive species Pilosella officinarum. Three locations (holding over 95% of the population) are at risk from the invasive plant - one location in the medium term (at Port Stephens, West Falkland) and two in the long term. There is also a projected continuing decline in the quality of the habitat within which this species is found owing to severe coastal erosion and probable continued disturbance from livestock (trampling). Given the information presented above, Moore's Plantain is assessed as Endangered.",
         "img": "https://s2r.iucnredlist.org/sis2_images/239349182.jpg",
         "population": 1000,
+        "date":"2012-4-10",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Micranthocereus streckeri",
-        "Description": "",
+        "Description": "Acer griseum is endemic to China, where it is found over a wide native range. Despite this, the species has an area of occupancy of just 156 km2, the population is severely fragmented and subject to ongoing decline. Most subpopulations contain fewer than 10 individuals with only one site boasting up to 100 individuals. Overall population size is not expected to exceed 250 trees. There are concerns that there is a lack of regeneration and recruitment of the species which could result in decline in the future. The species is found in ex situ collections and protected areas however in the later the species may be at risk from being out competed by surrounding species. The Paperbark Maple is assessed as Endangered. It is recommended that greater genetic diversity is introduced into ex situ collections.",
         "img": "https://s2r.iucnredlist.org/sis2_images/20794798.jpg",
         "population": 1000,
+         "date":"2018-6-7",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Magnolio de Jardin",
-        "Description": "",
+        "Description": "Magnolia jardinensis, endemic to Jardin Municipality, Antioquia Department (Colombia) has fewer than 50 mature individuals remaining following habitat conversion and fragmentation. In addition, the species is targeted by selective logging. This species is suffering from continuing decline, and as the population is small, no subpopulation will be bigger than 50 mature individuals. The species is listed as Critically Endangered.",
         "img": "https://s2r.iucnredlist.org/sis2_images/900277884.jpg",
         "population": 49,
+         "date":"2015-2-18",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Zamia restrepoi",
-        "Description": "",
+        "Description": "Only known from one location where the major part of the known habitat has been inundated by a dam constructed in the river system. The site was visited in 2008 and only scattered individuals were found  in degraded forest. Qualifies as Critically Endangered due to decline in numbers as a result of the dam, the small area of occupancy () with ongoing decline due to the degraded state of the habitat, as well as small population size of .",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/zamia-restrepoi/images/full/zamia-restrepoi.jpg",
         "population": 50,
+        "date":"2009-10-31",
         "ExtinctSpeed": 0.01
       }
     ],
     "animals": [
       {
         "name": "Antilophia bokermanni",
-        "Description": "",
+        "Description": "This recently described species is only known from one location. It has a very small known range, within which its extremely small population is subject to continuing pressure from agriculture and the development of recreational facilities. It is consequently listed as Critically Endangered.",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/antilophia-bokermanni/images/full/antilophia-bokermanni.jpg",
         "population": 700,
+         "date":"2018-8-7",
         "ExtinctSpeed": 0.012
       },
       {
         "name": "Eriocnemis nigrivestis",
-        "Description": "",
+        "Description": "This species has a very small range, being known with certainty only from two locations. Its small subpopulations are suspected to suffer ongoing declines owing to deforestation within a severely fragmented habitat and increasing impacts of climate change. Consequently it qualifies as Critically Endangered.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/eriocnemis-nigrivestis/images/full/eriocnemis-nigrivestis.jpg",
         "population": 180,
+        "date":"2016-10-1",
         "ExtinctSpeed": 0.017
       },
       {
         "name": "Procyon pygmaeus",
-        "Description": "",
+        "Description": "This species is considered to be Critically Endangered because of its small population size (confined to a single island) and population concentration: all individuals comprise only one subpopulation. Although multiple population estimates exist, the precautionary estimated typical total population size for Pygmy Raccoon in the wild is fewer than 250 mature individuals, and all research to date indicates a declining population. Although the actual number is likely to be very elastic over time (considering population fluctuations around tropical hurricanes) the overall trend is a rapid decline in mature individuals because of ongoing human encroachment (tourism, urban growth, development) into the very small remaining habitat fragments, invasive species (predators and pathogens), road expansion and the increasing magnitude and severity of hurricanes. Following is the rationale for Critically Endangered under C2a(ii)b:",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/procyon-pygmaeus/images/full/procyon-pygmaeus.jpg",
         "population": 192,
+        "date":"2016-2-11",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Tapirus pinchaque",
-        "Description": "",
+        "Description": "This species is listed as Endangered due to an ongoing and suspected future decline inferred from habitat loss, fragmentation and hunting pressure. Population declines are estimated to be greater than 50% in the past 3 generations (33 years). Furthermore the causes of population decline have not ceased and are inferred to be greater than 50% decline in the next 3 generations (33 years). This is inferred from current trends of continued habitat loss, hunting estimates as well impacts of climate change, which will shift the suitable climatic conditions up the mountain. In addition there are estimated to be less than 2,500 mature individuals remaining, with an estimated continuing decline of at least 20% in the next 2 generations (22 years). There has been and remains significant hunting pressure in Ecuador, however in Colombia and Peru the hunting pressure on this species still continues. It is extremely rare to encounter an area with Mountain Tapirs where they are not being over-hunted. Overall the mountain tapir population is fragmented as a result of human activities. There has also been widespread cattle introduction into the last remaining mountain tapir refuges. For example, cattle have been observed to be forming reproducing families in western Sangay National Park. Illegal mining is an important threat that is increasing population fragmentation, increasing contamination of watersheds and increasing illegal hunting. Mining projects in northern Peru and central Andes of Colombia threatens to destroy the headwater cloud forests and paramos of the scant population of mountain tapirs there.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/tapirus-pinchaque/images/full/tapirus-pinchaque.jpg",
         "population": 2500,
+         "date":"2014-11-17",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Ameerega cainarachi",
-        "Description": "",
+        "Description": "Listed as Endangered because its extent of occurrence (EOO) is 2,592 km2, it occurs in fewer than five threat-defined locations, and there is continuing decline in the extent and quality of its habitat.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/ameerega-cainarachi/images/full/ameerega-cainarachi.jpg",
         "population": 50,
+        "date":"2017-5-18",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Lycalopex fulvipes",
-        "Description": "",
+        "Description": "Darwin’s Fox is endemic to Chile. The species occurs on a large extent of Chiloé Island and in Nahuelbuta National Park (Jiménez and MacMahon 2004). Surveys have revealed that the species is also present on private properties with well-preserved native forests outside of Nahuelbuta National Park. Until recently these were the only known populations for the species, with the exception of a skin found in Punta Chanchán, midway between Nahuelbuta and Chiloé (Vila et al. 2004). However, the recent finding of a Darwin’s Fox killed by a dog near Gorbea (D’Elia et al. 2013) and several records in three protected areas in the Valdivian Coastal Range (Farías et al. 2014) have confirmed a larger extent of occurrence than previously reported (e.g., Jiménez and McMahon 2004). The presence of individuals has also been confirmed north of Llanquihue Lake, on the foothills of the Andes and approximately 60 km east to the coastal mountain range (J. Jiménez pers. obs.).",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/pseudalopex-fulvipes/images/full/pseudalopex-fulvipes.jpg",
         "population": 2499,
+        "date":"2016-3-4",
         "ExtinctSpeed": 0.017
       },
       {
         "name": "Picumnus steindachneri",
-        "Description": "",
+        "Description": "This species is known from few locations, has a small overall range, and is seriously threatened by continuing deforestation, which is predicted to cause very rapid declines over the next three generations. Because of the rate of this predicted decline it has been uplisted to Endangered.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1221785012.jpg",
         "population": 15000,
+         "date":"2016-10-1",
         "ExtinctSpeed": 0.052
       },
       {
         "name": "Priodontes maximus",
-        "Description": "",
+        "Description": "Priodontes maximus has a wide area of distribution, but it is rare over its entire range and is very patchily distributed. The species is hunted for meat and is heavily affected by habitat loss. Furthermore, it is sometimes captured to be kept as a pet or to be sold as a “living fossil” on the black market, but it usually does not survive long in captivity. These threats have led to an estimated population decline of at least 30% in the past three generations (around 21 years), and the species has disappeared from large parts of its southern range. Hence, it is listed as Vulnerable.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/priodontes-maximus/images/full/priodontes-maximus.jpg",
         "population": 7,
+        "date":"2013-10-3",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Cinclodes aricomae",
-        "Description": "",
+        "Description": "This species qualifies as Critically Endangered because its extremely small population is restricted to a severely fragmented and rapidly declining habitat, from which equivalent declines in population size are likely. Furthermore, all subpopulations are thought to be tiny.",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/cinclodes-aricomae/images/full/cinclodes-aricomae.jpg",
         "population": 249,
+         "date":"2016-10-1",
         "ExtinctSpeed": 0.01
       }
     ]
@@ -493,165 +577,102 @@
     "plantes": [
       {
         "name": "Hesperomannia arbuscula",
-        "Description": "",
+        "Description": "Hesperomannia arbuscula is endemic to the Hawaiian Islands of Maui and Oahu. There has been an observed population decline of 25–50% over the last three years. The total number of known individuals is less than 25. Main threats to the species are habitat degradation by pigs, competition with alien plant species (prickly Florida blackberry, Christmas berry, Koster's curse, and strawberry guava), predation from rats, and from trampling or collecting by humans.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1238115865.jpg",
         "population": 25,
+         "date":"2003-5-30",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Schiedea lychnoides",
-        "Description": "",
+        "Description": "Schiedea lychnoides is assessed and Endangered under Criteria B and D (B1ab(i,ii,iii)+2ab(i,ii,iii); D), as the 85 known plants occur in only four locations, with an extent of occurrence of  65 km2 and an area of occupancy of only 15 km2. It has experienced severe and ongoing decline in habitat and numbers due to the impacts of invasive plants and animals.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1296994603.jpg",
         "population": 85,
+         "date":"2015-10-28",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Labordia helleri",
-        "Description": "",
+        "Description": "Labordia helleri is assessed as Critically Endangered (CR). The taxon is endemic to the island of Kaua'i and has an extent of occurrence of 67 km2. It has experienced severe and ongoing decline in habitat and numbers due to the impacts of invasive plants and animals. Its area of occupancy is observed to be declining. Its distribution is severely fragmented, occurring in only eight subpopulations. The population comprises only 100 plants and the largest subpopulation has 50 plants. This qualifies the taxon for a ranking of CR under criteria B and C (B1ab(i,ii,iii,iv,v); C2a(i)).",
         "img": "https://s2r.iucnredlist.org/sis2_images/1109697340.jpg",
         "population": 100,
+         "date":"2015-8-14",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Geranium kauaiense",
-        "Description": "",
+        "Description": "Geranium kauaiense is assessed as Critically Endangered. The taxon is endemic to the island of Kauai and has an extent of occurrence and area of occupancy of <10 km2. It has experienced severe and ongoing decline in habitat and numbers due to the impacts of invasive plants and animals. Its distribution is severely fragmented, occurring in only four localities. Geranium kauaiense has approximately 120 mature individuals. It is considered to be in two locations to account for differing degrees of fencing.",
         "img": "https://s2r.iucnredlist.org/sis2_images/2144765545.jpg",
         "population": 120,
+         "date":"2015-8-12",
         "ExtinctSpeed": 0.01
       }
     ],
     "animals": [
       {
         "name": "Marmota vancouverensis",
-        "Description": "",
+        "Description": "Vancouver Island Marmot is listed as Critically Endangered because in 2016 it was estimated that there were between 90-130 individuals occurring in two subpopulations in the wild. Its area of occupancy is less than 10 km², and there has been extensive clear cutting of its forest habitat. A population reduction of greater than 30% over the past three years has occurred, indicating a larger population decline over the generation length (~ 4-5 years). Additionally both subpopulations have fewer than 50 individuals.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/marmota-vancouverensis/images/full/marmota-vancouverensis.jpg",
         "population": 90,
+         "date":"2017-3-2",
         "ExtinctSpeed": 0.088
       },
       {
         "name": "Centrocercus minimus",
-        "Description": "",
+        "Description": "This species qualifies as Endangered because it has a very small occupied range which is severely fragmented and declining. Habitat fragmentation is particularly concerning given that the species requires a variety of adjacent habitats. Management strategies are being implemented which aim to reverse current population declines over the next 15 years.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/centrocercus-minimus/images/full/centrocercus-minimus.jpg",
         "population": 1700,
+         "date":"2016-10-1",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Neomonachus schauinslandi",
-        "Description": "",
+        "Description": "The Hawaiian Monk Seal population was observed to decline from 1,520 total individuals in 1983 to 1,209 in 2011. The number of mature individuals in the entire population in 2011 was 632, a reduction of 20.4% from the 795 mature individuals in 1983. Currently the species is still in overall decline with two distinct trajectories between the populations in the NWHI (4.0% per year decline) and the MHI (6.5% per year increase; Caretta et al. 2013). The NWHI decline is mainly due to food limitation that could be due to changes in oceanographic conditions, legacy impacts of fisheries, or competition with other predators. The overall decline of more than 20% within two generations (30 years) meets IUCN criterion C1 for Endangered.",
         "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/monachus-schauinslandi/images/full/monachus-schauinslandi.JPG",
         "population": 632,
+         "date":"2014-11-18",
         "ExtinctSpeed": 0.009
       },
       {
         "name": "Leptoxis plicata",
-        "Description": "",
+        "Description": "Leptoxis plicata has been assessed as Critically Endangered under criterion B1ab(i,ii,iii,iv) due to its restricted distribution. The occurrence of this species has been restricted by 90% leaving less than 32 linear km of occupied habitat. This habitat is patchy and continues to decline under the impact of many threats. The one extant population exists in a short reach of stream in 15 shoals half of which appear to be declining.",
         "img": "https://s2r.iucnredlist.org/sis2_images/1864007755.jpg",
-        "population": -1,
+        "population": 0,
+        "date":"2011-8-1",
         "ExtinctSpeed": 0.09
       },
       {
         "name": "Leptoxis plicata",
-        "Description": "",
+        "Description": "wrong name",
         "img": "https://s2r.iucnredlist.org/sis2_images/1406219857.jpg",
         "population": 49,
-        "ExtinctSpeed": 0.009
-      },
-      {
-        "name": "Leptoxis plicata",
-        "Description": "",
-        "img": "https://s2r.iucnredlist.org/sis2_images/1406219857.jpg",
-        "population": 49,
+        "date":"",
         "ExtinctSpeed": 0.009
       },
       {
         "name": "Hemignathus wilsoni",
-        "Description": "",
+        "Description": "This species is classified as Endangered because it has a very small, severely fragmented range, and is experiencing continuing declines in range, habitat quality and population, largely owing to the effects of introduced species. It is projected that the extirpation of small subpopulations will continue.",
         "img": "https://s2r.iucnredlist.org/sis2_images/617249962.jpg",
         "population": 800,
+        "date":"2016-10-1",
         "ExtinctSpeed": 0.026
       },
       {
         "name": "Palmeria dolei",
-        "Description": "",
+        "Description": "This species is listed as Critically Endangered because of its extremely small range and the imminent threat of feral deer impacting habitat. It remains at risk from the effects of exotic taxa. A particular concern is the possible introduction of a disease-carrying mosquito species tolerant of the cooler climate at higher altitudes, thereby bringing currently safe populations of birds into contact with lethal diseases.",
         "img": "https://nc.iucnredlist.org/redlist/amazing-species/palmeria-dolei/images/full/palmeria-dolei.jpg",
         "population": 3800,
+        "date":"2016-10-1",
         "ExtinctSpeed": 0.01
       },
       {
         "name": "Loxops caeruleirostris",
-        "Description": "",
+        "Description": "This species is classified as Critically Endangered owing to an extremely rapid decline in population size over the last ten years. Urgent action is required to halt the decline of this species, which until relatively recently was considered not uncommon.",
         "img": "https://s2r.iucnredlist.org/sis2_images/484756778.jpg",
         "population": 1000,
+        "date":"2018-8-7",
         "ExtinctSpeed": 0.03
       }
-    ]
-  },
-  "Arctic_Sea": {
-    "plantes": [
-      {
-        "name": "Ruppia maritima",
-        "Description": "",
-        "img": "https://s2r.iucnredlist.org/sis2_images/1027082003.jpg",
-        "population": -1,
-        "ExtinctSpeed": 0.01
-      }
-    ],
-    "animals": [
-      {
-        "name": "Ursus maritimus",
-        "Description": "",
-        "img": "https://nc.iucnredlist.org/redlist/amazing-species/ursus-maritimus/images/full/ursus-maritimus.jpg",
-        "population": 25000,
-        "ExtinctSpeed": 0.01
-      },
-      {
-        "name": "Zostera marina",
-        "Description": "",
-        "img": "https://s2r.iucnredlist.org/sis2_images/232711675.jpg",
-        "population": -1,
-        "ExtinctSpeed": 0.14
-      },
-      {
-        "name": "Phocoena phocoena",
-        "Description": "",
-        "img": "https://s2r.iucnredlist.org/sis2_images/141303906.jpg",
-        "population": -1,
-        "ExtinctSpeed": 0.01
-      }
-    ]
-  },
-  "Atlantic": {
-    "plantes": [
-      {
-        "name": "Zostera capensis",
-        "Description": "",
-        "img": "https://s2r.iucnredlist.org/sis2_images/501985170.jpg",
-        "population": -1,
-        "ExtinctSpeed": 0.01
-      },
-      {
-        "name": "Halophila baillonii",
-        "Description": "",
-        "img": "https://nc.iucnredlist.org/redlist/species-of-the-day/halophila-baillonii/images/full/halophila-baillonii.jpg",
-        "population": -1,
-        "ExtinctSpeed": 0.01
-      }
-    ],
-    "animals": [
-    ]
-  },
-  "Indian Ocean": {
-    "plantes": [],
-    "animals": []
-  },
-  "Mediterranean and Black": {
-    "plantes": [],
-    "animals": [
-    ]
-  },
-  "Pacific": {
-    "plantes": [],
-    "animals": [
     ]
   }
 }

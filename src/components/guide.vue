@@ -65,8 +65,9 @@ export default {
 #guide{
   width: calc(100vw / 2 - 100vh / 2 );
   height: 100vh;
-  padding:10px;
+  padding: 20px;
   overflow: auto;
+  float: left;
 }
 
 @keyframes cursor { 
