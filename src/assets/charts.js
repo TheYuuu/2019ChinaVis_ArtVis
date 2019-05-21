@@ -442,11 +442,12 @@ charts.drawForce = function(CONTINENT){
             .attr("stroke-dasharray", "5,5")
             .attr("fill", function(d,i){
                 if (d.index != 0){
-                    return "white"
+                    console.log(d.name.split(" ").join("_"))
+                    return "url(#" + d.name.split(" ").join("_") + ")";
                 }else{
                     return "none";
                 }
-            })            
+            })           
             .attr("r", function(d) {
                 return d.radius;
               })
@@ -456,6 +457,18 @@ charts.drawForce = function(CONTINENT){
             .attr("cy", function(d) {
               return d.y;
             })
+            .on("mouseover", function(d) {
+                d3.select(this)
+                  .attr("stroke-width", "2px")
+                  .attr("r", d.radius + 20)
+                  .attr("stroke-dasharray", "0,0");
+              })
+              .on("mouseleave", function(d) {
+                d3.select(this)
+                  .attr("stroke-width", "1px")
+                  .attr("r", d.radius)
+                  .attr("stroke-dasharray", "5,5");
+              })
             .on("click",function(d){
                 PicView.showMe(nodes.slice(1,nodes.length), d.index - 1);
             })

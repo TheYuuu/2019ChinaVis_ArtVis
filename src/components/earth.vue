@@ -6,6 +6,19 @@
       <filter id="f1" x="0" y="0">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
       </filter>
+      <defs>
+        <template v-for="(item,index) in data">
+          <pattern
+            :key="index"
+            :id="String(item.name)"
+            patternUnits="userSpaceOnUse"
+            height="50"
+            width="50"
+          >
+            <image x="0" y="0" height="50" width="50" :xlink:href="item.img"></image>
+          </pattern>
+        </template>
+      </defs>
     </svg>
     <ViewPic ref="ViewPic"></ViewPic>
   </div>
@@ -20,10 +33,34 @@ export default {
   components:{
     ViewPic
   },
+  data: function() {
+    return {
+      data: []
+    };
+  },
   mounted() {
     var that = this;
     d3.json("../static/data/data.json").then(d=>{
       console.log(d)
+      for (let k in d){
+        if (d[k].animals != undefined){
+          d[k].animals.forEach(d=>{
+            that.data.push({
+              name:d.name.split(" ").join("_"),
+              img:d.img
+            })
+          })
+        }
+        if (d[k].plantes != undefined){
+          d[k].plantes.forEach(d=>{
+            that.data.push({
+              name:d.name.split(" ").join("_"),
+              img:d.img
+            })
+          })
+        }
+      }
+      console.log(that.data)
       charts.on(that,d);
     })
 
