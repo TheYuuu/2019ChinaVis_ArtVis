@@ -560,6 +560,12 @@ charts.Ozonosphere_change = function(){
         .attr("cy",height/2)
 }
 
+charts.RefreshTime = function(){
+    const that = this;
+    return function(){
+        d3.select("#RunningTime").html(that.DateNow.toLocaleString().replace("下午","PM ").replace("上午","PM "));
+    }
+}
 charts.requestAnimationFrame = function(fns){
     var that = this;
     this.AnimationFrame = setInterval(()=>{
@@ -618,7 +624,8 @@ charts.on = function(Vue, CONTINENT_Data){
 
         charts.requestAnimationFrame(counts.map(v=>charts.counting(v)).concat([
                 charts.earthMove(projection,that.svg,that.path),
-                charts.CONTINENT_Data_change()
+                charts.CONTINENT_Data_change(),
+                charts.RefreshTime()
             ]
         ))
     })

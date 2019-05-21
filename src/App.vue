@@ -4,7 +4,7 @@
     <div class="content-box" id="content">
       <div class="time-block">
         <p class="title-time">What's going on on Earth?</p>
-        <p class="title-time">{{time}}</p>
+        <p class="title-time" id="RunningTime">loading</p>
       </div>
       <cloud></cloud>
       <earth @AddDeadList="AddDeadList"></earth>
@@ -37,14 +37,14 @@ export default {
   },
   data:function(){
       return {
-        time:new Date().toLocaleString().replace("下午","PM ").replace("上午","PM ")
+        // time:new Date().toLocaleString().replace("下午","PM ").replace("上午","PM ")
       }
   },
   mounted() {
     const that = this;
-    setInterval(()=>{
-      that.time=new Date().toLocaleString().replace("下午","PM ").replace("上午","PM ");
-    },1000)
+    // setInterval(()=>{
+    //   that.time=new Date().toLocaleString().replace("下午","PM ").replace("上午","PM ");
+    // },1000)
   },
 }
 </script>
