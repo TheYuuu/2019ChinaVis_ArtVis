@@ -1,7 +1,7 @@
 <template>
   <div id="earth">
-    <div class="warper">
-    </div>
+    <!-- <div class="warper">
+    </div> -->
     <svg id="earth_svg">
       <filter id="f1" x="0" y="0">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" />

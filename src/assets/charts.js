@@ -514,6 +514,16 @@ charts.CONTINENT_Data_change = function(){
     }
 }
 
+charts.Air_change = function(){
+    d3.select(".satic-area")
+    .style("transition","all 10s")
+    .style("background","#8080806b")
+}
+
+charts.Ozonosphere_change = function(){
+    
+}
+
 charts.requestAnimationFrame = function(fns){
     this.AnimationFrame = setInterval(()=>{
         fns.forEach(d=>{
@@ -561,7 +571,7 @@ charts.on = function(Vue, CONTINENT_Data){
         
         var counts = charts.addDescription(Description)
         charts.addEvents()
-
+        charts.Air_change()
         charts.requestAnimationFrame(counts.map(v=>charts.counting(v)).concat([
                 charts.earthMove(projection,that.svg,that.path),
                 charts.CONTINENT_Data_change()
