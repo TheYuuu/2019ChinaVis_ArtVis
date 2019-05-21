@@ -5,12 +5,14 @@
       <transition-group>
         <template>
         <div v-for="(item,index) in getList" :key=index>
+          <br>
           <p class="year_p">
             {{item.year}} 
           </p>
           <p v-for="(i,index) in item.list" :key=index class="item_p">
             {{i}}
           </p>
+          <br>
         </div>
         </template>
       </transition-group>
@@ -55,7 +57,14 @@ export default {
           })
         }
       }
-      return arr
+      return arr.sort((a,b)=>{
+        if (a.year>b.year)
+          return 1;
+        else if (a.year<b.year)
+          return -1;
+        else 
+          return 0;
+      })
     }
   },        
   mounted() {
@@ -99,7 +108,6 @@ export default {
 
 .Extinct_title{
   font-weight: bolder;
-  margin-bottom: 20px;
 }
 /* .item_p{
 
