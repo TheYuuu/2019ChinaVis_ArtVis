@@ -12,7 +12,15 @@ charts.init = function(){
         lineLocal:[
             [9,-9],
             [15,-9]
-        ]
+        ],
+        decline:{
+            lastRecord:{
+                number:0,
+                year:2019
+            },
+            danwei:"km2",
+            speed:0
+        }
     },{
         localtype:'earth',
         local: [20, 90],
@@ -20,7 +28,15 @@ charts.init = function(){
         lineLocal:[
             [15,-15],
             [20,-15]
-        ]
+        ],
+        decline:{
+            lastRecord:{
+                number:0,
+                year:2019
+            },
+            danwei:"km2",
+            speed:0
+        }
     },{
         localtype:'earth',
         local: [3.4653, 62.2159],
@@ -44,7 +60,15 @@ charts.init = function(){
         lineLocal:[
             [-10,10],
             [-20,10]
-        ]
+        ],
+        decline:{
+            lastRecord:{
+                number:0,
+                year:2019
+            },
+            danwei:"km2",
+            speed:0
+        }
     },{
         localtype:'earth',
         local: [79.185509, -21.263971],
@@ -52,7 +76,15 @@ charts.init = function(){
         lineLocal:[
             [15,10],
             [20,10]
-        ]
+        ],
+        decline:{
+            lastRecord:{
+                number:0,
+                year:2019
+            },
+            danwei:"km2",
+            speed:0
+        }
     },{
         localtype:'Entire',
         local: [width/2 - step*10, height/2 - step*20],
@@ -60,7 +92,15 @@ charts.init = function(){
         lineLocal:[
             [-9,-9],
             [-20,-9]
-        ]
+        ],
+        decline:{
+            lastRecord:{
+                number:0,
+                year:1979
+            },
+            danwei:"km2",
+            speed:0.0164
+        }
     },{
         localtype:'Entire',
         local: [width/2, height/4*3 + step],
@@ -202,7 +242,6 @@ charts.addDescription = function(local, str){
 
         let x = locals[0]
         let y = locals[1]
-        let setpX = 
 
         svg.append('circle')
             .attr('class',function(){
@@ -231,23 +270,29 @@ charts.addDescription = function(local, str){
             .attr("x2", x + step*local[i].lineLocal[1][0])
             .attr("y2", y + step*local[i].lineLocal[1][1])
             .attr('stroke',color)
-
+        
+        console.log(local[i]);
         svg.append('text')
-            .html(local[i].name + ":10000")   
+            .html(local[i].name + ":" + local[i].decline.lastRecord.number)   
             .attr("x", x + step*local[i].lineLocal[1][0])
             .attr("y", y + step*local[i].lineLocal[1][1])
             .attr('class', "inf_" + local[i].name)
-        counting.push("inf_" + local[i].name)
+        counting.push({
+            name:"inf_" + local[i].name,
+            obj:local[i]
+        })
     }
     return counting;
 }
 
-charts.counting = function(name){
+charts.counting = function(obj){
     var text;
     return function(){
-        text = d3.select('.'+name).text().split(":");
-        text[1] = +text[1]-1
-        d3.select('.'+name).html(text.join(":"))
+        text = d3.select('.' + obj.name).text().split(":");
+        if (obj.obj.decline != undefined){
+            text[1] = +text[1] + obj.obj.decline.speed
+        }
+        d3.select('.' + obj.name).html(text.join(":"))
     }
 }
 
@@ -455,13 +500,12 @@ charts.drawForce = function(CONTINENT){
         }
 }
 
-
 charts.requestAnimationFrame = function(fns){
     this.AnimationFrame = setInterval(()=>{
         fns.forEach(d=>{
             d()
         })
-    },100)
+    },1000)
 }
 
 charts.on = function(PicView){

@@ -42,7 +42,7 @@ export default {
 </script>
 
 <style>
-@font-face {
+@font-face {  
   font-family: 'Patriciana';
   src: url('../static/Patriciana.otf');
 }
