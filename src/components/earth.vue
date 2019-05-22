@@ -9,6 +9,12 @@
       <filter id="grayscale">
         <feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0"/>
       </filter>
+      <filter>
+        <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+          <stop offset="0%" style="stop-color:rgb(0,0,0);stop-opacity:0" />
+          <stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
+        </radialGradient>
+      </filter>
       <defs>
         <template v-for="(item,index) in data">
           <pattern
@@ -18,7 +24,7 @@
             height="50"
             width="50"
           >
-            <image x="0" y="0" height="50" width="50" :xlink:href="item.img"></image>
+            <image x="0" y="0" height="100" width="100" :xlink:href="item.img"></image>
           </pattern>
         </template>
       </defs>

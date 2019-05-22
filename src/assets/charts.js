@@ -8,6 +8,22 @@ charts.init = function(){
     var Description = [];
     Description.push({
         localtype:'earth',
+        local: [44.071469, 24.456169],
+        name:'Oil_Left',
+        lineLocal:[
+            [20,-4],
+            [25,-4]
+        ],
+        decline:{
+            lastRecord:{
+                number:1531131548723,
+                year:2019
+            },
+            danwei:"barrels",
+            speed:1000
+        }
+    },{
+        localtype:'earth',
         local: [20, 90],
         name: 'Polar_Bear',
         lineLocal:[
@@ -101,22 +117,6 @@ charts.init = function(){
             },
             danwei:"km2",
             speed:0.0164
-        }
-    },{
-        localtype:'earth',
-        local: [44.071469, 24.456169],
-        name:'Oil_Left',
-        lineLocal:[
-            [20,-4],
-            [25,-4]
-        ],
-        decline:{
-            lastRecord:{
-                number:1531131548723,
-                year:2019
-            },
-            danwei:"barrels",
-            speed:1000
         }
     },{
         localtype:'Entire',
@@ -350,7 +350,7 @@ charts.counting = function(obj){
     }
 }
 
-charts.earthMove = function(projection,svg,path){    
+charts.earthMove = function(projection,svg,path){
     const that = this
     var ro=0;
     return function(){
@@ -484,24 +484,41 @@ charts.drawForce = function(CONTINENT){
             .strength(0.3)
         )
         .on("tick", ticked);
+        
+        var imgage_g = svg.append('g')
+                        .attr("class","ndoes_g")
+                        .selectAll('.imgage_g')
+                        .data(nodes)
+                        .enter()
+                        .append("g")
+                        .attr("class","imgage_g")
 
-        node = svg
-            .append("g")
-            .attr("class", "nodes")
-            .selectAll("none")
-            .data(nodes)
-            .enter()
-            .append("circle")
+        var images = imgage_g.append("image")
+                        .attr("class","image")
+                        .attr("xlink:href",function(d,i){
+                            return d.img;
+                        })            
+                        .attr("width", 60)            
+                        .attr("height", 60)        
+                        .attr("fill", function(d,i){
+                            if (d.index != 0){
+                                return "url(#grad1)";
+                            }else{
+                                return "none";
+                            }
+                        }) 
+
+        var node = imgage_g.append("circle")
             .attr("class","item_circle")
             .attr("stroke", "black")
             .attr("stroke-dasharray", "5,5")
             .attr("fill", function(d,i){
                 if (d.index != 0){
-                    return "url(#" + d.name.split(" ").join("_") + ")";
+                    return "white";
                 }else{
                     return "none";
                 }
-            })           
+            })          
             .attr("r", function(d) {
                 return d.radius;
               })
@@ -511,29 +528,54 @@ charts.drawForce = function(CONTINENT){
             .attr("cy", function(d) {
               return d.y;
             })
-            .on("mouseover", function(d) {
-                d3.select(this)
-                  .attr("stroke-width", "2px")
-                  .attr("r", d.radius + 20)
-                  .attr("stroke-dasharray", "0,0");
-              })
-              .on("mouseleave", function(d) {
-                d3.select(this)
-                  .attr("stroke-width", "1px")
-                  .attr("r", d.radius)
-                  .attr("stroke-dasharray", "5,5");
-              })
-            .on("click",function(d){
-                PicView.showMe(nodes.slice(1,nodes.length), d.index - 1);
-            })
+        
+
+
+        // node = svg
+        //     .append("g")
+        //     .attr("class", "nodes")
+        //     .selectAll("none")
+        //     .data(nodes)
+        //     .enter()
+        //     .append("circle")
+        //     .attr("class","item_circle")
+        //     .attr("stroke", "black")
+        //     .attr("stroke-dasharray", "5,5")
+        //     .attr("fill", function(d,i){
+        //         if (d.index != 0){
+        //             return "url(#" + d.name.split(" ").join("_") + ")";
+        //         }else{
+        //             return "none";
+        //         }
+        //     })           
+        //     .attr("r", function(d) {
+        //         return d.radius;
+        //       })
+        //     .attr("cx", function(d) {
+        //       return d.x;
+        //     })
+        //     .attr("cy", function(d) {
+        //       return d.y;
+        //     })
+        //     .on("mouseover", function(d) {
+        //         d3.select(this)
+        //           .attr("stroke-width", "2px")
+        //           .attr("r", d.radius + 20)
+        //           .attr("stroke-dasharray", "0,0");
+        //       })
+        //       .on("mouseleave", function(d) {
+        //         d3.select(this)
+        //           .attr("stroke-width", "1px")
+        //           .attr("r", d.radius)
+        //           .attr("stroke-dasharray", "5,5");
+        //       })
+        //     .on("click",function(d){
+        //         PicView.showMe(nodes.slice(1,nodes.length), d.index - 1);
+        //     })
 
     
     function ticked() {
             node
-            .attr('filter',function(d,i){
-                if (d.population<=0)
-                    return "url(#grayscale)"
-            })
             .attr("cx", function(d) {
             if (d.x - d.radius < 0) {
                 d.x += 10;
@@ -565,6 +607,15 @@ charts.drawForce = function(CONTINENT){
             }
             return d.y;
             });
+            
+        images
+            .attr("x", function(d) {
+                return d.x - d.radius;
+            })
+            .attr("y", function(d) {
+                return d.y - d.radius;
+            });
+
         }
 }
 
