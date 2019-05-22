@@ -13,7 +13,6 @@
               alt="loading"
               class="showpic"
               id="showpic"
-              :style="YiXiang(showPic)"
             >
           </div>
           <div class="InfDiv">

@@ -6,6 +6,9 @@
       <filter id="f1" x="0" y="0">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
       </filter>
+      <filter id="grayscale">
+        <feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0"/>
+      </filter>
       <defs>
         <template v-for="(item,index) in data">
           <pattern

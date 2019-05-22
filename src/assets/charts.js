@@ -489,7 +489,12 @@ charts.drawForce = function(CONTINENT){
 
     
     function ticked() {
-            node.attr("cx", function(d) {
+            node
+            .attr('filter',function(d,i){
+                if (d.population<=0)
+                    return "url(#grayscale)"
+            })
+            .attr("cx", function(d) {
             if (d.x - d.radius < 0) {
                 d.x += 10;
                 return d.x;
@@ -602,7 +607,7 @@ charts.on = function(Vue, CONTINENT_Data){
     that.CONTINENT_Data = CONTINENT_Data;
     that.Counts = Vue.Counts;
     that.DateNow = new Date();
-    that.TimeMachine = 1000*60;
+    that.TimeMachine = 1000;
     
     d3.json("../../static/map.json").then(world=>{
         var Whalelocal = [
