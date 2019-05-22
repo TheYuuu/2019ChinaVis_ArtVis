@@ -533,6 +533,7 @@ charts.CONTINENT_Data_change = function(){
                             if (d.population <= 0 || that.DateNow >= d.ExtinctTime){
                                 d.marked = true
                                 d.population = 0
+                                that.Counts--;
                                 that.AddDeadList(d.ExtinctTime.getFullYear(), d.name)
                             }else{
                                 d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
@@ -546,6 +547,7 @@ charts.CONTINENT_Data_change = function(){
                             if (d.population <= 0 || that.DateNow >= d.ExtinctTime){
                                 d.marked = true
                                 d.population = 0
+                                that.Counts--;
                                 that.AddDeadList(d.ExtinctTime.getFullYear(), d.name)
                             }else{
 
@@ -567,9 +569,9 @@ charts.Air_change = function(){
 charts.Ozonosphere_change = function(){
     const height = this.height;
     d3.select("#ozone_shield")
-        .transition()
-        .duration(20000)
-        .attr("cy",height/2)
+    .transition()
+    .duration(20000)
+    .attr("cy",height/2)
 }
 
 charts.RefreshTime = function(){
@@ -586,6 +588,10 @@ charts.requestAnimationFrame = function(fns){
         fns.forEach(d=>{
             d()
         })
+        if (that.Counts<=0){
+            clearInterval(this.AnimationFrame);
+            alert(that.DateNow)
+        }
     },1000)
 }
 
@@ -594,8 +600,9 @@ charts.on = function(Vue, CONTINENT_Data){
     that.PicView = Vue.$refs.ViewPic;
     that.AddDeadList = Vue.AddDeadList;
     that.CONTINENT_Data = CONTINENT_Data;
+    that.Counts = Vue.Counts;
     that.DateNow = new Date();
-    that.TimeMachine = 1000;
+    that.TimeMachine = 1000*60;
     
     d3.json("../../static/map.json").then(world=>{
         var Whalelocal = [

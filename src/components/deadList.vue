@@ -16,6 +16,10 @@
         </div>
         </template>
       </transition-group>
+      <br>
+      <br>
+      <br>
+      <br>
     </div>
   </div>
 </template>
@@ -43,7 +47,16 @@ export default {
       this.list[year].push(name)
       this.$set(this.list, year, this.list[year]);
       var div = document.getElementById('deadList');
-      div.scrollTop = div.scrollHeight;
+
+      let scrollTop = div.scrollTop;
+      let scrollHeight = div.scrollHeight+100;
+      div.scrollTop = scrollHeight
+      // for (let i=scrollTop;i<=scrollHeight;i++){
+      //   setTimeout(()=>{
+      //     div.scrollTop = i;
+      //   },i*10)
+      // }
+
     }
   },
   computed:{
@@ -68,11 +81,15 @@ export default {
     }
   },        
   mounted() {
-    // for (let i=0;i<10;i++){
-    //   setTimeout(()=>{
-    //     this.insert(1900+i,'as1231d')
-    //   },i*500)
-    // }
+      setTimeout(()=>{
+        this.insert(2020,'Test')
+      },5000)
+      setTimeout(()=>{
+        this.insert(2021,'Test')
+      },6000)
+      setTimeout(()=>{
+        this.insert(2022,'Test')
+      },7000)
   }
 }
 </script>
@@ -84,8 +101,9 @@ export default {
   padding:20px;
   overflow: auto;
   float: right;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   font-weight: bold;
+  transition: all 1s;
 }
 .list_div{
   width: 100%;
@@ -144,13 +162,14 @@ export default {
     margin-right: 10px;
   }
 .v-move,.v-enter-active, .v-leave-active {
-    transition: 1s;
+    transition: 3s;
   }
 .v-leave-active{
     position:absolute;
   }
 .v-enter, .v-leave-to{
     opacity: 0;
-    transform: translateX(-50px);
+    color: red;
+    transform: translateX(-100px);
   }
 </style>

@@ -88,7 +88,7 @@ export default {
           // })
         }
       }
-      console.log(d)
+      that.Counts = that.data.length;
       charts.on(that,d);
     })
 
