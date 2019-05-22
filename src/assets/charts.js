@@ -17,11 +17,11 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:1531131548723,
-                year:2019
+                number:‭3076395548723‬,
+                year:1970
             },
             danwei:"barrels",
-            speed:1000
+            speed:-1000
         }
     },{
         localtype:'earth',
@@ -33,8 +33,8 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:21420,
-                year:2005
+                number:32457.6‬,
+                year:1970
             },
             danwei:"",
             speed: -0.00001
@@ -49,8 +49,8 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:27.69289113,
-                year:2019
+                number:73.42009113‬,
+                year:1990
             },
             danwei:"%",
             speed:-0.00000005
@@ -97,11 +97,11 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:410.53,
-                year:2019
+                number:325.54,
+                year:1970
             },
             danwei:"ppm",
-            speed:0.0000007
+            speed:0.00000005
         }
     },{
         localtype:'Entire',
@@ -113,8 +113,8 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:44.1087,
-                year:2017
+                number:111.784956,
+                year:1970
             },
             danwei:"ppb",
             speed:-0.000000058
@@ -145,7 +145,7 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:7618653410.5,
+                number:3700000000,
                 year:2019
             },
             danwei:"",
@@ -161,8 +161,8 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:3432134322.8,
-                year:2019
+                number:1268764722.8,
+                year:1970
             },
             danwei:"",
             speed:1.4
