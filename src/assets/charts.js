@@ -1,6 +1,7 @@
 var charts = {};
 
 charts.init = function(){
+    const that =this;
     var width = document.getElementById("earth").offsetWidth,
     height = document.getElementById("earth").offsetHeight;
     let step = width/100;
@@ -167,12 +168,15 @@ charts.init = function(){
             speed:1.4
         }
     })
-    
+    this.Description_Map = {};
     Description.map( d => {
-        var oldTime = new Date(d.decline.lastRecord.year, 1, 1)
-        var curTime = new Date()
-        d.decline.lastRecord.number = d.decline.lastRecord.number + (curTime - oldTime) * d.decline.speed /1000
-        console.log(d.decline.lastRecord.number)
+        if (that.Description_Map[d.decline.lastRecord.year] == undefined){
+            that.Description_Map[d.decline.lastRecord.year]=[];
+        }
+        that.Description_Map[d.decline.lastRecord.year].push(d)
+        // var oldTime = new Date(d.decline.lastRecord.year, 1, 1)
+        // var curTime = new Date()
+        // d.decline.lastRecord.number = d.decline.lastRecord.number + (curTime - oldTime) * d.decline.speed /1000
     })
     this.step = step;
     this.width = width;
@@ -216,8 +220,6 @@ charts.drawEarth = function(world){
     earththsvg.append("use")
     .attr("class", "fill")
     .attr("xlink:href", "#sphere");
-
-    console.log(world.features)
 
     earththsvg.selectAll(".block")
     .data(world.features)
@@ -283,95 +285,125 @@ charts.drawanimals = function(local,symbol){
     .attr("y", function(d){ return projection([d.long, d.lat])[1] })
 }
 
-charts.addDescription = function(local, str){
-    var counting = [];
-    const earth = this.earththsvg.append('g')
-    const Entire = this.svg.append('g')
+charts.addDescription = function(obj){
+    const earth = this.earththsvg.append('g').attr("class", "Description")
+    const Entire = this.svg.append('g').attr("class", "Description")
     const step = this.step
     const projection = this.projection
+    const that = this
 
     let color = '#ff9a9a'
     let airList = ["CO2", "NO2", "SO2"]
     let isAir = false
-    for (let i=0;i<local.length;i++){
-        let svg = local[i].localtype == 'earth'?earth:Entire;
-        let locals = local[i].localtype == 'earth'? projection(local[i].local):local[i].local;
 
-        let x = locals[0]
-        let y = locals[1]
+    let svg = obj.localtype == 'earth'?earth:Entire;
+    let locals = obj.localtype == 'earth'? projection(obj.local):obj.local;
 
-        svg.append('circle')
-            .attr('class',function(){
-                if (local[i].localtype == 'earth'){
-                    return 'eventDot earth_eventDot_circle '
-                }else{
-                    return 'eventDot eventDot_circle'
-                }
-            })
-            .attr("cx", x)
-            .attr("cy", y)
-            .attr('r', 5)
-            .attr('fill',color)
+    let x = locals[0]
+    let y = locals[1]
 
-        svg.append('line')
-            .attr("x1", x)
-            .attr("y1", y)
-            .attr("x2", x + step*local[i].lineLocal[0][0])
-            .attr("y2", y + step*local[i].lineLocal[0][1])
-            .attr('stroke',color)
-            .attr("class","move_line")
-
-        svg.append('line')
-            .attr("x1", x + step*local[i].lineLocal[0][0])
-            .attr("y1", y + step*local[i].lineLocal[0][1])
-            .attr("x2", x + step*local[i].lineLocal[1][0])
-            .attr("y2", y + step*local[i].lineLocal[1][1])
-            .attr('stroke',color)
-        
-        if(airList.indexOf(local[i].name) >= 0){
-            isAir = true
-            svg.append('text')
-                .html(() => {
-                    return local[i].name + ":" + local[i].decline.lastRecord.number + " " + local[i].decline.danwei;
-                })   
-                .attr("x", x + step*local[i].lineLocal[1][0])
-                .attr("y", y + step*(local[i].lineLocal[1][1] - 1 - (airList.indexOf(local[i].name)) * 2 ))
-                .attr('class', "inf_" + local[i].name)
-        } else {
-            isAir = false
-            svg.append('text')
-                .html(() => {
-                    return local[i].name + ":";
-                })   
-                .attr("x", x + step*local[i].lineLocal[1][0])
-                .attr("y", y + step*(local[i].lineLocal[1][1] - 1))
-                .attr('class', "inf_" + local[i].name)
-
-            svg.append('text')
-                .html(() => {
-                    return local[i].decline.lastRecord.number + " " + local[i].decline.danwei
-                })   
-                .attr("x", x + step*local[i].lineLocal[1][0] )
-                .attr("y", y + step*(local[i].lineLocal[1][1] + 2) )
-                .attr('class', "data_" + local[i].name)
-        }
-
-        counting.push({
-            name:"inf_" + local[i].name,
-            data:"data_" + local[i].name,
-            isAir:isAir,
-            airposition:airList.indexOf(local[i].name),
-            obj:local[i]
+    svg.append('circle')
+        .attr('class',function(){
+            if (obj.localtype == 'earth'){
+                return 'eventDot earth_eventDot_circle '
+            }else{
+                return 'eventDot eventDot_circle'
+            }
         })
+        .attr("cx", x)
+        .attr("cy", y)
+        .attr('r', 5)
+        .attr('fill',color)
+        .attr("opacity",0)
+        .transition()
+        .duration(1500)
+        .attr("opacity",1)
+
+    svg.append('line')
+        .attr("x1", x)
+        .attr("y1", y)
+        .attr("x2", x + step*obj.lineLocal[0][0])
+        .attr("y2", y + step*obj.lineLocal[0][1])
+        .attr('stroke',color)
+        .attr("class","move_line")
+        .attr("opacity",0)
+        .transition()
+        .duration(1500)
+        .attr("opacity",1)
+
+    svg.append('line')
+        .attr("x1", x + step*obj.lineLocal[0][0])
+        .attr("y1", y + step*obj.lineLocal[0][1])
+        .attr("x2", x + step*obj.lineLocal[1][0])
+        .attr("y2", y + step*obj.lineLocal[1][1])
+        .attr('stroke',color)
+        .attr("opacity",0)
+        .transition()
+        .duration(1500)
+        .attr("opacity",1)
+    
+    if(airList.indexOf(obj.name) >= 0){
+        isAir = true
+        svg.append('text')
+            .html(() => {
+                return obj.name + ":" + obj.decline.lastRecord.number + " " + obj.decline.danwei;
+            })   
+            .attr("x", x + step*obj.lineLocal[1][0])
+            .attr("y", y + step*(obj.lineLocal[1][1] - 1 - (airList.indexOf(obj.name)) * 2 ))
+            .attr('class', "inf_" + obj.name)
+            .attr("opacity",0)
+            .transition()
+            .duration(1500)
+            .attr("opacity",1)
+    } else {
+        isAir = false
+        svg.append('text')
+            .html(() => {
+                return obj.name + ":";
+            })   
+            .attr("x", x + step*obj.lineLocal[1][0])
+            .attr("y", y + step*(obj.lineLocal[1][1] - 1))
+            .attr('class', "inf_" + obj.name)
+            .attr("opacity",0)
+            .transition()
+            .duration(1500)
+            .attr("opacity",1)
+
+        svg.append('text')
+            .html(() => {
+                return obj.decline.lastRecord.number + " " + obj.decline.danwei
+            })   
+            .attr("x", x + step*obj.lineLocal[1][0] )
+            .attr("y", y + step*(obj.lineLocal[1][1] + 2) )
+            .attr('class', "data_" + obj.name)
+            .attr("opacity",0)
+            .transition()
+            .duration(1500)
+            .attr("opacity",1)
     }
-    console.log(counting)
-    return counting;
+    that.addFrameEvent(that.counting({
+        name:"inf_" + obj.name,
+        data:"data_" + obj.name,
+        isAir:isAir,
+        airposition:airList.indexOf(obj.name),
+        obj:obj
+    }))
+    //     counting.push({
+    //         name:"inf_" + obj.name,
+    //         data:"data_" + obj.name,
+    //         isAir:isAir,
+    //         airposition:airList.indexOf(obj.name),
+    //         obj:obj
+    //     })
+    // console.log(counting)
+    // return counting;
 }
 
 charts.counting = function(obj){
     const that = this;
     var text;
     var danwei;
+
     return function(){
         if(obj.isAir){
             text = d3.select('.' + obj.name).text().split(":");
@@ -712,16 +744,35 @@ charts.RefreshTime = function(){
     }
 }
 
-charts.requestAnimationFrame = function(fns){
-    var that = this;
+charts.addFrameEvent = function(fn){
+    const that = this
+    var type = Object.prototype.toString.call(fn)
+    if (type === "[object Array]"){
+        fn.forEach(d=>{
+            that.fns.push(d)
+        })
+    }
+    else if (type === "[object Function]"){
+        that.fns.push(fn)
+    }
+}
+
+charts.requestAnimationFrame = function(){
+    const that = this;
     this.AnimationFrame = setInterval(()=>{
         that.DateNow = new Date( +that.DateNow + that.TimeMachine )
-        fns.forEach(d=>{
+        that.fns.forEach(d=>{
             d()
         })
         if (that.Counts<=0){
             clearInterval(this.AnimationFrame);
             alert(that.DateNow)
+        }
+        if (that.Description_Map[that.DateNow.getFullYear()]!=undefined 
+            && that.Description_Map[that.DateNow.getFullYear()].length!=0){
+            while(that.Description_Map[that.DateNow.getFullYear()].length){
+                that.addDescription(that.Description_Map[that.DateNow.getFullYear()].pop())
+            }
         }
     },1000)
 }
@@ -731,8 +782,9 @@ charts.on = function(Vue, CONTINENT_Data){
     that.PicView = Vue.$refs.ViewPic;
     that.AddDeadList = Vue.AddDeadList;
     that.CONTINENT_Data = CONTINENT_Data;
+    that.fns = [];
     that.Counts = Vue.Counts;
-    that.DateNow = new Date(1500,1,1);
+    that.DateNow = new Date();
     that.TimeMachine = 1000;
     
     d3.json("../../static/map.json").then(world=>{
@@ -791,18 +843,18 @@ charts.on = function(Vue, CONTINENT_Data){
         const projection = that.projection
         const Description = that.Description
         
-        var counts = charts.addDescription(Description)
         charts.addEvents()
 
         charts.Air_change()
         charts.Ozonosphere_change()
 
-        charts.requestAnimationFrame(counts.map(v=>charts.counting(v)).concat([
+        charts.addFrameEvent([
                 charts.earthMove(projection,that.svg,that.path),
                 charts.CONTINENT_Data_change(),
                 charts.RefreshTime()
-            ]
-        ))
+        ])
+
+        charts.requestAnimationFrame()
     })
 }
 
