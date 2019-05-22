@@ -55,6 +55,22 @@ charts.init = function(){
             speed:-0.0000001
         }
     },{
+        localtype:'earth',
+        local: [44.071469, 24.456169],
+        name:'Oil_Left',
+        lineLocal:[
+            [20,-4],
+            [25,-4]
+        ],
+        decline:{
+            lastRecord:{
+                number:1531131548723,
+                year:2019
+            },
+            danwei:"barrels",
+            speed:1000
+        }
+    },{
         localtype:'Entire',
         local: [width/2 - step*10, height/2 - step*20],
         name:'SO2',
@@ -72,11 +88,11 @@ charts.init = function(){
         }
     },{
         localtype:'Entire',
-        local: [width/2 - step*5, height/2 - step*20],
+        local: [width/2 - step*10, height/2 - step*20],
         name:'CO2',
         lineLocal:[
-            [-10,-15],
-            [-31,-15]
+            [-9,-9],
+            [-30,-9]
         ],
         decline:{
             lastRecord:{
@@ -85,6 +101,22 @@ charts.init = function(){
             },
             danwei:"ppm",
             speed:0.0000007
+        }
+    },{
+        localtype:'Entire',
+        local: [width/2 - step*10, height/2 - step*20],
+        name:'NO2',
+        lineLocal:[
+            [-9,-9],
+            [-30,-9]
+        ],
+        decline:{
+            lastRecord:{
+                number:44.1087,
+                year:2017
+            },
+            danwei:"ppb",
+            speed:-0.000000058
         }
     },{
         localtype:'Entire',
@@ -101,22 +133,6 @@ charts.init = function(){
             },
             danwei:"km2",
             speed:0.0164
-        }
-    },{
-        localtype:'earth',
-        local: [44.071469, 24.456169],
-        name:'Oil_Left',
-        lineLocal:[
-            [20,-4],
-            [25,-4]
-        ],
-        decline:{
-            lastRecord:{
-                number:1531131548723,
-                year:2019
-            },
-            danwei:"barrels",
-            speed:1000
         }
     },{
         localtype:'Entire',
@@ -276,6 +292,8 @@ charts.addDescription = function(local, str){
     const projection = this.projection
 
     let color = '#ff9a9a'
+    let airList = ["CO2", "NO2", "SO2"]
+    let isAir = false
     for (let i=0;i<local.length;i++){
         let svg = local[i].localtype == 'earth'?earth:Entire;
         let locals = local[i].localtype == 'earth'? projection(local[i].local):local[i].local;
@@ -311,25 +329,39 @@ charts.addDescription = function(local, str){
             .attr("y2", y + step*local[i].lineLocal[1][1])
             .attr('stroke',color)
         
-        svg.append('text')
-            .html(() => {
-                return local[i].name + ":";
-            })   
-            .attr("x", x + step*local[i].lineLocal[1][0])
-            .attr("y", y + step*(local[i].lineLocal[1][1] - 1))
-            .attr('class', "inf_" + local[i].name)
+        if(airList.indexOf(local[i].name) >= 0){
+            isAir = true
+            svg.append('text')
+                .html(() => {
+                    return local[i].name + ":" + local[i].decline.lastRecord.number + " " + local[i].decline.danwei;
+                })   
+                .attr("x", x + step*local[i].lineLocal[1][0])
+                .attr("y", y + step*(local[i].lineLocal[1][1] - 1 - (airList.indexOf(local[i].name)) * 2 ))
+                .attr('class', "inf_" + local[i].name)
+        } else {
+            isAir = false
+            svg.append('text')
+                .html(() => {
+                    return local[i].name + ":";
+                })   
+                .attr("x", x + step*local[i].lineLocal[1][0])
+                .attr("y", y + step*(local[i].lineLocal[1][1] - 1))
+                .attr('class', "inf_" + local[i].name)
 
-        svg.append('text')
-            .html(() => {
-                return local[i].decline.lastRecord.number + " " + local[i].decline.danwei
-            })   
-            .attr("x", x + step*local[i].lineLocal[1][0] )
-            .attr("y", y + step*(local[i].lineLocal[1][1] + 2) )
-            .attr('class', "data_" + local[i].name)
+            svg.append('text')
+                .html(() => {
+                    return local[i].decline.lastRecord.number + " " + local[i].decline.danwei
+                })   
+                .attr("x", x + step*local[i].lineLocal[1][0] )
+                .attr("y", y + step*(local[i].lineLocal[1][1] + 2) )
+                .attr('class', "data_" + local[i].name)
+        }
 
         counting.push({
             name:"inf_" + local[i].name,
             data:"data_" + local[i].name,
+            isAir:isAir,
+            airposition:airList.indexOf(local[i].name),
             obj:local[i]
         })
     }
@@ -342,11 +374,22 @@ charts.counting = function(obj){
     var text;
     var danwei;
     return function(){
-        text = d3.select('.' + obj.data).text().split(" ");
-        if (obj.obj.decline != undefined){
-            text[0] = +text[0] + obj.obj.decline.speed * that.TimeMachine / 1000
+        if(obj.isAir){
+            text = d3.select('.' + obj.name).text().split(":");
+            danwei = text[1].split(" ")
+            if (obj.obj.decline != undefined){
+                //return local[i].name + ":" + local[i].decline.lastRecord.number + " " + local[i].decline.danwei;
+                danwei[0] = +danwei[0] + obj.obj.decline.speed * that.TimeMachine / 1000
+            }
+            text = d3.select('.' + obj.name).html(text[0] + ":" + danwei[0] + " " + danwei[1])
         }
-        d3.select('.' + obj.data).html(text[0] + " " + text[1])
+        else{
+            text = d3.select('.' + obj.data).text().split(" ");
+            if (obj.obj.decline != undefined){
+                text[0] = +text[0] + obj.obj.decline.speed * that.TimeMachine / 1000
+            }
+            d3.select('.' + obj.data).html(text[0] + " " + text[1])
+        }
     }
 }
 
@@ -677,19 +720,20 @@ charts.on = function(Vue, CONTINENT_Data){
         */
 
         var Population = [
-            {long:81.520275 , lat: 34.841334}, //Asia
-            {long:86.520275, lat:34.841334}, //Asia 
-            {long:75, lat:34.841334}, //Asia 
-            {long:70, lat:34.841334}, //Asia 
-            {long:65, lat:34.841334}, //Asia 
-            {long:60, lat:34.841334}, //Asia 
-            {long:55, lat:34.841334}, //Asia 
-            {long:50, lat:34.841334}, //Asia 
+            {long:110, lat:45}, //Asia 
+            {long:100, lat:34.841334}, //Asia 
+            {long:80 , lat:34.841334}, //Asia
+            {long:60 , lat:34.841334}, //Asia
+            {long:90, lat:40}, //Asia 
+            {long:70, lat:40}, //Asia
+            {long:90, lat:30}, //Asia 
+            {long:70, lat:30}, //Asia 
+            {long:55, lat:45}, //Asia 
             {long:14.431588 , lat: 49.801038}, //Eur 741,447,158
             {long:-102.595203 , lat: 46.434343}, // North Amer
-            {long:-58.189542 , lat: -4.105085}, //South Amer
+            {long:-65.189542 , lat: -8.105085}, //South Amer
             {long:20.465635 , lat: 12.314046}, //Afr
-            {long:15.465635 , lat: 12.314046}, //Afr
+            {long:15.465635 , lat: -12.314046}, //Afr
             {long:134.581813 , lat: -25.627986} //Oceania
         ];
 
