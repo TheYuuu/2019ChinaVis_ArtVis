@@ -46,17 +46,6 @@ export default {
       this.list[year] = this.list[year] == undefined ? [] : this.list[year]
       this.list[year].push(name)
       this.$set(this.list, year, this.list[year]);
-      var div = document.getElementById('deadList');
-
-      let scrollTop = div.scrollTop;
-      let scrollHeight = div.scrollHeight+100;
-      div.scrollTop = scrollHeight
-      // for (let i=scrollTop;i<=scrollHeight;i++){
-      //   setTimeout(()=>{
-      //     div.scrollTop = i;
-      //   },i*10)
-      // }
-
     }
   },
   computed:{
@@ -72,24 +61,24 @@ export default {
       }
       return arr.sort((a,b)=>{
         if (a.year>b.year)
-          return 1;
-        else if (a.year<b.year)
           return -1;
+        else if (a.year<b.year)
+          return 1;
         else 
           return 0;
       })
     }
   },        
   mounted() {
-      setTimeout(()=>{
-        this.insert(2020,'Test')
-      },5000)
-      setTimeout(()=>{
-        this.insert(2021,'Test')
-      },6000)
-      setTimeout(()=>{
-        this.insert(2022,'Test')
-      },7000)
+      // setTimeout(()=>{
+      //   this.insert(2020,'Test')
+      // },5000)
+      // setTimeout(()=>{
+      //   this.insert(2021,'Test')
+      // },6000)
+      // setTimeout(()=>{
+      //   this.insert(2022,'Test')
+      // },7000)
   }
 }
 </script>
@@ -170,6 +159,6 @@ export default {
 .v-enter, .v-leave-to{
     opacity: 0;
     color: red;
-    transform: translateX(-100px);
+    transform: translateY(100px);
   }
 </style>
