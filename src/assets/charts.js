@@ -693,7 +693,7 @@ charts.CONTINENT_Data_change = function(){
                 if (that.CONTINENT_Data[k].animals != undefined){
                     that.CONTINENT_Data[k].animals.forEach(d=>{
                         if (!d.marked){
-                            if (d.population <= 0 || that.DateNow >= d.ExtinctTime){
+                            if (d.population <= 0 && that.DateNow >= d.ExtinctTime){
                                 d.marked = true
                                 d.population = 0
                                 that.Counts--;
@@ -707,7 +707,7 @@ charts.CONTINENT_Data_change = function(){
                 if (that.CONTINENT_Data[k].plantes != undefined){
                     that.CONTINENT_Data[k].plantes.forEach(d=>{
                         if (!d.marked){
-                            if (d.population <= 0 || that.DateNow >= d.ExtinctTime){
+                            if (d.population <= 0 && that.DateNow >= d.ExtinctTime){
                                 d.marked = true
                                 d.population = 0
                                 that.Counts--;
@@ -759,22 +759,43 @@ charts.addFrameEvent = function(fn){
 
 charts.requestAnimationFrame = function(){
     const that = this;
-    this.AnimationFrame = setInterval(()=>{
-        that.DateNow = new Date( +that.DateNow + that.TimeMachine )
-        that.fns.forEach(d=>{
-            d()
-        })
-        if (that.Counts<=0){
-            clearInterval(this.AnimationFrame);
-            alert(that.DateNow)
-        }
-        if (that.Description_Map[that.DateNow.getFullYear()]!=undefined 
-            && that.Description_Map[that.DateNow.getFullYear()].length!=0){
-            while(that.Description_Map[that.DateNow.getFullYear()].length){
-                that.addDescription(that.Description_Map[that.DateNow.getFullYear()].pop())
+    that.ms=50
+    run(that)
+
+    function run(that){
+        this.AnimationFrame = setInterval(()=>{
+            that.DateNow = new Date( +that.DateNow + that.TimeMachine )
+            that.fns.forEach(d=>{
+                d()
+            })
+            // if (that.Counts<=0){
+            //     clearInterval(this.AnimationFrame);
+            //     alert(that.DateNow)
+            // }
+            if (that.DateNow.getFullYear()>=1950){
+                clearInterval(this.AnimationFrame);
+                that.ms=100
+                run(that)
             }
-        }
-    },1000)
+            if (that.DateNow.getFullYear()>=2000){
+                clearInterval(this.AnimationFrame);
+                that.ms=1000
+                run(that)
+            }
+            if (that.DateNow.getFullYear()>=2019){
+                clearInterval(this.AnimationFrame);
+                that.ms=1000
+                that.TimeMachine = 1000;
+                run(that)
+            }
+            if (that.Description_Map[that.DateNow.getFullYear()]!=undefined 
+                && that.Description_Map[that.DateNow.getFullYear()].length!=0){
+                while(that.Description_Map[that.DateNow.getFullYear()].length){
+                    that.addDescription(that.Description_Map[that.DateNow.getFullYear()].pop())
+                }
+            }
+        },that.ms)
+    }
 }
 
 charts.on = function(Vue, CONTINENT_Data){
@@ -784,8 +805,8 @@ charts.on = function(Vue, CONTINENT_Data){
     that.CONTINENT_Data = CONTINENT_Data;
     that.fns = [];
     that.Counts = Vue.Counts;
-    that.DateNow = new Date();
-    that.TimeMachine = 1000;
+    that.DateNow = new Date(1849,1,1);
+    that.TimeMachine = 1000 *60 *60 *24 *365;
     
     d3.json("../../static/map.json").then(world=>{
         /*
