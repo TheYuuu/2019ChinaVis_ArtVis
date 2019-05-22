@@ -50,11 +50,12 @@ export default {
       arr.forEach(item=>{
         if (item.population!=undefined && item.date!=undefined && item.ExtinctSpeed!=undefined){
           item.ExtinctTime = new Date(+new Date(item.date) + item.population/item.ExtinctSpeed)
+          item.marked = false;
         }
         that.data.push({
               name:item.name.split(" ").join("_"),
               img:item.img
-            })
+        })
       })
     } 
   },

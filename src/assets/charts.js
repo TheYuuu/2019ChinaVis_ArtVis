@@ -532,8 +532,8 @@ charts.CONTINENT_Data_change = function(){
                         if (!d.marked){
                             if (d.population <= 0 || that.DateNow >= d.ExtinctTime){
                                 d.marked = true
-                                d.population = 0;
-                                that.AddDeadList(d.ExtinctTime.getFullYear(), d.name);
+                                d.population = 0
+                                that.AddDeadList(d.ExtinctTime.getFullYear(), d.name)
                             }else{
                                 d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
                             }
@@ -545,8 +545,10 @@ charts.CONTINENT_Data_change = function(){
                         if (!d.marked){
                             if (d.population <= 0 || that.DateNow >= d.ExtinctTime){
                                 d.marked = true
-                                that.AddDeadList(d.ExtinctTime.getFullYear(), d.name);
+                                d.population = 0
+                                that.AddDeadList(d.ExtinctTime.getFullYear(), d.name)
                             }else{
+
                                 d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
                             }
                         }
