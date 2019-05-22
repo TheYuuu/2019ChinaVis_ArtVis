@@ -1,13 +1,16 @@
 <template>
   <div id="app">
-    <guide></guide>
+    <guide  ref="guide" 
+      @showView="showView"></guide>
     <div class="content-box" id="content">
       <div class="time-block">
-        <p class="title-time">What's going on on Earth?</p>
+        <p class="title-time">What's going on since Industrial Revolution?</p>
         <p class="title-time" id="RunningTime">loading</p>
       </div>
       <cloud></cloud>
-      <earth @AddDeadList="AddDeadList"></earth>
+      <earth ref ="earth"
+        @AddDeadList="AddDeadList"
+        @showWords2="showWords2"></earth>
       <ozone></ozone>
     </div> 
     <deadList ref="deadList"></deadList>
@@ -31,20 +34,22 @@ export default {
     deadList
   },
   methods:{
+    showWords2(){
+      this.$refs.guide.showWords2()
+    },
+    showView(){
+      this.$refs.earth.start()
+    },
     AddDeadList(obj){
       this.$refs.deadList.insert(obj.year, obj.name)
     }
   },
   data:function(){
       return {
-        // time:new Date().toLocaleString().replace("下午","PM ").replace("上午","PM ")
       }
   },
   mounted() {
     const that = this;
-    // setInterval(()=>{
-    //   that.time=new Date().toLocaleString().replace("下午","PM ").replace("上午","PM ");
-    // },1000)
   },
 }
 </script>
@@ -72,7 +77,6 @@ html {
   width: 100vh;
   height: 100vh;
   overflow: hidden;
-  border:1px solid lavender;
 
   position: absolute;
   top: 0;
@@ -94,7 +98,7 @@ html {
   position: relative;
   font-size: 2rem;
   font-weight: bold;
-  z-index: 999;
+  z-index: 100;
 }
 
 /* 设置滚动条的样式 */

@@ -768,10 +768,6 @@ charts.requestAnimationFrame = function(){
             that.fns.forEach(d=>{
                 d()
             })
-            // if (that.Counts<=0){
-            //     clearInterval(this.AnimationFrame);
-            //     alert(that.DateNow)
-            // }
             if (that.DateNow.getFullYear()>=1950){
                 clearInterval(this.AnimationFrame);
                 that.ms=100
@@ -782,10 +778,19 @@ charts.requestAnimationFrame = function(){
                 that.ms=1000
                 run(that)
             }
-            if (that.DateNow.getFullYear()>=2019){
+            if (that.DateNow.getFullYear()>=new Date().getFullYear()-1 && !that.backTime){
                 clearInterval(this.AnimationFrame);
+                that.ms=1
+                that.TimeMachine = 1000*60*60*24;
+                run(that)
+            }
+            if (that.DateNow>=new Date() && !that.backTime){
+                that.backTime = true
+                clearInterval(this.AnimationFrame)
+                that.DateNow = new Date()
                 that.ms=1000
                 that.TimeMachine = 1000;
+                that.showWords2();
                 run(that)
             }
             if (that.Description_Map[that.DateNow.getFullYear()]!=undefined 
@@ -802,6 +807,8 @@ charts.on = function(Vue, CONTINENT_Data){
     const that = this;
     that.PicView = Vue.$refs.ViewPic;
     that.AddDeadList = Vue.AddDeadList;
+    that.showWords2 = Vue.showWords2;
+
     that.CONTINENT_Data = CONTINENT_Data;
     that.fns = [];
     that.Counts = Vue.Counts;

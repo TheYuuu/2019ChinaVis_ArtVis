@@ -1,7 +1,7 @@
 <template>
   <div id="earth">
-    <!-- <div class="warper">
-    </div> -->
+    <div class="warper">
+    </div>
     <svg id="earth_svg">
       <filter id="f1" x="0" y="0">
         <feGaussianBlur in="SourceGraphic" stdDeviation="5" />
@@ -48,11 +48,29 @@ export default {
     };
   },
   methods:{
+    start(){
+      var that = this;
+      d3.json("../static/data/data.json").then(d=>{
+        for (let k in d){
+          if (d[k].animals != undefined){
+            that.getExtinctTime(d[k].animals);
+          }
+          if (d[k].plantes != undefined){
+            that.getExtinctTime(d[k].plantes);
+          }
+        }
+        that.Counts = that.data.length;
+        charts.on(that,d);
+      })
+    },
     AddDeadList(year,name){
       this.$emit('AddDeadList',{
         year,
         name
       })
+    },
+    showWords2(){
+      this.$emit('showWords2')
     },
     getExtinctTime(arr){
       const that = this;
@@ -69,39 +87,6 @@ export default {
     } 
   },
   mounted() {
-    var that = this;
-    d3.json("../static/data/data.json").then(d=>{
-      for (let k in d){
-        if (d[k].animals != undefined){
-          that.getExtinctTime(d[k].animals);
-          // d[k].animals.forEach(item=>{
-          //   var oldTime = new Date(item.date)
-          //   var curTime = new Date()
-          //   item.population -= (curTime - oldTime) * item.ExtinctSpeed / 1000
-          //   that.data.push({
-          //     name:item.name.split(" ").join("_"),
-          //     img:item.img
-          //   })
-          // })
-        }
-        if (d[k].plantes != undefined){
-          that.getExtinctTime(d[k].plantes);
-          // d[k].plantes.forEach(item=>{
-          //   var oldTime = new Date(item.date)
-          //   var curTime = new Date()
-          //   item.population -= (curTime - oldTime) * item.ExtinctSpeed / 1000
-          //   that.data.push({
-          //     name:item.name.split(" ").join("_"),
-          //     img:item.img
-          //   })
-          // })
-        }
-      }
-      that.Counts = that.data.length;
-      console.log(that.Counts)
-      charts.on(that,d);
-    })
-
   },
 }
 </script>
@@ -163,7 +148,7 @@ export default {
   z-index: 100;
   width:100%;
   height: 100%;
-  background: #fdf8f8;
+  background: white;
   opacity:1;
   transition: opacity 2s;
   pointer-events: none;
