@@ -447,7 +447,7 @@ charts.drawForce = function(CONTINENT){
     const width = this.width;
     const height = this.height;
     const step = this.step;
-
+    var transform = 51;
     var nodes = this.CONTINENT_Data[CONTINENT].animals.concat(this.CONTINENT_Data[CONTINENT].plantes)
     svg.selectAll(".nodes").remove()
 
@@ -492,29 +492,21 @@ charts.drawForce = function(CONTINENT){
                         .enter()
                         .append("g")
                         .attr("class","imgage_g")
-
+                        
         var images = imgage_g.append("image")
                         .attr("class","image")
-                        .attr("xlink:href",function(d,i){
-                            return d.img;
-                        })            
-                        .attr("width", 60)            
-                        .attr("height", 60)        
-                        .attr("fill", function(d,i){
-                            if (d.index != 0){
-                                return "url(#grad1)";
-                            }else{
-                                return "none";
-                            }
-                        }) 
+                        // .attr("xlink:href",function(d,i){
+                        //     return d.img;
+                        // })                           
+                        .attr("xlink:href","http://localhost:8080/static/img/zamia-restrepoi.png")           
+                        .attr("width", 100)  
+                        .attr("height", 100)                   
 
         var node = imgage_g.append("circle")
             .attr("class","item_circle")
-            .attr("stroke", "black")
-            .attr("stroke-dasharray", "5,5")
             .attr("fill", function(d,i){
                 if (d.index != 0){
-                    return "white";
+                    return "transparent";
                 }else{
                     return "none";
                 }
@@ -522,6 +514,7 @@ charts.drawForce = function(CONTINENT){
             .attr("r", function(d) {
                 return d.radius;
               })
+            .attr("stroke", "black")
             .attr("cx", function(d) {
               return d.x;
             })
@@ -610,10 +603,10 @@ charts.drawForce = function(CONTINENT){
             
         images
             .attr("x", function(d) {
-                return d.x - d.radius;
+                return d.x- transform;
             })
             .attr("y", function(d) {
-                return d.y - d.radius;
+                return d.y - transform;
             });
 
         }

@@ -9,12 +9,12 @@
       <filter id="grayscale">
         <feColorMatrix type="matrix" values="0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0.3333 0.3333 0.3333 0 0 0 0 0 1 0"/>
       </filter>
-      <filter>
-        <radialGradient id="grad1" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
-          <stop offset="0%" style="stop-color:rgb(0,0,0);stop-opacity:0" />
-          <stop offset="100%" style="stop-color:rgb(255,255,255);stop-opacity:1" />
-        </radialGradient>
-      </filter>
+    <defs>
+      <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" style="stop-color:rgb(255,255,0);stop-opacity:1" />
+        <stop offset="100%" style="stop-color:rgb(255,0,0);stop-opacity:1" />
+      </linearGradient>
+    </defs>
       <defs>
         <template v-for="(item,index) in data">
           <pattern
@@ -98,6 +98,7 @@ export default {
         }
       }
       that.Counts = that.data.length;
+      console.log(that.Counts)
       charts.on(that,d);
     })
 
