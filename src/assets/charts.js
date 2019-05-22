@@ -6,24 +6,7 @@ charts.init = function(){
     let step = width/100;
     var autoR;
     var Description = [];
-    Description.push(
-        /*{
-        localtype:'earth',
-        local: [138.302001, 35.456019],
-        name: 'Whale',
-        lineLocal:[
-            [9,-9],
-            [15,-9]
-        ],
-        decline:{
-            lastRecord:{
-                number:0,
-                year:2019
-            },
-            danwei:"km2",
-            speed:0
-        }
-    },*/{
+    Description.push({
         localtype:'earth',
         local: [20, 90],
         name: 'Polar_Bear',
@@ -71,23 +54,7 @@ charts.init = function(){
             danwei:"mm",
             speed:-0.0000001
         }
-    },/*{
-        localtype:'earth',
-        local: [79.185509, -21.263971],
-        name:'Marine_Pollution',
-        lineLocal:[
-            [15,10],
-            [20,10]
-        ],
-        decline:{
-            lastRecord:{
-                number:0,
-                year:2019
-            },
-            danwei:"km2",
-            speed:0
-        }
-    },*/{
+    },{
         localtype:'Entire',
         local: [width/2 - step*10, height/2 - step*20],
         name:'SO2',
@@ -136,12 +103,12 @@ charts.init = function(){
             speed:0.0164
         }
     },{
-        localtype:'Entire',
-        local: [width/2 - step*15, height/2 - step*20],
+        localtype:'earth',
+        local: [44.071469, 24.456169],
         name:'Oil_Left',
         lineLocal:[
-            [-10,-4],
-            [-30,-4]
+            [20,-4],
+            [25,-4]
         ],
         decline:{
             lastRecord:{
