@@ -12,7 +12,7 @@ charts.init = function(){
         name:'Oil_Left',
         lineLocal:[
             [20,-4],
-            [25,-4]
+            [23,-4]
         ],
         decline:{
             lastRecord:{
@@ -69,22 +69,6 @@ charts.init = function(){
             },
             danwei:"mm",
             speed:-0.0000001
-        }
-    },{
-        localtype:'earth',
-        local: [44.071469, 24.456169],
-        name:'Oil_Left',
-        lineLocal:[
-            [20,-4],
-            [25,-4]
-        ],
-        decline:{
-            lastRecord:{
-                number:1531131548723,
-                year:2019
-            },
-            danwei:"barrels",
-            speed:1000
         }
     },{
         localtype:'Entire',
