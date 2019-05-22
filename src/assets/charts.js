@@ -6,7 +6,8 @@ charts.init = function(){
     let step = width/100;
     var autoR;
     var Description = [];
-    Description.push({
+    Description.push(
+        /*{
         localtype:'earth',
         local: [138.302001, 35.456019],
         name: 'Whale',
@@ -22,7 +23,7 @@ charts.init = function(){
             danwei:"km2",
             speed:0
         }
-    },{
+    },*/{
         localtype:'earth',
         local: [20, 90],
         name: 'Polar_Bear',
@@ -32,27 +33,27 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:0,
-                year:2019
+                number:21420,
+                year:2005
             },
-            danwei:"km2",
-            speed:0
+            danwei:"",
+            speed: -0.00001
         }
     },{
         localtype:'earth',
         local: [3.4653, 62.2159],
-        name:'Amazon_Rainforest',
+        name:'Wild_Forest',
         lineLocal:[
             [-25,-5],
             [-45,-5]
         ],
         decline:{
             lastRecord:{
-                number:7000000,
-                year:1978
+                number:27.69289113,
+                year:2019
             },
-            danwei:"km2",
-            speed:-0.00055
+            danwei:"%",
+            speed:-0.00000005
         }
     },{
         localtype:'earth',
@@ -60,17 +61,17 @@ charts.init = function(){
         name:'Sea_Level',
         lineLocal:[
             [-10,10],
-            [-20,10]
+            [-25,10]
         ],
         decline:{
             lastRecord:{
-                number:0,
-                year:2019
+                number:12.5,
+                year:1995
             },
-            danwei:"km2",
-            speed:0
+            danwei:"mm",
+            speed:-0.0000001
         }
-    },{
+    },/*{
         localtype:'earth',
         local: [79.185509, -21.263971],
         name:'Marine_Pollution',
@@ -86,29 +87,45 @@ charts.init = function(){
             danwei:"km2",
             speed:0
         }
-    },{
+    },*/{
         localtype:'Entire',
         local: [width/2 - step*10, height/2 - step*20],
         name:'SO2',
         lineLocal:[
             [-9,-9],
-            [-20,-9]
+            [-30,-9]
         ],
         decline:{
             lastRecord:{
                 number:0,
                 year:1850
             },
-            danwei:"g",
-            speed:1.88745
+            danwei:"kg",
+            speed:0.000188
+        }
+    },{
+        localtype:'Entire',
+        local: [width/2 - step*5, height/2 - step*20],
+        name:'CO2',
+        lineLocal:[
+            [-10,-15],
+            [-31,-15]
+        ],
+        decline:{
+            lastRecord:{
+                number:410.53,
+                year:2019
+            },
+            danwei:"ppm",
+            speed:0.0000007
         }
     },{
         localtype:'Entire',
         local: [width/2, height/4*3 + step],
         name:'Ozonosphere_Hole',
         lineLocal:[
-            [-9,5],
-            [-20,5]
+            [9,5],
+            [15,5]
         ],
         decline:{
             lastRecord:{
@@ -117,6 +134,54 @@ charts.init = function(){
             },
             danwei:"km2",
             speed:0.0164
+        }
+    },{
+        localtype:'Entire',
+        local: [width/2 - step*15, height/2 - step*20],
+        name:'Oil_Left',
+        lineLocal:[
+            [-10,-4],
+            [-30,-4]
+        ],
+        decline:{
+            lastRecord:{
+                number:1531131548723,
+                year:2019
+            },
+            danwei:"barrels",
+            speed:1000
+        }
+    },{
+        localtype:'Entire',
+        local: [width/2 - step*3, height/4*3 - step*3],
+        name:'People',
+        lineLocal:[
+            [-22,10],
+            [-33,10]
+        ],
+        decline:{
+            lastRecord:{
+                number:7618653410.5,
+                year:2019
+            },
+            danwei:"",
+            speed:4.45
+        }
+    },{
+        localtype:'Entire',
+        local: [width/2 - step*2, height/4*3 - step*3],
+        name:'People_In_Need_of_Water',
+        lineLocal:[
+            [-10,15],
+            [-33,15]
+        ],
+        decline:{
+            lastRecord:{
+                number:3432134322.8,
+                year:2019
+            },
+            danwei:"",
+            speed:1.4
         }
     })
     
@@ -281,14 +346,23 @@ charts.addDescription = function(local, str){
         
         svg.append('text')
             .html(() => {
-                return local[i].name + ":" + local[i].decline.lastRecord.number + " " + local[i].decline.danwei
+                return local[i].name + ":";
             })   
             .attr("x", x + step*local[i].lineLocal[1][0])
-            .attr("y", y + step*local[i].lineLocal[1][1])
+            .attr("y", y + step*(local[i].lineLocal[1][1] - 1))
             .attr('class', "inf_" + local[i].name)
+
+        svg.append('text')
+            .html(() => {
+                return local[i].decline.lastRecord.number + " " + local[i].decline.danwei
+            })   
+            .attr("x", x + step*local[i].lineLocal[1][0] )
+            .attr("y", y + step*(local[i].lineLocal[1][1] + 2) )
+            .attr('class', "data_" + local[i].name)
 
         counting.push({
             name:"inf_" + local[i].name,
+            data:"data_" + local[i].name,
             obj:local[i]
         })
     }
@@ -301,12 +375,11 @@ charts.counting = function(obj){
     var text;
     var danwei;
     return function(){
-        danwei = d3.select('.' + obj.name).text().split(" ")[1];
-        text = d3.select('.' + obj.name).text().split(" ")[0].split(":");
+        text = d3.select('.' + obj.data).text().split(" ");
         if (obj.obj.decline != undefined){
-            text[1] = +text[1] + obj.obj.decline.speed * that.TimeMachine / 1000
+            text[0] = +text[0] + obj.obj.decline.speed * that.TimeMachine / 1000
         }
-        d3.select('.' + obj.name).html(text.join(":") + " " + danwei)
+        d3.select('.' + obj.data).html(text[0] + " " + text[1])
     }
 }
 
@@ -610,12 +683,14 @@ charts.on = function(Vue, CONTINENT_Data){
     that.TimeMachine = 1000;
     
     d3.json("../../static/map.json").then(world=>{
+        /*
         var Whalelocal = [
             {long: 139.485582, lat: 34.078783}, 
             {long: 133.671016, lat: 36.170561}, 
             {long: 143.372315, lat: 38.371926},
             {long: 133.176260, lat: 41.141973},
         ];
+        */
 
         var Bearlocal = [
             {long: -10.0000, lat: 90.0000},
@@ -625,18 +700,39 @@ charts.on = function(Vue, CONTINENT_Data){
             {long: 60.0000, lat: 90.0000},
         ];
 
+        /*
         var Pollutionlocal = [
             {long: 79.185509, lat: -21.263971},
             {long: 85.185509, lat: -15.263971},
             {long: 70.185509, lat: -25.263971},
             {long: 90.185509, lat: -21.263971},
         ];
+        */
+
+        var Population = [
+            {long:81.520275 , lat: 34.841334}, //Asia
+            {long:86.520275, lat:34.841334}, //Asia 
+            {long:75, lat:34.841334}, //Asia 
+            {long:70, lat:34.841334}, //Asia 
+            {long:65, lat:34.841334}, //Asia 
+            {long:60, lat:34.841334}, //Asia 
+            {long:55, lat:34.841334}, //Asia 
+            {long:50, lat:34.841334}, //Asia 
+            {long:14.431588 , lat: 49.801038}, //Eur 741,447,158
+            {long:-102.595203 , lat: 46.434343}, // North Amer
+            {long:-58.189542 , lat: -4.105085}, //South Amer
+            {long:20.465635 , lat: 12.314046}, //Afr
+            {long:15.465635 , lat: 12.314046}, //Afr
+            {long:134.581813 , lat: -25.627986} //Oceania
+        ];
+
         charts.init()
         charts.drawEarth(world);
 
-        charts.drawanimals(Whalelocal,'&#128011');
+        //charts.drawanimals(Whalelocal,'&#128011');
         charts.drawanimals(Bearlocal,'&#128059');
-        charts.drawanimals(Pollutionlocal,'&#x2622');
+        //charts.drawanimals(Pollutionlocal,'&#x2622');
+        charts.drawanimals(Population, '&#128694')
 
         const projection = that.projection
         const Description = that.Description
