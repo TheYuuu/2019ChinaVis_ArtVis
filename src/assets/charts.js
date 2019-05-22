@@ -1,4 +1,5 @@
 var charts = {};
+
 charts.init = function(){
     var width = document.getElementById("earth").offsetWidth,
     height = document.getElementById("earth").offsetHeight;
@@ -456,7 +457,6 @@ charts.drawForce = function(CONTINENT){
             .attr("stroke-dasharray", "5,5")
             .attr("fill", function(d,i){
                 if (d.index != 0){
-                    console.log(d.name.split(" ").join("_"))
                     return "url(#" + d.name.split(" ").join("_") + ")";
                 }else{
                     return "none";
@@ -529,22 +529,25 @@ charts.CONTINENT_Data_change = function(){
             for (let k in that.CONTINENT_Data){
                 if (that.CONTINENT_Data[k].animals != undefined){
                     that.CONTINENT_Data[k].animals.forEach(d=>{
-                        if (!d.ExtinctStatus){
-                            d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
-                            if (d.population<=0){
-                                d.ExtinctStatus = true
-                                that.AddDeadList(that.DateNow.getFullYear(), d.name);
+                        if (!d.marked){
+                            if (d.population <= 0 || that.DateNow >= d.ExtinctTime){
+                                d.marked = true
+                                d.population = 0;
+                                that.AddDeadList(d.ExtinctTime.getFullYear(), d.name);
+                            }else{
+                                d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
                             }
                         }
                     })
                 }
                 if (that.CONTINENT_Data[k].plantes != undefined){
                     that.CONTINENT_Data[k].plantes.forEach(d=>{
-                        if (!d.ExtinctStatus){
-                            d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
-                            if (d.population<=0){
-                                d.ExtinctStatus = true
-                                that.AddDeadList(that.DateNow.getFullYear(), d.name);
+                        if (!d.marked){
+                            if (d.population <= 0 || that.DateNow >= d.ExtinctTime){
+                                d.marked = true
+                                that.AddDeadList(d.ExtinctTime.getFullYear(), d.name);
+                            }else{
+                                d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
                             }
                         }
                     })
@@ -573,6 +576,7 @@ charts.RefreshTime = function(){
         d3.select("#RunningTime").html(that.DateNow.toLocaleString().replace("下午","PM ").replace("上午","PM "));
     }
 }
+
 charts.requestAnimationFrame = function(fns){
     var that = this;
     this.AnimationFrame = setInterval(()=>{

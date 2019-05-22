@@ -44,31 +44,50 @@ export default {
         year,
         name
       })
-    }
+    },
+    getExtinctTime(arr){
+      const that = this;
+      arr.forEach(item=>{
+        if (item.population!=undefined && item.date!=undefined && item.ExtinctSpeed!=undefined){
+          item.ExtinctTime = new Date(+new Date(item.date) + item.population/item.ExtinctSpeed)
+        }
+        that.data.push({
+              name:item.name.split(" ").join("_"),
+              img:item.img
+            })
+      })
+    } 
   },
   mounted() {
     var that = this;
     d3.json("../static/data/data.json").then(d=>{
-      console.log(d)
       for (let k in d){
         if (d[k].animals != undefined){
-          d[k].animals.forEach(d=>{
-            that.data.push({
-              name:d.name.split(" ").join("_"),
-              img:d.img
-            })
-          })
+          that.getExtinctTime(d[k].animals);
+          // d[k].animals.forEach(item=>{
+          //   var oldTime = new Date(item.date)
+          //   var curTime = new Date()
+          //   item.population -= (curTime - oldTime) * item.ExtinctSpeed / 1000
+          //   that.data.push({
+          //     name:item.name.split(" ").join("_"),
+          //     img:item.img
+          //   })
+          // })
         }
         if (d[k].plantes != undefined){
-          d[k].plantes.forEach(d=>{
-            that.data.push({
-              name:d.name.split(" ").join("_"),
-              img:d.img
-            })
-          })
+          that.getExtinctTime(d[k].plantes);
+          // d[k].plantes.forEach(item=>{
+          //   var oldTime = new Date(item.date)
+          //   var curTime = new Date()
+          //   item.population -= (curTime - oldTime) * item.ExtinctSpeed / 1000
+          //   that.data.push({
+          //     name:item.name.split(" ").join("_"),
+          //     img:item.img
+          //   })
+          // })
         }
       }
-      console.log(that.data)
+      console.log(d)
       charts.on(that,d);
     })
 

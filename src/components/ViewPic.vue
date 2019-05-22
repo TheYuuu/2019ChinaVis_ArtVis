@@ -13,6 +13,7 @@
               alt="loading"
               class="showpic"
               id="showpic"
+              :style="YiXiang(showPic)"
             >
           </div>
           <div class="InfDiv">
@@ -37,7 +38,8 @@
               v-on:click="imgClick(index)"
               :key="index"
             >
-              <img :src="item.img" alt>
+              <img :src="item.img" alt
+              :style="YiXiang(item)">
             </li>
           </template>
         </ul>
@@ -81,6 +83,11 @@ export default {
     }
   },
   methods: {
+    YiXiang(item){
+      if (item.population<=0){
+        return 'filter: grayscale(100%);'
+      }
+    },
     quit(){
       this.BackgroundShow = false;
       clearInterval(this.position)
