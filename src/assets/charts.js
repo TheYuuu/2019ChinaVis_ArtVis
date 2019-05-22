@@ -184,7 +184,6 @@ charts.init = function(){
         }
     })
     
-    var currentTime = new Date()
     Description.map( d => {
         var oldTime = new Date(d.decline.lastRecord.year, 1, 1)
         var curTime = new Date()
@@ -544,86 +543,86 @@ charts.drawForce = function(CONTINENT){
         )
         .on("tick", ticked);
         
-        var imgage_g = svg.append('g')
-                        .attr("class","ndoes_g")
-                        .selectAll('.imgage_g')
-                        .data(nodes)
-                        .enter()
-                        .append("g")
-                        .attr("class","imgage_g")
+        // var imgage_g = svg.append('g')
+        //                 .attr("class","ndoes_g")
+        //                 .selectAll('.imgage_g')
+        //                 .data(nodes)
+        //                 .enter()
+        //                 .append("g")
+        //                 .attr("class","imgage_g")
                         
-        var images = imgage_g.append("image")
-                        .attr("class","image")
-                        // .attr("xlink:href",function(d,i){
-                        //     return d.img;
-                        // })                           
-                        .attr("xlink:href","http://localhost:8080/static/img/zamia-restrepoi.png")           
-                        .attr("width", 100)  
-                        .attr("height", 100)                   
+        // var images = imgage_g.append("image")
+        //                 .attr("class","image")
+        //                 // .attr("xlink:href",function(d,i){
+        //                 //     return d.img;
+        //                 // })                           
+        //                 .attr("xlink:href","http://localhost:8080/static/img/zamia-restrepoi.png")           
+        //                 .attr("width", 100)  
+        //                 .attr("height", 100)                   
 
-        var node = imgage_g.append("circle")
-            .attr("class","item_circle")
-            .attr("fill", function(d,i){
-                if (d.index != 0){
-                    return "transparent";
-                }else{
-                    return "none";
-                }
-            })          
-            .attr("r", function(d) {
-                return d.radius;
-              })
-            .attr("stroke", "black")
-            .attr("cx", function(d) {
-              return d.x;
-            })
-            .attr("cy", function(d) {
-              return d.y;
-            })
-        
-
-
-        // node = svg
-        //     .append("g")
-        //     .attr("class", "nodes")
-        //     .selectAll("none")
-        //     .data(nodes)
-        //     .enter()
-        //     .append("circle")
+        // var node = imgage_g.append("circle")
         //     .attr("class","item_circle")
-        //     .attr("stroke", "black")
-        //     .attr("stroke-dasharray", "5,5")
         //     .attr("fill", function(d,i){
         //         if (d.index != 0){
-        //             return "url(#" + d.name.split(" ").join("_") + ")";
+        //             return "transparent";
         //         }else{
         //             return "none";
         //         }
-        //     })           
+        //     })          
         //     .attr("r", function(d) {
         //         return d.radius;
         //       })
+        //     .attr("stroke", "black")
         //     .attr("cx", function(d) {
         //       return d.x;
         //     })
         //     .attr("cy", function(d) {
         //       return d.y;
         //     })
-        //     .on("mouseover", function(d) {
-        //         d3.select(this)
-        //           .attr("stroke-width", "2px")
-        //           .attr("r", d.radius + 20)
-        //           .attr("stroke-dasharray", "0,0");
-        //       })
-        //       .on("mouseleave", function(d) {
-        //         d3.select(this)
-        //           .attr("stroke-width", "1px")
-        //           .attr("r", d.radius)
-        //           .attr("stroke-dasharray", "5,5");
-        //       })
-        //     .on("click",function(d){
-        //         PicView.showMe(nodes.slice(1,nodes.length), d.index - 1);
-        //     })
+        
+
+
+        node = svg
+            .append("g")
+            .attr("class", "nodes")
+            .selectAll("none")
+            .data(nodes)
+            .enter()
+            .append("circle")
+            .attr("class","item_circle")
+            .attr("stroke", "black")
+            .attr("stroke-dasharray", "5,5")
+            .attr("fill", function(d,i){
+                if (d.index != 0){
+                    return "url(#" + d.name.split(" ").join("_") + ")";
+                }else{
+                    return "none";
+                }
+            })           
+            .attr("r", function(d) {
+                return d.radius;
+              })
+            .attr("cx", function(d) {
+              return d.x;
+            })
+            .attr("cy", function(d) {
+              return d.y;
+            })
+            .on("mouseover", function(d) {
+                d3.select(this)
+                  .attr("stroke-width", "2px")
+                  .attr("r", d.radius + 20)
+                  .attr("stroke-dasharray", "0,0");
+              })
+              .on("mouseleave", function(d) {
+                d3.select(this)
+                  .attr("stroke-width", "1px")
+                  .attr("r", d.radius)
+                  .attr("stroke-dasharray", "5,5");
+              })
+            .on("click",function(d){
+                PicView.showMe(nodes.slice(1,nodes.length), d.index - 1);
+            })
 
     
     function ticked() {
@@ -660,13 +659,13 @@ charts.drawForce = function(CONTINENT){
             return d.y;
             });
             
-        images
-            .attr("x", function(d) {
-                return d.x- transform;
-            })
-            .attr("y", function(d) {
-                return d.y - transform;
-            });
+        // images
+        //     .attr("x", function(d) {
+        //         return d.x- transform;
+        //     })
+        //     .attr("y", function(d) {
+        //         return d.y - transform;
+        //     });
 
         }
 }
@@ -749,7 +748,7 @@ charts.on = function(Vue, CONTINENT_Data){
     that.AddDeadList = Vue.AddDeadList;
     that.CONTINENT_Data = CONTINENT_Data;
     that.Counts = Vue.Counts;
-    that.DateNow = new Date();
+    that.DateNow = new Date(1500,1,1);
     that.TimeMachine = 1000;
     
     d3.json("../../static/map.json").then(world=>{
