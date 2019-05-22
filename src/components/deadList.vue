@@ -75,6 +75,8 @@ export default {
   padding:20px;
   overflow: auto;
   float: right;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 .list_div{
   width: 100%;
