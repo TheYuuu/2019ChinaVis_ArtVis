@@ -16,7 +16,7 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:‭3076395548723‬,
+                number:3076395548723,
                 year:1970
             },
             danwei:"barrels",
@@ -32,7 +32,7 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:32457.6‬,
+                number:32457.6,
                 year:1970
             },
             danwei:"",
@@ -48,7 +48,7 @@ charts.init = function(){
         ],
         decline:{
             lastRecord:{
-                number:73.42009113‬,
+                number:73.42009113,
                 year:1990
             },
             danwei:"%",
