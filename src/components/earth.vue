@@ -46,8 +46,15 @@ export default {
       })
     },
     getExtinctTime(arr){
+      const that = this;
       arr.forEach(item=>{
-        item.ExtinctTime = new Date(+new Date(item.date) + item.population/item.ExtinctSpeed)
+        if (item.population!=undefined && item.date!=undefined && item.ExtinctSpeed!=undefined){
+          item.ExtinctTime = new Date(+new Date(item.date) + item.population/item.ExtinctSpeed)
+        }
+        that.data.push({
+              name:item.name.split(" ").join("_"),
+              img:item.img
+            })
       })
     } 
   },

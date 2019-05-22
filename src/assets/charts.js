@@ -457,7 +457,6 @@ charts.drawForce = function(CONTINENT){
             .attr("stroke-dasharray", "5,5")
             .attr("fill", function(d,i){
                 if (d.index != 0){
-                    console.log(d.name.split(" ").join("_"))
                     return "url(#" + d.name.split(" ").join("_") + ")";
                 }else{
                     return "none";
@@ -533,6 +532,7 @@ charts.CONTINENT_Data_change = function(){
                         if (!d.marked){
                             if (d.population <= 0 || that.DateNow >= d.ExtinctTime){
                                 d.marked = true
+                                d.population = 0;
                                 that.AddDeadList(d.ExtinctTime.getFullYear(), d.name);
                             }else{
                                 d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
