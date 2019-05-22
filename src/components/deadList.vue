@@ -92,7 +92,7 @@ export default {
   float: right;
   font-size: 1.1rem;
   font-weight: bold;
-  transition: all 1s;
+  /* transition: all 1s; */
 }
 .list_div{
   width: 100%;
@@ -151,7 +151,7 @@ export default {
     margin-right: 10px;
   }
 .v-move,.v-enter-active, .v-leave-active {
-    transition: 3s;
+    transition: 1s;
   }
 .v-leave-active{
     position:absolute;
@@ -159,6 +159,6 @@ export default {
 .v-enter, .v-leave-to{
     opacity: 0;
     color: red;
-    transform: translateY(100px);
+    transform: translateX(-100px);
   }
 </style>
