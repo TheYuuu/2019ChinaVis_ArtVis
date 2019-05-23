@@ -16,7 +16,6 @@
     </div>
       </transition>
   </div>
-
 </template>
 
 <script>
@@ -61,7 +60,7 @@ export default {
         return;
     }
   },
-  mounted() {
+  mounted() {    
     const that = this
     d3.select("#Ab-button").on("click",function(){
       that.show=true
@@ -82,7 +81,8 @@ export default {
 .about_con{
   position: fixed;
   width: 350px;
-  height: 400px;
+  height: 50%;
+  min-height: 400px;
   background: white;
   z-index: 102;
   color:black;
@@ -118,9 +118,9 @@ export default {
 .line1:before, .line1:after {
     content: '';
     position: absolute;
-    top: 7%;
+    top: 28px;
     background: #494949;
-    width: 23%;
+    width: 80px;
     height: 1px;
 }
 
@@ -135,9 +135,9 @@ export default {
 .line2:before, .line2:after {
     content: '';
     position: absolute;
-    top: 47%;
+    top: 187.047px;;
     background: #494949;
-    width: 6%;
+    width: 20.875px;
     height: 1px;
 }
 
@@ -153,9 +153,9 @@ export default {
 .line3:before, .line3:after {
     content: '';
     position: absolute;
-    top: 71%;
+    top: 282.578px;
     background: #494949;
-    width: 12%;
+    width: 41.75px;
     height: 1px;
 }
 

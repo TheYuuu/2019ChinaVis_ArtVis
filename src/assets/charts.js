@@ -548,6 +548,7 @@ charts.on = function(Vue, CONTINENT_Data){
         ])
 
         charts.requestAnimationFrame()
+        charts.loadButton()
     })
 }
 
