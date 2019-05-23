@@ -10,7 +10,8 @@
           {{item.name}}: {{item.email}}
         </p>
         <h2 class="line3">Project Github Address</h2>
-        <p><a href="https://github.com/Ly2zzZ/2019ChinaVis_ArtVis">https://github.com/Ly2zzZ/2019ChinaVis_ArtVis</a></p>
+        <p><a href="https://github.com/Ly2zzZ/2019ChinaVis_ArtVis"
+        target="_blank">https://github.com/Ly2zzZ/2019ChinaVis_ArtVis</a></p>
       </div>
     </div>
       </transition>

@@ -21,7 +21,7 @@
               <hr>
               <p>Description: {{showPic.Description}}</p>
               <hr>
-              <p>population: {{showPic.population}}</p>
+              <p>population: {{showPic.populationNow}}</p>
             </div>
           </div>
         </div>

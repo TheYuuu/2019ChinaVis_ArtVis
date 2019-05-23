@@ -50,16 +50,17 @@ export default {
   methods:{
     start(){
       var that = this;
-      d3.json("../static/data/data.json").then(d=>{
+      d3.json("../static/data/finadata.json").then(d=>{
         for (let k in d){
           if (d[k].animals != undefined){
-            that.getExtinctTime(d[k].animals);
+            that.getExtincionTime(d[k].animals);
           }
           if (d[k].plantes != undefined){
-            that.getExtinctTime(d[k].plantes);
+            that.getExtincionTime(d[k].plantes);
           }
         }
         that.Counts = that.data.length;
+        console.log(that.Counts,d)
         charts.on(that,d);
       })
     },
@@ -72,13 +73,13 @@ export default {
     showWords2(){
       this.$emit('showWords2')
     },
-    getExtinctTime(arr){
+    getExtincionTime(arr){
       const that = this;
       arr.forEach(item=>{
-        if (item.population!=undefined && item.date!=undefined && item.ExtinctSpeed!=undefined){
-          item.ExtinctTime = new Date(+new Date(item.date) + item.population/item.ExtinctSpeed)
-          item.marked = false;
-        }
+        item.ExtincionTime = new Date(item.ExtincionTime)
+        item.date = new Date(item.date)
+        item.populationNow = item.population
+
         that.data.push({
               name:item.name.split(" ").join("_"),
               img:item.img

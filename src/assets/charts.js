@@ -295,34 +295,30 @@ charts.addEvents = function(){
 charts.CONTINENT_Data_change = function(){
     var that = this;
     return function (){
-            for (let k in that.CONTINENT_Data){
+        var handle = function(d){
+            if (!d.marked){
+                if (d.populationNow < 1 && that.DateNow >= d.ExtincionTime){
+                    d.marked = true
+                    d.populationNow = 0
+                    that.Counts--;
+                    that.AddDeadList(d.ExtincionTime.getFullYear(), d.name)
+                }else{
+                    let y = Math.floor(+(that.DateNow - new Date(d.date))/1000/60/60/24/365)
+                    if ( +(that.DateNow - new Date(d.date)) >= 1000*60*60*24*365 && d.populationNow >= 1 ){
+                        d.populationNow = d.population - d.ExtinctSpeed * d.populationNow * y;
+                    }
+                }
+            }
+        }
+        for (let k in that.CONTINENT_Data){
                 if (that.CONTINENT_Data[k].animals != undefined){
                     that.CONTINENT_Data[k].animals.forEach(d=>{
-                        if (!d.marked){
-                            if (d.population <= 0 && that.DateNow >= d.ExtinctTime){
-                                d.marked = true
-                                d.population = 0
-                                that.Counts--;
-                                that.AddDeadList(d.ExtinctTime.getFullYear(), d.name)
-                            }else{
-                                d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
-                            }
-                        }
+                        handle(d)
                     })
                 }
                 if (that.CONTINENT_Data[k].plantes != undefined){
                     that.CONTINENT_Data[k].plantes.forEach(d=>{
-                        if (!d.marked){
-                            if (d.population <= 0 && that.DateNow >= d.ExtinctTime){
-                                d.marked = true
-                                d.population = 0
-                                that.Counts--;
-                                that.AddDeadList(d.ExtinctTime.getFullYear(), d.name)
-                            }else{
-
-                                d.population -= d.ExtinctSpeed * that.TimeMachine / 1000
-                            }
-                        }
+                        handle(d)
                     })
                 }
         }
@@ -380,7 +376,7 @@ charts.loadButton = function(){
 }
 
 charts.requestAnimationFrame = function(){
-    this.ms=50
+    this.ms=5
     this.run()
 }
 
@@ -455,7 +451,7 @@ charts.on = function(Vue, CONTINENT_Data){
     that.CONTINENT_Data = CONTINENT_Data;
     that.fns = [];
     that.Counts = Vue.Counts;
-    that.DateNow = new Date(1849,1,1);
+    that.DateNow = new Date(1500,1,1);
     that.TimeMachine = 1000 *60 *60 *24 *365;
     
     d3.json("../../static/map.json").then(world=>{
