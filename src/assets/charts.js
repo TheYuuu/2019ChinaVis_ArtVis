@@ -376,7 +376,7 @@ charts.loadButton = function(){
 }
 
 charts.requestAnimationFrame = function(){
-    this.ms=5
+    this.ms=1
     this.run()
 }
 
@@ -391,9 +391,9 @@ charts.run = function(){
         //     clearInterval(this.AnimationFrame);
         //     alert(that.DateNow)
         // }
-        if (that.DateNow.getFullYear()>=1950){
+        if (that.DateNow.getFullYear()>=1800){
             clearInterval(this.AnimationFrame);
-            that.ms=10
+            that.ms=100
             that.run()
         }
         if (that.DateNow.getFullYear()>=2000){
