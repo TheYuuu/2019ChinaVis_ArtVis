@@ -5,13 +5,36 @@ var init = function(){
     let step = width/100;
     var autoR;
     var Description = [];
-    Description.push({
+    Description.push(
+        {
+            localtype:'earth',
+            local: [47.3,29.4],
+            name:'People_In_Need_of_Water',
+            lineLocal:[
+                [8,30],
+                [13,30]
+            ],
+            decline:{
+                lastRecord:{
+                    number:1268764722.8,
+                    year:1970
+                },
+                danwei:"",
+                speed:1.4
+            },
+            text:""
+        },{
         localtype:'earth',
         local: [44.071469, 24.456169],
         name:'Oil_Left',
         lineLocal:[
+<<<<<<< HEAD
             [6,25],
             [9,25]
+=======
+            [10,15],
+            [15,15]
+>>>>>>> 01f433015fdd40f62b56f53033222f1164966a37
         ],
         decline:{
             lastRecord:{
@@ -72,7 +95,8 @@ var init = function(){
             danwei:"",
             speed: -0.00001
         }
-    },{
+    },
+    {
         localtype:'Entire',
         local: [width/2 - step*10, height/2 - step*20],
         name:'SO2',
@@ -145,8 +169,8 @@ var init = function(){
         local: [width/2 - step*3, height/4*3 - step*3],
         name:'People',
         lineLocal:[
-            [-22,10],
-            [-33,10]
+            [-22,7],
+            [-33,7]
         ],
         decline:{
             lastRecord:{
@@ -155,23 +179,6 @@ var init = function(){
             },
             danwei:"",
             speed:0.4301
-        },
-        text:""
-    },{
-        localtype:'Entire',
-        local: [width/2 - step*2, height/4*3 - step*3],
-        name:'People_In_Need_of_Water',
-        lineLocal:[
-            [-10,15],
-            [-33,15]
-        ],
-        decline:{
-            lastRecord:{
-                number:1268764722.8,
-                year:1970
-            },
-            danwei:"",
-            speed:1.4
         },
         text:""
     })
