@@ -35,6 +35,12 @@ export default {
     }
   },
   methods:{
+    autoScroll(){
+      var div = document.getElementById("deadList")
+      setInterval(()=>{
+        div.scrollTop+=1;
+      },100)
+    },
     show_inf(d){
       this.$emit("show_inf",d)
     },
@@ -67,10 +73,7 @@ export default {
     }
   },        
   mounted() {
-    var div = document.getElementById("deadList")
-    setInterval(()=>{
-      div.scrollTop+=1;
-    },100)
+    this.autoScroll();
   }
 }
 </script>
@@ -103,8 +106,8 @@ export default {
 }
 
 .year_p{
-    display: block;
-    position: relative; 
+  display: block;
+  position: relative; 
 }
 
 .Extinct_title{

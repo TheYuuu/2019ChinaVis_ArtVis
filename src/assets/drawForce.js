@@ -97,7 +97,8 @@ var drawForce = function(CONTINENT){
                 }else{
                     return "none";
                 }
-            })           
+            })  
+            .attr("filter","#grayscale")         
             .attr("r", function(d) {
                 return d.radius;
               })

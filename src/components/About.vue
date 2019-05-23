@@ -3,13 +3,13 @@
   <transition name="fade">
     <div class="background"  id="background" v-show="show" @click="toggle($event)">
       <div class="about_con">
-        <h2 class="line1">Data source</h2>
+        <h2 class="line1 line">Data source</h2>
         <p v-for="(item,index) in dataSource" :key=index>{{item}}</p>
-        <h2 class="line2">Desinged and developed by</h2>
+        <h2 class="line2 line">Desinged and developed by</h2>
         <p v-for="(item) in madeby" :key=item.name>
           {{item.name}}: {{item.email}}
         </p>
-        <h2 class="line3">Project Github Address</h2>
+        <h2 class="line3 line">Project Github Address</h2>
         <p><a href="https://github.com/Ly2zzZ/2019ChinaVis_ArtVis"
         target="_blank">https://github.com/Ly2zzZ/2019ChinaVis_ArtVis</a></p>
       </div>
@@ -115,55 +115,37 @@ export default {
     opacity: 0
 }
 
-.line1:before, .line1:after {
+.line{
+  display: block;
+  position: relative; 
+}
+
+.line:before, .line:after {
     content: '';
     position: absolute;
-    top: 28px;
+    top: 52%;
     background: #494949;
-    width: 80px;
     height: 1px;
 }
 
-.line1:before{
-    left: 10%;
+.line:before{
+    left: 2%;
 }
 
-.line1:after {
-    right: 10%;
+.line:after {
+    right: 2%;
+}
+
+
+.line1:before, .line1:after {
+    width: 29%
 }
 
 .line2:before, .line2:after {
-    content: '';
-    position: absolute;
-    top: 187.047px;;
-    background: #494949;
-    width: 20.875px;
-    height: 1px;
+    width: 9%;
 }
-
-.line2:before{
-    left: 10%;
-}
-
-.line2:after {
-    right: 10%;
-}
-
 
 .line3:before, .line3:after {
-    content: '';
-    position: absolute;
-    top: 282.578px;
-    background: #494949;
-    width: 41.75px;
-    height: 1px;
-}
-
-.line3:before{
-    left: 10%;
-}
-
-.line3:after {
-    right: 10%;
+    width: 15%;
 }
 </style>

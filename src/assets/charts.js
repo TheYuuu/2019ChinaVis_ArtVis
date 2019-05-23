@@ -305,7 +305,7 @@ charts.CONTINENT_Data_change = function(){
                 }else{
                     let y = Math.floor(+(that.DateNow - new Date(d.date))/1000/60/60/24/365)
                     if ( +(that.DateNow - new Date(d.date)) >= 1000*60*60*24*365 && d.populationNow >= 1 ){
-                        d.populationNow = d.population - d.ExtinctSpeed * d.populationNow * y;
+                        d.populationNow = (d.population - d.ExtinctSpeed * d.populationNow * y).toFixed(4);
                         if (d.populationNow<1){
                             d.populationNow=0;
                         }
@@ -396,7 +396,7 @@ charts.run = function(){
         if (that.DateNow.getFullYear()>=1800 && !that.backTime1800){
             clearInterval(this.AnimationFrame);
             that.backTime1800 = true
-            that.ms=100
+            that.ms=50
             that.run()
         }
         if (that.DateNow.getFullYear()>=2000 && !that.backTime2000){
