@@ -12,7 +12,6 @@ charts.deleteanimals = function(type){
     const earththsvg = this.earththsvg
     const projection = this.projection
     const that = this
-    
     if(that[type].count.length !=0){
         that[type].count.pop()
         earththsvg
@@ -21,6 +20,7 @@ charts.deleteanimals = function(type){
             .exit()
             .transition()
             .duration(1000)
+            .style("font-size", "40px")
             .attr("opacity",0)
             .remove()
     }
@@ -40,10 +40,12 @@ charts.drawanimals = function(local,symbol){
         .html(symbol)
         .attr("x", function(d){ return projection([d.long, d.lat])[0] })
         .attr("y", function(d){ return projection([d.long, d.lat])[1] })
+        .style("font-size", "40px")
         .attr("opacity",0)
         .transition()
         .duration(1000)
         .attr("opacity",1)
+        .style("font-size", "12px")
 
     } else if(local instanceof Object){
         earththsvg
@@ -55,10 +57,12 @@ charts.drawanimals = function(local,symbol){
         .html(symbol)
         .attr("x", function(d){ return projection([d["long"], d["lat"]])[0] })
         .attr("y", function(d){ return projection([d["long"], d["lat"]])[1] })
+        .style("font-size", "40px")
         .attr("opacity",0)
         .transition()
         .duration(1000)
         .attr("opacity",1)
+        .style("font-size", "12px")
     }
 }
 
@@ -180,23 +184,37 @@ charts.counting = function(obj){
     const that = this;
     var text;
     var danwei;
-
+    var typeName;
     return function(){
         if(obj.isAir){
             text = d3.select('.' + obj.name).text().split(":");
             danwei = text[1].split(" ")
+            if (danwei[0]<=0 && obj.obj.decline.lastRecord.number != 0)
+                return
             if (obj.obj.decline != undefined){
                 //return local[i].name + ":" + local[i].decline.lastRecord.number + " " + local[i].decline.danwei;
                 danwei[0] = +danwei[0] + obj.obj.decline.speed * that.TimeMachine / 1000
+            if (danwei[0]<=0  && obj.obj.decline.lastRecord.number != 0)
+                danwei[0]=0
             }
-            text = d3.select('.' + obj.name).html(text[0] + ":" + danwei[0] + " " + danwei[1])
+
+            text = d3.select('.' + obj.name).html(text[0] + ":" + danwei[0].toFixed(4) + " " + danwei[1])
+            
+            typeName = obj["name"].split("inf_")[1]
+            that.TypeCount[typeName] = danwei[0]
         }
         else{
             text = d3.select('.' + obj.data).text().split(" ");
+            if (text[0]<=0  && obj.obj.decline.lastRecord.number != 0)
+                return
             if (obj.obj.decline != undefined){
                 text[0] = +text[0] + obj.obj.decline.speed * that.TimeMachine / 1000
+                if (text[0]<=0  && obj.obj.decline.lastRecord.number != 0)
+                    text[0]=0
             }
-            d3.select('.' + obj.data).html(text[0] + " " + text[1])
+            d3.select('.' + obj.data).html(text[0].toFixed(4) + " " + text[1])
+            typeName = obj["name"].split("inf_")[1]
+            that.TypeCount[typeName] = text[0]
         }
     }
 }
@@ -363,6 +381,26 @@ charts.addFrameEvent = function(fn){
     }
 }
 
+charts.addLegend = function(){
+    const that = this
+    d3.select("#earth_svg")
+        .selectAll("legend")
+        .data(that.legend)
+        .enter()
+        .append("text")
+        .attr('class', 'legend')
+        .html(function(d){
+            return d.code + " " + d.unit + "<br/>"
+        })
+        .attr("x", function(d,i){ return 600 })
+        .attr("y", function(d,i){ return i*25 + 800 })
+        .attr("opacity",0)
+        .transition()
+        .duration(1000)
+        .attr("opacity",1)
+        .style("font-size", "14px")
+}
+
 charts.loadButton = function(){
     const that = this;
 
@@ -423,13 +461,42 @@ charts.run = function(){
             that.run()
         }
 
-        //that.bear
+
+        let now_wild_forest = Math.floor(that.TypeCount["Wild_Forest"]),
+            past_wild_forest = that.lastDelete["Wild_Forest"]
+        if(that.TypeCount["Wild_Forest"] != undefined 
+            && now_wild_forest % 3 == 0
+            && now_wild_forest != past_wild_forest){
+                let times = (past_wild_forest - now_wild_forest) / 3
+                that.lastDelete["Wild_Forest"] = now_wild_forest
+                for(let i=0;i<times;i++){
+                    charts.deleteanimals("tree")
+                }
+                
+        }
+        /*
+        let wild_forest_percentage = +d3.select('.data_Wild_Forest').text().split(".")[0]
+        console.log(ild_forest_percentage)
+        if(wild_forest_percentage % 3 == 0){
+            charts.deleteanimals("tree")
+        }
+        */
+        
+
         if(that.bear.reduce[that.DateNow.getFullYear()]!=undefined){
             for(let i=0; i<that.bear.reduce[that.DateNow.getFullYear()]; i++){
+                
                 charts.deleteanimals("bear")
             }
         }
 
+        //tree
+        if(that.tree.reduce[that.DateNow.getFullYear()]!=undefined){
+            for(let i=0; i<that.tree.reduce[that.DateNow.getFullYear()]; i++){
+                //charts.deleteanimals("tree")
+            }
+        }
+        
         if(that.population[that.DateNow.getFullYear()]!=undefined
             && that.population[that.DateNow.getFullYear()].length!=0){
                 that.population[that.DateNow.getFullYear()].map(d => {
@@ -467,6 +534,12 @@ charts.on = function(Vue, CONTINENT_Data){
             {long: 133.176260, lat: 41.141973},
         ];
         */
+
+        that.legend = [
+            {"name": "bear", "unit": "5,000", "code": "&#128059 Population of polar bear: "},
+            {"name": "tree", "unit": "3%", "code": "&#127795 Percent of wild forests left: "},
+            {"name": "people", "unit": "500,000,000", "code": "&#128694 Population around the world: "}
+        ]
         that.bear = {
             count: [
                 {long: -10.0000, lat: 90.0000, type:"bear"},
@@ -479,7 +552,50 @@ charts.on = function(Vue, CONTINENT_Data){
                 "2007": 1
             }
         }
+
+        that.tree = {
+            //3%
+            count: [
+                {long:159.749538, lat:55.582954 , type:"tree"},//Asia
+                {long:135.057732 , lat:63.062483, type:"tree"},//Asia
+                {long:116.084791 , lat:41.326644 , type:"tree"},//Asia
+                {long:94.774701 , lat:35.235501 , type:"tree"},//Asia
+                {long:97.707156 , lat:24.088490 , type:"tree"},//Asia
+                {long:109.331901 , lat:24.319681, type:"tree"},//Asia
+                {long:72.322768 , lat:27.135527 , type:"tree"},//Asia
+                {long:22.636679 , lat:49.831924, type:"tree"}, //Asia
+                {long:52.751984 , lat:62.820094 , type:"tree"}, //Asia
+                {long:8.485339 , lat:47.518421 , type:"tree"},//Eur
+                {long:-4.985585 , lat:39.252141 , type:"tree"}, //Eur
+                {long:14.583780 , lat:51.850822 , type:"tree"}, //Eur
+                {long:13.428332 , lat:62.554330 , type:"tree"}, //Eur
+                {long:14.533609 , lat:2.651325 , type:"tree"}, //Eur
+                {long:20.164437 , lat:2.179529, type:"tree"}, //Afr
+                {long:28.491501 , lat:0.559533 , type:"tree"}, //Afr
+                {long:1.633598 , lat:18.807416, type:"tree"}, //Afr
+                {long:21.758628 , lat:-15.882557, type:"tree"}, //Afr
+                {long:34.632831 , lat:14.902828, type:"tree"}, //Afr
+                {long:-127.685968 , lat:58.428542,  type:"tree"}, //Nor A
+                {long:-117.218823 , lat:57.854885 , type:"tree"}, //Nor A
+                {long:-105.250433 , lat:55.714486 , type:"tree"}, //Nor A
+                {long:-85.036680 , lat:51.682161 , type:"tree"}, //Nor A
+                {long:-82.366583 , lat:37.850611 , type:"tree"}, //Nor A
+                {long:-118.036795 , lat:43.764984, type:"tree"}, //Nor A
+                {long:-65.736107 , lat:3.930499, type:"tree"}, //Sou A
+                {long:-68.193071 , lat:-8.215564 , type:"tree"}, //Sou A
+                {long:-61.534837 , lat:-31.201328, type:"tree"}, //Sou A
+                {long:-49.554814 , lat:-6.472938, type:"tree"}, //Sou A
+                {long:141.551504 , lat:-28.363542 , type:"tree"}, //Aus
+                {long:123.204025 , lat:-25.225526, type:"tree"}, //Aus
+            ],
+            reduce:{}
+        }
         
+        //init tree reduce
+        for(let i=0; i<that.tree.count.length; i++){
+            let year = 1954 + i * 3
+            that.tree.reduce[year] = 1
+        }
 
         /*
         var Pollutionlocal = [
@@ -489,9 +605,8 @@ charts.on = function(Vue, CONTINENT_Data){
             {long: 90.185509, lat: -21.263971},
         ];
         */
-
-
         that.population = {
+            //50 billion
             "1850": [
                 {long:110, lat:45, year: 1850, type:"population"}, //Asia
                 {long:14.431588 , lat: 49.801038, year: 1850, type:"population"}, //Eur 741,447,158
@@ -536,15 +651,15 @@ charts.on = function(Vue, CONTINENT_Data){
         charts.drawanimals(that.bear.count,'&#128059');
         //charts.drawanimals(Pollutionlocal,'&#x2622');
         //charts.drawanimals(Population, '&#128694')
+        charts.drawanimals(that.tree.count.sort(() => Math.random() -0.5 ), '&#127795')
 
         const projection = that.projection
         const Description = that.Description
         
         charts.addEvents()
-
         charts.Air_change()
         charts.Ozonosphere_change()
-
+        charts.addLegend()
         charts.addFrameEvent([
                 charts.earthMove(projection,that.svg,that.path),
                 charts.CONTINENT_Data_change(),

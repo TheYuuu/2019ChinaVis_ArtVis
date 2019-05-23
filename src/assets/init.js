@@ -10,8 +10,8 @@ var init = function(){
         local: [44.071469, 24.456169],
         name:'Oil_Left',
         lineLocal:[
-            [20,-4],
-            [23,-4]
+            [15,25],
+            [17,25]
         ],
         decline:{
             lastRecord:{
@@ -20,7 +20,8 @@ var init = function(){
             },
             danwei:"barrels",
             speed:-1000
-        }
+        },
+        text:""
     },{
         localtype:'earth',
         local: [3.4653, 62.2159],
@@ -31,12 +32,13 @@ var init = function(){
         ],
         decline:{
             lastRecord:{
-                number:73.42009113,
-                year:1990
+                number:97.07209113,
+                year:1975
             },
             danwei:"%",
             speed:-0.00000005
-        }
+        },
+        text:""
     },{
         localtype:'earth',
         local: [-133.611696, -26.201145],
@@ -52,6 +54,23 @@ var init = function(){
             },
             danwei:"mm",
             speed:0.0000001
+        },
+        text:""
+    },{
+        localtype:'earth',
+        local: [20, 90],
+        name: 'Polar_Bear',
+        lineLocal:[
+            [15,-10],
+            [20,-10]
+        ],
+        decline:{
+            lastRecord:{
+                number:21420,
+                year:2005
+            },
+            danwei:"",
+            speed: -0.00001
         }
     },{
         localtype:'Entire',
@@ -68,7 +87,8 @@ var init = function(){
             },
             danwei:"kg",
             speed:0.000188
-        }
+        },
+        text:""
     },{
         localtype:'Entire',
         local: [width/2 - step*10, height/2 - step*20],
@@ -84,7 +104,8 @@ var init = function(){
             },
             danwei:"ppm",
             speed:0.00000005
-        }
+        },
+        text:""
     },{
         localtype:'Entire',
         local: [width/2 - step*10, height/2 - step*20],
@@ -100,7 +121,8 @@ var init = function(){
             },
             danwei:"ppb",
             speed:-0.000000058
-        }
+        },
+        text:""
     },{
         localtype:'Entire',
         local: [width/2, height/4 - step],
@@ -116,7 +138,8 @@ var init = function(){
             },
             danwei:"km2",
             speed:0.0164
-        }
+        },
+        text:""
     },{
         localtype:'Entire',
         local: [width/2 - step*3, height/4*3 - step*3],
@@ -132,7 +155,8 @@ var init = function(){
             },
             danwei:"",
             speed:4.45
-        }
+        },
+        text:""
     },{
         localtype:'Entire',
         local: [width/2 - step*2, height/4*3 - step*3],
@@ -148,12 +172,20 @@ var init = function(){
             },
             danwei:"",
             speed:1.4
-        }
+        },
+        text:""
     })
+
+    this.TypeCount = {}
+    this.lastDelete = {}
     this.Description_Map = {};
     Description.map( d => {
         if (that.Description_Map[d.decline.lastRecord.year] == undefined){
             that.Description_Map[d.decline.lastRecord.year]=[];
+        }
+        if(that.TypeCount[d.name] == undefined){
+            that.TypeCount[d.name] = d.decline.lastRecord.number
+            that.lastDelete[d.name] = d.decline.lastRecord.number
         }
         that.Description_Map[d.decline.lastRecord.year].push(d)
         // var oldTime = new Date(d.decline.lastRecord.year, 1, 1)
@@ -164,6 +196,7 @@ var init = function(){
     this.width = width;
     this.height = height;
     this.Description = Description;
+    
 }
 
 module.exports = init;
