@@ -26,7 +26,7 @@ export default {
         words:[
           "Hello, this is a website to show you the dirty earth.",
           "You wanna see",
-          "What's going on since Industrial Revolution?",
+          "What's going on after Industrial Revolution?",
           "Yes?",
           "Well...",
           "...",
