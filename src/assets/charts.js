@@ -382,6 +382,10 @@ charts.addFrameEvent = function(fn){
 
 charts.addLegend = function(){
     const that = this
+    const width = this.width
+    const height = this.height
+    const step = this.step
+
     d3.select("#earth_svg")
         .selectAll("legend")
         .data(that.legend)
@@ -391,8 +395,8 @@ charts.addLegend = function(){
         .html(function(d){
             return d.code + " " + d.unit + "<br/>"
         })
-        .attr("x", function(d,i){ return 600 })
-        .attr("y", function(d,i){ return i*25 + 800 })
+        .attr("x", function(d,i){ return 0 + 2*step })
+        .attr("y", function(d,i){ return i*25 + height - 10*step })
         .attr("opacity",0)
         .transition()
         .duration(1000)
@@ -460,7 +464,6 @@ charts.run = function(){
             that.loadButton();
             that.run()
         }
-
 
         let now_wild_forest = Math.floor(that.TypeCount["Wild_Forest"]),
             past_wild_forest = that.lastDelete["Wild_Forest"]
@@ -549,7 +552,11 @@ charts.on = function(Vue, CONTINENT_Data){
                 {long: 60.0000, lat: 90.0000, type:"bear"}
             ],
             reduce:{
-                "2007": 1
+                "2007": 1,
+                '2023':1,
+                '2039':1,
+                '2055':1,
+                '2071':1,
             }
         }
 
