@@ -45,7 +45,7 @@ export default {
           "The population is expanding",
           "......",
           "Finally, click on each state",
-          "to see that it has regional endangered species."
+          "to see that its regional endangered species."
         ]
       }
   },
@@ -96,6 +96,7 @@ export default {
   height: 100vh;
   padding: 20px;
   float: left;
+  overflow: auto;
 }
 
 @keyframes cursor { 

@@ -45,7 +45,7 @@ charts.init = function(){
         name:'Sea_Level',
         lineLocal:[
             [-10,10],
-            [-25,10]
+            [-30,10]
         ],
         decline:{
             lastRecord:{
@@ -105,11 +105,11 @@ charts.init = function(){
         }
     },{
         localtype:'Entire',
-        local: [width/2, height/4*3 + step],
+        local: [width/2, height/4 - step],
         name:'Ozonosphere_Hole',
         lineLocal:[
-            [9,5],
-            [15,5]
+            [9,-5],
+            [15,-5]
         ],
         decline:{
             lastRecord:{
@@ -748,7 +748,7 @@ charts.CONTINENT_Data_change = function(){
 
 charts.Air_change = function(){
     d3.select(".satic-area")
-    .style("transition","all 10s")
+    .style("transition","all 35s")
     .style("background","#8080806b")
 }
 
@@ -756,8 +756,8 @@ charts.Ozonosphere_change = function(){
     const height = this.height;
     d3.select("#ozone_shield")
     .transition()
-    .duration(20000)
-    .attr("cy",height/2)
+    .duration(35000)
+    .attr("cy",height/10)
 }
 
 charts.RefreshTime = function(){
@@ -806,17 +806,18 @@ charts.requestAnimationFrame = function(){
                 run(that)
             }
             if (that.DateNow.getFullYear()>=new Date().getFullYear()-1  && !that.backTime){
-                clearInterval(this.AnimationFrame);
+                clearInterval(this.AnimationFrame)
                 that.ms=1
-                that.TimeMachine = 1000*60*60*24;
+                that.TimeMachine = 1000*60*60*24
                 run(that)
             }
             if (that.DateNow >=new Date() && !that.backTime){
-                clearInterval(this.AnimationFrame);
-                that.backTime = true;
+                clearInterval(this.AnimationFrame)
+                that.backTime = true
                 that.DateNow = new Date()
                 that.ms=1000
-                that.TimeMachine = 1000;
+                that.TimeMachine = 1000
+                that.showWords2()
                 run(that)
             }
 

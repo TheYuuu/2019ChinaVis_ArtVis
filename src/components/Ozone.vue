@@ -27,6 +27,7 @@ export default {
       .attr("cy",0)
       .attr("r",width/4+50)
       .attr("fill","white")
+      .attr('filter',"url(#f1)")
     
     // var nodes = d3.range(10).map(function(d, i) {
     //     return { name: i, radius: 30};

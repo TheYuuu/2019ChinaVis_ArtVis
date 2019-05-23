@@ -104,6 +104,8 @@ export default {
   bottom: 0;
   right: 0;
   margin: auto;
+  border-left:1px solid lavender;
+  border-right:1px solid lavender;
 }
 
 #projection-menu {
