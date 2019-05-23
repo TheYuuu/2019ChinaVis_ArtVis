@@ -791,6 +791,10 @@ charts.requestAnimationFrame = function(){
             that.fns.forEach(d=>{
                 d()
             })
+            // if (that.Counts<=0){
+            //     clearInterval(this.AnimationFrame);
+            //     alert(that.DateNow)
+            // }
             if (that.DateNow.getFullYear()>=1950){
                 clearInterval(this.AnimationFrame);
                 that.ms=100
@@ -805,15 +809,6 @@ charts.requestAnimationFrame = function(){
                 clearInterval(this.AnimationFrame);
                 that.ms=1
                 that.TimeMachine = 1000*60*60*24;
-                run(that)
-            }
-            if (that.DateNow>=new Date() && !that.backTime){
-                that.backTime = true
-                clearInterval(this.AnimationFrame)
-                that.DateNow = new Date()
-                that.ms=1000
-                that.TimeMachine = 1000;
-                that.showWords2();
                 run(that)
             }
 
