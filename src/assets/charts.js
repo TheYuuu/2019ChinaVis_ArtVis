@@ -25,22 +25,6 @@ charts.init = function(){
         }
     },{
         localtype:'earth',
-        local: [20, 90],
-        name: 'Polar_Bear',
-        lineLocal:[
-            [15,-15],
-            [20,-15]
-        ],
-        decline:{
-            lastRecord:{
-                number:32457.6,
-                year:1970
-            },
-            danwei:"",
-            speed: -0.00001
-        }
-    },{
-        localtype:'earth',
         local: [3.4653, 62.2159],
         name:'Wild_Forest',
         lineLocal:[
@@ -270,19 +254,58 @@ charts.drawEarth = function(world){
     this.path = path;
 }
 
+charts.deleteanimals = function(type){
+    const earththsvg = this.earththsvg
+    const projection = this.projection
+    const that = this
+    
+    if(that[type].count.length !=0){
+        that[type].count.pop()
+        earththsvg
+            .selectAll('.' + type)
+            .data(that[type].count)
+            .exit()
+            .transition()
+            .duration(1000)
+            .attr("opacity",0)
+            .remove()
+    }
+}
+
 charts.drawanimals = function(local,symbol){
     const earththsvg = this.earththsvg
     const projection = this.projection
 
-    earththsvg
-    .selectAll("animals")
-    .data(local)
-    .enter()
-    .append("text")
-    .attr('class','animals object')
-    .html(symbol)
-    .attr("x", function(d){ return projection([d.long, d.lat])[0] })
-    .attr("y", function(d){ return projection([d.long, d.lat])[1] })
+    if(local instanceof Array){
+        earththsvg
+        .selectAll("animals")
+        .data(local)
+        .enter()
+        .append("text")
+        .attr('class', function(d){ return 'animals object ' + d.type})
+        .html(symbol)
+        .attr("x", function(d){ return projection([d.long, d.lat])[0] })
+        .attr("y", function(d){ return projection([d.long, d.lat])[1] })
+        .attr("opacity",0)
+        .transition()
+        .duration(1000)
+        .attr("opacity",1)
+
+    } else if(local instanceof Object){
+        earththsvg
+        .selectAll("animals")
+        .data([local])
+        .enter()
+        .append("text")
+        .attr('class', function(d){ return 'animals object ' + d.type})
+        .html(symbol)
+        .attr("x", function(d){ return projection([d["long"], d["lat"]])[0] })
+        .attr("y", function(d){ return projection([d["long"], d["lat"]])[1] })
+        .attr("opacity",0)
+        .transition()
+        .duration(1000)
+        .attr("opacity",1)
+    }
 }
 
 charts.addDescription = function(obj){
@@ -793,6 +816,21 @@ charts.requestAnimationFrame = function(){
                 that.showWords2();
                 run(that)
             }
+
+            //that.bear
+            if(that.bear.reduce[that.DateNow.getFullYear()]!=undefined){
+                for(let i=0; i<that.bear.reduce[that.DateNow.getFullYear()]; i++){
+                    charts.deleteanimals("bear")
+                }
+            }
+
+            if(that.population[that.DateNow.getFullYear()]!=undefined
+                && that.population[that.DateNow.getFullYear()].length!=0){
+                    that.population[that.DateNow.getFullYear()].map(d => {
+                        charts.drawanimals(d, '&#128694')
+                    })
+                }
+
             if (that.Description_Map[that.DateNow.getFullYear()]!=undefined 
                 && that.Description_Map[that.DateNow.getFullYear()].length!=0){
                 while(that.Description_Map[that.DateNow.getFullYear()].length){
@@ -807,8 +845,8 @@ charts.on = function(Vue, CONTINENT_Data){
     const that = this;
     that.PicView = Vue.$refs.ViewPic;
     that.AddDeadList = Vue.AddDeadList;
+    
     that.showWords2 = Vue.showWords2;
-
     that.CONTINENT_Data = CONTINENT_Data;
     that.fns = [];
     that.Counts = Vue.Counts;
@@ -824,14 +862,19 @@ charts.on = function(Vue, CONTINENT_Data){
             {long: 133.176260, lat: 41.141973},
         ];
         */
-
-        var Bearlocal = [
-            {long: -10.0000, lat: 90.0000},
-            {long: -20.0000, lat: 90.0000},
-            {long: 20.0000, lat: 90.0000},
-            {long: 40.0000, lat: 90.0000},
-            {long: 60.0000, lat: 90.0000},
-        ];
+        that.bear = {
+            count: [
+                {long: -10.0000, lat: 90.0000, type:"bear"},
+                {long: -20.0000, lat: 90.0000, type:"bear"},
+                {long: 20.0000, lat: 90.0000, type:"bear"},
+                {long: 40.0000, lat: 90.0000, type:"bear"},
+                {long: 60.0000, lat: 90.0000, type:"bear"}
+            ],
+            reduce:{
+                "2007": 1
+            }
+        }
+        
 
         /*
         var Pollutionlocal = [
@@ -842,31 +885,52 @@ charts.on = function(Vue, CONTINENT_Data){
         ];
         */
 
-        var Population = [
-            {long:110, lat:45}, //Asia 
-            {long:100, lat:34.841334}, //Asia 
-            {long:80 , lat:34.841334}, //Asia
-            {long:60 , lat:34.841334}, //Asia
-            {long:90, lat:40}, //Asia 
-            {long:70, lat:40}, //Asia
-            {long:90, lat:30}, //Asia 
-            {long:70, lat:30}, //Asia 
-            {long:55, lat:45}, //Asia 
-            {long:14.431588 , lat: 49.801038}, //Eur 741,447,158
-            {long:-102.595203 , lat: 46.434343}, // North Amer
-            {long:-65.189542 , lat: -8.105085}, //South Amer
-            {long:20.465635 , lat: 12.314046}, //Afr
-            {long:15.465635 , lat: -12.314046}, //Afr
-            {long:134.581813 , lat: -25.627986} //Oceania
-        ];
+
+        that.population = {
+            "1850": [
+                {long:110, lat:45, year: 1850, type:"population"}, //Asia
+                {long:14.431588 , lat: 49.801038, year: 1850, type:"population"}, //Eur 741,447,158
+                {long:-102.595203 , lat: 46.434343, year: 1850, type:"population"}, // North Amer
+                {long:-65.189542 , lat: -8.105085, year: 1850, type:"population"}, //South Amer
+                {long:20.465635 , lat: 12.314046, year: 1850, type:"population"}, //Afr
+                {long:134.581813 , lat: -25.627986, year: 1850, type:"population"} //Oceania
+            ],
+            "1950": [
+                {long:100, lat:34.841334, year: 1950, type:"population"}, //Asia 
+                {long:80 , lat:34.841334, year: 1950, type:"population"}, //Asia
+            ],
+            "1960":[
+                {long:60 , lat:34.841334, year: 1960, type:"population"}, //Asia
+            ],
+            "1970":[
+                {long:90, lat:40, year: 1970, type:"population"} //Asia
+            ],
+            "1980":[
+                {long:70, lat:40, year: 1980, type:"population"}, //Asia
+            ],
+            "1990":[
+                {long:90, lat:30, year: 1990, type:"population"}, //Asia 
+                {long:5.431588 , lat: 49.801038, year: 1990, type:"population"}, //Eur 741,447,158
+                {long:15.465635 , lat: -12.314046, year: 1990, type:"population"}, //Afr
+            ],
+            "2000":[
+                {long:70, lat:30, year: 2000, type:"population"}, //Asia 
+                {long:-92.595203 , lat: 46.434343, year: 2000, type:"population"} // North Amer
+            ],
+            "2010":[
+                {long:55, lat:45, year: 2010, type:"population"}, //Asia
+                {long:20.465635 , lat: -22.314046, year: 2010, type:"population"} //Afr
+            ]
+
+        }
 
         charts.init()
         charts.drawEarth(world);
 
         //charts.drawanimals(Whalelocal,'&#128011');
-        charts.drawanimals(Bearlocal,'&#128059');
+        charts.drawanimals(that.bear.count,'&#128059');
         //charts.drawanimals(Pollutionlocal,'&#x2622');
-        charts.drawanimals(Population, '&#128694')
+        //charts.drawanimals(Population, '&#128694')
 
         const projection = that.projection
         const Description = that.Description
