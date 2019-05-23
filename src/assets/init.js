@@ -10,8 +10,8 @@ var init = function(){
         local: [44.071469, 24.456169],
         name:'Oil_Left',
         lineLocal:[
-            [15,25],
-            [17,25]
+            [6,25],
+            [9,25]
         ],
         decline:{
             lastRecord:{
@@ -150,11 +150,11 @@ var init = function(){
         ],
         decline:{
             lastRecord:{
-                number:3700000000,
-                year:2019
+                number:585000000,
+                year:1501
             },
             danwei:"",
-            speed:4.45
+            speed:0.4301
         },
         text:""
     },{
@@ -188,9 +188,6 @@ var init = function(){
             that.lastDelete[d.name] = d.decline.lastRecord.number
         }
         that.Description_Map[d.decline.lastRecord.year].push(d)
-        // var oldTime = new Date(d.decline.lastRecord.year, 1, 1)
-        // var curTime = new Date()
-        // d.decline.lastRecord.number = d.decline.lastRecord.number + (curTime - oldTime) * d.decline.speed /1000
     })
     this.step = step;
     this.width = width;

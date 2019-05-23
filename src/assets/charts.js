@@ -169,15 +169,6 @@ charts.addDescription = function(obj){
         airposition:airList.indexOf(obj.name),
         obj:obj
     }))
-    //     counting.push({
-    //         name:"inf_" + obj.name,
-    //         data:"data_" + obj.name,
-    //         isAir:isAir,
-    //         airposition:airList.indexOf(obj.name),
-    //         obj:obj
-    //     })
-    // console.log(counting)
-    // return counting;
 }
 
 charts.counting = function(obj){
@@ -225,7 +216,6 @@ charts.earthMove = function(projection,svg,path){
     return function(){
         const earth = that.earththsvg
         const Description = that.Description
-        // console.log(that)
         ro+=0.15;
         projection.rotate([ro,0]);
         svg.selectAll("path.block").attr("d", path);
@@ -252,7 +242,6 @@ charts.addEvents = function(){
     const height = this.height;
 
     svg.selectAll('.block').on('click',function(d){
-        console.log(d)
 
         svg.append("rect")
         .attr("x",0)
@@ -392,7 +381,7 @@ charts.addLegend = function(){
             return d.code + " " + d.unit + "<br/>"
         })
         .attr("x", function(d,i){ return 600 })
-        .attr("y", function(d,i){ return i*25 + 800 })
+        .attr("y", function(d,i){ return i*25 + 950 })
         .attr("opacity",0)
         .transition()
         .duration(1000)
@@ -472,37 +461,35 @@ charts.run = function(){
                 for(let i=0;i<times;i++){
                     charts.deleteanimals("tree")
                 }
-                
         }
-        /*
-        let wild_forest_percentage = +d3.select('.data_Wild_Forest').text().split(".")[0]
-        console.log(ild_forest_percentage)
-        if(wild_forest_percentage % 3 == 0){
-            charts.deleteanimals("tree")
-        }
-        */
         
 
         if(that.bear.reduce[that.DateNow.getFullYear()]!=undefined){
             for(let i=0; i<that.bear.reduce[that.DateNow.getFullYear()]; i++){
-                
                 charts.deleteanimals("bear")
             }
         }
 
-        //tree
-        if(that.tree.reduce[that.DateNow.getFullYear()]!=undefined){
-            for(let i=0; i<that.tree.reduce[that.DateNow.getFullYear()]; i++){
-                //charts.deleteanimals("tree")
-            }
+        let now_people = Math.floor(that.TypeCount["People"] / 500000000),
+            past_people = that.lastDelete["People"]
+
+        if(now_people != undefined 
+            && now_people != past_people){
+                let times;
+                if(past_people > now_people){
+                    times = 1
+                } else {
+                    times = now_people - past_people
+                }
+                that.lastDelete["People"] = now_people
+                for(let i=0;i<times;i++){
+                    let d = that.population[Math.floor(Math.random() * (that.population.length - 1))]
+                    d.long = d.long + (Math.random() * 8) - 2
+                    d.lat = d.lat + (Math.random() * 8) - 2
+                    charts.drawanimals(d, '&#128694')
+                }
         }
         
-        if(that.population[that.DateNow.getFullYear()]!=undefined
-            && that.population[that.DateNow.getFullYear()].length!=0){
-                that.population[that.DateNow.getFullYear()].map(d => {
-                    charts.drawanimals(d, '&#128694')
-                })
-            }
 
         if (that.Description_Map[that.DateNow.getFullYear()]!=undefined 
             && that.Description_Map[that.DateNow.getFullYear()].length!=0){
@@ -526,14 +513,6 @@ charts.on = function(Vue, CONTINENT_Data){
     that.TimeMachine = 1000 *60 *60 *24 *365;
     
     d3.json("../../static/map.json").then(world=>{
-        /*
-        var Whalelocal = [
-            {long: 139.485582, lat: 34.078783}, 
-            {long: 133.671016, lat: 36.170561}, 
-            {long: 143.372315, lat: 38.371926},
-            {long: 133.176260, lat: 41.141973},
-        ];
-        */
 
         that.legend = [
             {"name": "bear", "unit": "5,000", "code": "&#128059 Population of polar bear: "},
@@ -597,60 +576,31 @@ charts.on = function(Vue, CONTINENT_Data){
             that.tree.reduce[year] = 1
         }
 
-        /*
-        var Pollutionlocal = [
-            {long: 79.185509, lat: -21.263971},
-            {long: 85.185509, lat: -15.263971},
-            {long: 70.185509, lat: -25.263971},
-            {long: 90.185509, lat: -21.263971},
-        ];
-        */
-        that.population = {
-            //50 billion
-            "1850": [
+        that.population = [
                 {long:110, lat:45, year: 1850, type:"population"}, //Asia
                 {long:14.431588 , lat: 49.801038, year: 1850, type:"population"}, //Eur 741,447,158
                 {long:-102.595203 , lat: 46.434343, year: 1850, type:"population"}, // North Amer
                 {long:-65.189542 , lat: -8.105085, year: 1850, type:"population"}, //South Amer
                 {long:20.465635 , lat: 12.314046, year: 1850, type:"population"}, //Afr
-                {long:134.581813 , lat: -25.627986, year: 1850, type:"population"} //Oceania
-            ],
-            "1950": [
+                {long:134.581813 , lat: -25.627986, year: 1850, type:"population"}, //Oceania
                 {long:100, lat:34.841334, year: 1950, type:"population"}, //Asia 
                 {long:80 , lat:34.841334, year: 1950, type:"population"}, //Asia
-            ],
-            "1960":[
                 {long:60 , lat:34.841334, year: 1960, type:"population"}, //Asia
-            ],
-            "1970":[
-                {long:90, lat:40, year: 1970, type:"population"} //Asia
-            ],
-            "1980":[
+                {long:90, lat:40, year: 1970, type:"population"}, //Asia
                 {long:70, lat:40, year: 1980, type:"population"}, //Asia
-            ],
-            "1990":[
                 {long:90, lat:30, year: 1990, type:"population"}, //Asia 
                 {long:5.431588 , lat: 49.801038, year: 1990, type:"population"}, //Eur 741,447,158
                 {long:15.465635 , lat: -12.314046, year: 1990, type:"population"}, //Afr
-            ],
-            "2000":[
                 {long:70, lat:30, year: 2000, type:"population"}, //Asia 
-                {long:-92.595203 , lat: 46.434343, year: 2000, type:"population"} // North Amer
-            ],
-            "2010":[
+                {long:-92.595203 , lat: 46.434343, year: 2000, type:"population"}, // North Amer
                 {long:55, lat:45, year: 2010, type:"population"}, //Asia
                 {long:20.465635 , lat: -22.314046, year: 2010, type:"population"} //Afr
             ]
-
-        }
-
+        
         charts.init()
         charts.drawEarth(world);
 
-        //charts.drawanimals(Whalelocal,'&#128011');
         charts.drawanimals(that.bear.count,'&#128059');
-        //charts.drawanimals(Pollutionlocal,'&#x2622');
-        //charts.drawanimals(Population, '&#128694')
         charts.drawanimals(that.tree.count.sort(() => Math.random() -0.5 ), '&#127795')
 
         const projection = that.projection
