@@ -53,10 +53,10 @@ export default {
       d3.json("../static/data/finadata.json").then(d=>{
         for (let k in d){
           if (d[k].animals != undefined){
-            that.getExtincionTime(d[k].animals);
+            that.getExtinctionTime(d[k].animals);
           }
           if (d[k].plantes != undefined){
-            that.getExtincionTime(d[k].plantes);
+            that.getExtinctionTime(d[k].plantes);
           }
         }
         that.Counts = that.data.length;
@@ -73,10 +73,10 @@ export default {
     showWords2(){
       this.$emit('showWords2')
     },
-    getExtincionTime(arr){
+    getExtinctionTime(arr){
       const that = this;
       arr.forEach(item=>{
-        item.ExtincionTime = new Date(item.ExtincionTime)
+        item.ExtinctionTime = new Date(item.ExtinctionTime)
         item.date = new Date(item.date)
         item.populationNow = item.population
 

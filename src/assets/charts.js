@@ -297,15 +297,18 @@ charts.CONTINENT_Data_change = function(){
     return function (){
         var handle = function(d){
             if (!d.marked){
-                if (d.populationNow < 1 && that.DateNow >= d.ExtincionTime){
+                if (d.populationNow < 1 && that.DateNow >= d.ExtinctionTime){
                     d.marked = true
                     d.populationNow = 0
                     that.Counts--;
-                    that.AddDeadList(d.ExtincionTime.getFullYear(), d.name)
+                    that.AddDeadList(d.ExtinctionTime.getFullYear(), d.name)
                 }else{
                     let y = Math.floor(+(that.DateNow - new Date(d.date))/1000/60/60/24/365)
                     if ( +(that.DateNow - new Date(d.date)) >= 1000*60*60*24*365 && d.populationNow >= 1 ){
                         d.populationNow = d.population - d.ExtinctSpeed * d.populationNow * y;
+                        if (d.populationNow<1){
+                            d.populationNow=0;
+                        }
                     }
                 }
             }
@@ -369,7 +372,7 @@ charts.loadButton = function(){
 
     d3.select("#Speed-button").on("click",function(){
         clearInterval(that.AnimationFrame);
-        that.ms=500
+        that.ms=1
         that.TimeMachine = 1000 *60 *60 *24 *365;
         that.run()
     })
@@ -387,17 +390,18 @@ charts.run = function(){
         that.fns.forEach(d=>{
             d()
         })
-        // if (that.Counts<=0){
-        //     clearInterval(this.AnimationFrame);
-        //     alert(that.DateNow)
-        // }
-        if (that.DateNow.getFullYear()>=1800){
+        if (that.DateNow.getFullYear() == 2500){
             clearInterval(this.AnimationFrame);
+        }
+        if (that.DateNow.getFullYear()>=1800 && !that.backTime1800){
+            clearInterval(this.AnimationFrame);
+            that.backTime1800 = true
             that.ms=100
             that.run()
         }
-        if (that.DateNow.getFullYear()>=2000){
+        if (that.DateNow.getFullYear()>=2000 && !that.backTime2000){
             clearInterval(this.AnimationFrame);
+            that.backTime2000 = true
             that.ms=1000
             that.run()
         }
@@ -451,7 +455,7 @@ charts.on = function(Vue, CONTINENT_Data){
     that.CONTINENT_Data = CONTINENT_Data;
     that.fns = [];
     that.Counts = Vue.Counts;
-    that.DateNow = new Date(1500,1,1);
+    that.DateNow = new Date(2017,1,1);
     that.TimeMachine = 1000 *60 *60 *24 *365;
     
     d3.json("../../static/map.json").then(world=>{
