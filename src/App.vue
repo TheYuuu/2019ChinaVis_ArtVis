@@ -6,7 +6,7 @@
       <div class="time-block">
         <p class="title-time">What's going on after Industrial Revolution?</p>
         <p class="title-time" id="RunningTime">loading</p>
-        <button class="title-button" id="Speed-button">Speed Up</button>
+        <button class="title-button" id="Speed-button">Time Speed Up</button>
         <button class="title-button" id="Re-button" @click="reload()">Refresh</button>
         <button class="title-button" id="Ab-button">About</button>
       </div>
@@ -80,6 +80,7 @@ export default {
 
 html {
   font-size: calc(100vh / 65);
+  font-weight: bolder;
 }
 
 .content-box{

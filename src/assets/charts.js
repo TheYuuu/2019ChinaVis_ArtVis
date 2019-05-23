@@ -340,7 +340,7 @@ charts.Ozonosphere_change = function(){
     d3.select("#ozone_shield")
     .transition()
     .duration(35000)
-    .attr("cy",height/10)
+    .attr("cy",0)
 }
 
 charts.RefreshTime = function(){
@@ -552,7 +552,6 @@ charts.on = function(Vue, CONTINENT_Data){
         ])
 
         charts.requestAnimationFrame()
-        charts.loadButton();
     })
 }
 

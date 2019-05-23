@@ -65,7 +65,7 @@ export default {
     var div = document.getElementById("deadList")
     setInterval(()=>{
       div.scrollTop+=1;
-    },200)
+    },100)
   }
 }
 </script>
@@ -79,7 +79,7 @@ export default {
   float: right;
   font-size: 1.1rem;
   font-weight: bold;
-  transition: all 0.1s;
+  /* transition: all 0.1s; */
 }
 .list_div{
   width: 100%;
