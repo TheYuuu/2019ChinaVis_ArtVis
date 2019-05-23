@@ -25,20 +25,12 @@
 </template>
 
 <script>
-import { setTimeout } from 'timers';
+import { setTimeout, setInterval } from 'timers';
 export default {
   name: 'deadList',
   data:function(){
     return {
       list:[]
-    }
-  },
-  filters:{
-    myfilters(value){
-      console.log(value)
-      if (value!=undefined){
-        return value
-      }
     }
   },
   methods:{
@@ -70,15 +62,10 @@ export default {
     }
   },        
   mounted() {
-      // setTimeout(()=>{
-      //   this.insert(2020,'Test')
-      // },5000)
-      // setTimeout(()=>{
-      //   this.insert(2021,'Test')
-      // },6000)
-      // setTimeout(()=>{
-      //   this.insert(2022,'Test')
-      // },7000)
+    var div = document.getElementById("deadList")
+    setInterval(()=>{
+      div.scrollTop+=1;
+    },200)
   }
 }
 </script>
@@ -92,12 +79,12 @@ export default {
   float: right;
   font-size: 1.1rem;
   font-weight: bold;
-  /* transition: all 1s; */
+  transition: all 0.1s;
 }
 .list_div{
   width: 100%;
   height: auto;
-  margin-top: 30px;
+  margin-top: 15px;
 }
 
 #deadList p{
@@ -151,7 +138,7 @@ export default {
     margin-right: 10px;
   }
 .v-move,.v-enter-active, .v-leave-active {
-    transition: 1s;
+    transition: 0.5s;
   }
 .v-leave-active{
     position:absolute;

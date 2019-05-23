@@ -53,7 +53,7 @@ charts.init = function(){
                 year:1995
             },
             danwei:"mm",
-            speed:-0.0000001
+            speed:0.0000001
         }
     },{
         localtype:'Entire',
