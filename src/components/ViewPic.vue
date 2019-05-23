@@ -17,11 +17,14 @@
           </div>
           <div class="InfDiv">
             <div class="InfContent">
-              <p>Name: {{showPic.name}}</p>
+              <p>Name: {{showPic.name}}</p>              
+              <hr>
+              <p>population: {{showPic.populationNow}}</p>
               <hr>
               <p>Description: {{showPic.Description}}</p>
               <hr>
-              <p>population: {{showPic.population}}</p>
+              <p>Threat: {{showPic.threat}}</p>
+
             </div>
           </div>
         </div>
@@ -83,7 +86,7 @@ export default {
   },
   methods: {
     YiXiang(item){
-      if (item.population<=0){
+      if (item.populationNow<=0){
         return 'filter: grayscale(100%);'
       }
     },

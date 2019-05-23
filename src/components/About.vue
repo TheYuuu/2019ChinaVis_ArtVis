@@ -3,19 +3,19 @@
   <transition name="fade">
     <div class="background"  id="background" v-show="show" @click="toggle($event)">
       <div class="about_con">
-        <h2 class="line1">Data source</h2>
+        <h2 class="line1 line">Data source</h2>
         <p v-for="(item,index) in dataSource" :key=index>{{item}}</p>
-        <h2 class="line2">Desinged and developed by</h2>
+        <h2 class="line2 line">Desinged and developed by</h2>
         <p v-for="(item) in madeby" :key=item.name>
           {{item.name}}: {{item.email}}
         </p>
-        <h2 class="line3">Project Github Address</h2>
-        <p><a href="https://github.com/Ly2zzZ/2019ChinaVis_ArtVis">https://github.com/Ly2zzZ/2019ChinaVis_ArtVis</a></p>
+        <h2 class="line3 line">Project Github Address</h2>
+        <p><a href="https://github.com/Ly2zzZ/2019ChinaVis_ArtVis"
+        target="_blank">https://github.com/Ly2zzZ/2019ChinaVis_ArtVis</a></p>
       </div>
     </div>
       </transition>
   </div>
-
 </template>
 
 <script>
@@ -60,7 +60,7 @@ export default {
         return;
     }
   },
-  mounted() {
+  mounted() {    
     const that = this
     d3.select("#Ab-button").on("click",function(){
       that.show=true
@@ -81,7 +81,8 @@ export default {
 .about_con{
   position: fixed;
   width: 350px;
-  height: 400px;
+  height: 50%;
+  min-height: 400px;
   background: white;
   z-index: 102;
   color:black;
@@ -114,55 +115,37 @@ export default {
     opacity: 0
 }
 
-.line1:before, .line1:after {
+.line{
+  display: block;
+  position: relative; 
+}
+
+.line:before, .line:after {
     content: '';
     position: absolute;
-    top: 7%;
+    top: 52%;
     background: #494949;
-    width: 23%;
     height: 1px;
 }
 
-.line1:before{
-    left: 10%;
+.line:before{
+    left: 2%;
 }
 
-.line1:after {
-    right: 10%;
+.line:after {
+    right: 2%;
+}
+
+
+.line1:before, .line1:after {
+    width: 29%
 }
 
 .line2:before, .line2:after {
-    content: '';
-    position: absolute;
-    top: 47%;
-    background: #494949;
-    width: 6%;
-    height: 1px;
+    width: 9%;
 }
-
-.line2:before{
-    left: 10%;
-}
-
-.line2:after {
-    right: 10%;
-}
-
 
 .line3:before, .line3:after {
-    content: '';
-    position: absolute;
-    top: 71%;
-    background: #494949;
-    width: 12%;
-    height: 1px;
-}
-
-.line3:before{
-    left: 10%;
-}
-
-.line3:after {
-    right: 10%;
+    width: 15%;
 }
 </style>

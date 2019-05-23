@@ -16,7 +16,8 @@
         @showWords2="showWords2"></earth>
       <ozone></ozone>
     </div> 
-    <deadList ref="deadList"></deadList>
+    <deadList ref="deadList"
+    @show_inf="show_inf"></deadList>
     <About></About>
   </div>
 </template>
@@ -40,6 +41,9 @@ export default {
     About
   },
   methods:{
+    show_inf(d){
+      this.$refs.earth.show_inf(d);
+    },
     reload(){
       location.reload()
     },
@@ -50,7 +54,7 @@ export default {
       this.$refs.earth.start()
     },
     AddDeadList(obj){
-      this.$refs.deadList.insert(obj.year, obj.name)
+      this.$refs.deadList.insert(obj)
     }
   },
   data:function(){

@@ -2,7 +2,7 @@
   <div id="guide" class="guideWords" @click="showView($event)">
     <p v-for="(value, index) in words" 
     :key="value+index"
-    :style="getStyle(value,index,words)">
+    :style="getStyle(value,index,words,50)">
       {{value}}
       <br>
     </p>
@@ -10,7 +10,7 @@
     <br>
     <p v-for="(value, index) in show_words2" 
     :key="value+index"
-    :style="getStyle(value,index,show_words2)">
+    :style="getStyle(value,index,show_words2,20)">
       {{value}}
       <br>
     </p>
@@ -24,7 +24,7 @@ export default {
   data:function(){
       return {
         words:[
-          "Hello, this is a website to show you the dirty earth.",
+          "Hello, this is a website to show you the earth.",
           "You wanna see",
           "What's going on after Industrial Revolution?",
           "Yes?",
@@ -49,7 +49,7 @@ export default {
           "1.Click on each state",
           "to see that its regional endangered species.",
           "2.Click Speed up button to run time faster",
-          "more species disappear in the future"
+          "you can see more species disappear in the future"
         ]
       }
   },
@@ -57,22 +57,22 @@ export default {
     showWords2(){
       this.show_words2 = this.words2
     },
-    getStyle(value,index,words){
+    getStyle(value,index,words,ms){
       if (index ==0){
         return 'width:'+ value.length + 'ch;'
-        + 'animation:cursor 1s infinite step-end, text '+ value.length*50 +'ms steps('+ value.length + ');'
+        + 'animation:cursor 1s infinite step-end, text '+ value.length*ms +'ms steps('+ value.length + ');'
       }
       else{
         return 'width:'+ value.length + 'ch;'
-        + 'animation:cursor 1s infinite step-end, text '+ value.length*50 +'ms steps('+ value.length + ');'
-        + 'animation-delay:' + this.getDelay(words,index) +'ms;'
+        + 'animation:cursor 1s infinite step-end, text '+ value.length*ms +'ms steps('+ value.length + ');'
+        + 'animation-delay:' + this.getDelay(words,index,ms) +'ms;'
       }
     },
-    getDelay(word,index){
+    getDelay(word,index,ms){
       let sum=0;
       for(let i=0;i<index;i++){
         if (word[i]!=undefined)
-          sum+=word[i].length*60
+          sum+=word[i].length*ms
       }
       return sum;
     },

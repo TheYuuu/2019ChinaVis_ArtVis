@@ -9,8 +9,9 @@
           <p class="year_p">
             {{item.year}} 
           </p>
-          <p v-for="(i,index) in item.list" :key=index class="item_p">
-            {{i}}
+          <p v-for="(i,index) in item.list" :key=index class="item_p"
+            @click="show_inf(item.list)">
+            {{i.name}}
           </p>
           <br>
         </div>
@@ -34,9 +35,19 @@ export default {
     }
   },
   methods:{
-    insert(year, name){
+    autoScroll(){
+      var div = document.getElementById("deadList")
+      setInterval(()=>{
+        div.scrollTop+=1;
+      },100)
+    },
+    show_inf(d){
+      this.$emit("show_inf",d)
+    },
+    insert(obj){
+      let year = obj.year
       this.list[year] = this.list[year] == undefined ? [] : this.list[year]
-      this.list[year].push(name)
+      this.list[year].push(obj.obj)
       this.$set(this.list, year, this.list[year]);
     }
   },
@@ -62,10 +73,7 @@ export default {
     }
   },        
   mounted() {
-    var div = document.getElementById("deadList")
-    setInterval(()=>{
-      div.scrollTop+=1;
-    },100)
+    this.autoScroll();
   }
 }
 </script>
@@ -98,8 +106,8 @@ export default {
 }
 
 .year_p{
-    display: block;
-    position: relative; 
+  display: block;
+  position: relative; 
 }
 
 .Extinct_title{

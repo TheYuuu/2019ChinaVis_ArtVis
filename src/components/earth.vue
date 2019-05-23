@@ -50,41 +50,46 @@ export default {
   methods:{
     start(){
       var that = this;
-      d3.json("../static/data/data.json").then(d=>{
+      d3.json("../static/data/finadata.json").then(d=>{
         for (let k in d){
           if (d[k].animals != undefined){
-            that.getExtinctTime(d[k].animals);
+            that.getExtinctionTime(d[k].animals);
           }
           if (d[k].plantes != undefined){
-            that.getExtinctTime(d[k].plantes);
+            that.getExtinctionTime(d[k].plantes);
           }
         }
         that.Counts = that.data.length;
+        console.log(that.Counts,d)
         charts.on(that,d);
       })
     },
-    AddDeadList(year,name){
+    AddDeadList(year, obj){
       this.$emit('AddDeadList',{
         year,
-        name
+        obj
       })
     },
     showWords2(){
       this.$emit('showWords2')
     },
-    getExtinctTime(arr){
+    getExtinctionTime(arr){
       const that = this;
       arr.forEach(item=>{
-        if (item.population!=undefined && item.date!=undefined && item.ExtinctSpeed!=undefined){
-          item.ExtinctTime = new Date(+new Date(item.date) + item.population/item.ExtinctSpeed)
-          item.marked = false;
-        }
+        item.ExtinctionTime = new Date(item.ExtinctionTime)
+        item.date = new Date(item.date)
+        item.populationNow = item.population
+
         that.data.push({
               name:item.name.split(" ").join("_"),
               img:item.img
         })
       })
-    } 
+    },
+    show_inf(d){
+      console.log(d);
+      this.$refs.ViewPic.showMe(d,0)
+    }
   },
   mounted() {
   },
