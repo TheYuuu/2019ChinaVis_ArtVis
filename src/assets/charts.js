@@ -455,7 +455,7 @@ charts.on = function(Vue, CONTINENT_Data){
     that.CONTINENT_Data = CONTINENT_Data;
     that.fns = [];
     that.Counts = Vue.Counts;
-    that.DateNow = new Date(2017,1,1);
+    that.DateNow = new Date(1500,1,1);
     that.TimeMachine = 1000 *60 *60 *24 *365;
     
     d3.json("../../static/map.json").then(world=>{
