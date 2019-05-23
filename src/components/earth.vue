@@ -64,10 +64,10 @@ export default {
         charts.on(that,d);
       })
     },
-    AddDeadList(year,name){
+    AddDeadList(year, obj){
       this.$emit('AddDeadList',{
         year,
-        name
+        obj
       })
     },
     showWords2(){
@@ -85,7 +85,11 @@ export default {
               img:item.img
         })
       })
-    } 
+    },
+    show_inf(d){
+      console.log(d);
+      this.$refs.ViewPic.showMe(d,0)
+    }
   },
   mounted() {
   },

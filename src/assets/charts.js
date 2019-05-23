@@ -301,7 +301,7 @@ charts.CONTINENT_Data_change = function(){
                     d.marked = true
                     d.populationNow = 0
                     that.Counts--;
-                    that.AddDeadList(d.ExtinctionTime.getFullYear(), d.name)
+                    that.AddDeadList(d.ExtinctionTime.getFullYear(), d)
                 }else{
                     let y = Math.floor(+(that.DateNow - new Date(d.date))/1000/60/60/24/365)
                     if ( +(that.DateNow - new Date(d.date)) >= 1000*60*60*24*365 && d.populationNow >= 1 ){
