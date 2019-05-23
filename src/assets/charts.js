@@ -780,69 +780,87 @@ charts.addFrameEvent = function(fn){
     }
 }
 
-charts.requestAnimationFrame = function(){
+charts.loadButton = function(){
     const that = this;
-    that.ms=50
-    run(that)
 
-    function run(that){
-        this.AnimationFrame = setInterval(()=>{
-            that.DateNow = new Date( +that.DateNow + that.TimeMachine )
-            that.fns.forEach(d=>{
-                d()
-            })
-            // if (that.Counts<=0){
-            //     clearInterval(this.AnimationFrame);
-            //     alert(that.DateNow)
-            // }
-            if (that.DateNow.getFullYear()>=1950){
-                clearInterval(this.AnimationFrame);
-                that.ms=100
-                run(that)
+    d3.selectAll(".title-button")
+    .transition()
+    .duration(1000)   
+    .style("opacity",1)
+
+    d3.select("#Speed-button").on("click",function(){
+        clearInterval(that.AnimationFrame);
+        that.ms=500
+        that.TimeMachine = 1000 *60 *60 *24 *365;
+        that.run()
+    })
+}
+
+charts.requestAnimationFrame = function(){
+    this.ms=50
+    this.run()
+}
+
+charts.run = function(){
+    const that = this;
+    this.AnimationFrame = setInterval(()=>{
+        that.DateNow = new Date( +that.DateNow + that.TimeMachine )
+        that.fns.forEach(d=>{
+            d()
+        })
+        // if (that.Counts<=0){
+        //     clearInterval(this.AnimationFrame);
+        //     alert(that.DateNow)
+        // }
+        if (that.DateNow.getFullYear()>=1950){
+            clearInterval(this.AnimationFrame);
+            that.ms=10
+            that.run()
+        }
+        if (that.DateNow.getFullYear()>=2000){
+            clearInterval(this.AnimationFrame);
+            that.ms=1000
+            that.run()
+        }
+        if (that.DateNow.getFullYear()>=new Date().getFullYear()-1  && !that.backTime){
+            clearInterval(this.AnimationFrame)
+            that.ms=1
+            that.TimeMachine = 1000*60*60*24
+            that.run()
+        }
+        if (that.DateNow >=new Date() && !that.backTime){
+            clearInterval(this.AnimationFrame)
+            that.backTime = true
+            that.DateNow = new Date()
+            that.ms=1000
+            that.TimeMachine = 1000
+            that.showWords2()
+            //show more button
+            that.loadButton();
+            that.run()
+        }
+
+        //that.bear
+        if(that.bear.reduce[that.DateNow.getFullYear()]!=undefined){
+            for(let i=0; i<that.bear.reduce[that.DateNow.getFullYear()]; i++){
+                charts.deleteanimals("bear")
             }
-            if (that.DateNow.getFullYear()>=2000){
-                clearInterval(this.AnimationFrame);
-                that.ms=1000
-                run(that)
-            }
-            if (that.DateNow.getFullYear()>=new Date().getFullYear()-1  && !that.backTime){
-                clearInterval(this.AnimationFrame)
-                that.ms=1
-                that.TimeMachine = 1000*60*60*24
-                run(that)
-            }
-            if (that.DateNow >=new Date() && !that.backTime){
-                clearInterval(this.AnimationFrame)
-                that.backTime = true
-                that.DateNow = new Date()
-                that.ms=1000
-                that.TimeMachine = 1000
-                that.showWords2()
-                run(that)
+        }
+
+        if(that.population[that.DateNow.getFullYear()]!=undefined
+            && that.population[that.DateNow.getFullYear()].length!=0){
+                that.population[that.DateNow.getFullYear()].map(d => {
+                    charts.drawanimals(d, '&#128694')
+                })
             }
 
-            //that.bear
-            if(that.bear.reduce[that.DateNow.getFullYear()]!=undefined){
-                for(let i=0; i<that.bear.reduce[that.DateNow.getFullYear()]; i++){
-                    charts.deleteanimals("bear")
-                }
+        if (that.Description_Map[that.DateNow.getFullYear()]!=undefined 
+            && that.Description_Map[that.DateNow.getFullYear()].length!=0){
+            while(that.Description_Map[that.DateNow.getFullYear()].length){
+                that.addDescription(that.Description_Map[that.DateNow.getFullYear()].pop())
             }
-
-            if(that.population[that.DateNow.getFullYear()]!=undefined
-                && that.population[that.DateNow.getFullYear()].length!=0){
-                    that.population[that.DateNow.getFullYear()].map(d => {
-                        charts.drawanimals(d, '&#128694')
-                    })
-                }
-
-            if (that.Description_Map[that.DateNow.getFullYear()]!=undefined 
-                && that.Description_Map[that.DateNow.getFullYear()].length!=0){
-                while(that.Description_Map[that.DateNow.getFullYear()].length){
-                    that.addDescription(that.Description_Map[that.DateNow.getFullYear()].pop())
-                }
-            }
-        },that.ms)
-    }
+        }
+    },that.ms)
 }
 
 charts.on = function(Vue, CONTINENT_Data){
@@ -951,6 +969,7 @@ charts.on = function(Vue, CONTINENT_Data){
         ])
 
         charts.requestAnimationFrame()
+        charts.loadButton();
     })
 }
 

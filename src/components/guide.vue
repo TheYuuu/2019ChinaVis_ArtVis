@@ -44,8 +44,12 @@ export default {
           "Sea level rising",
           "The population is expanding",
           "......",
-          "Finally, click on each state",
-          "to see that its regional endangered species."
+          "Finally....",
+          " ",
+          "1.Click on each state",
+          "to see that its regional endangered species.",
+          "2.Click Speed up button to run time faster",
+          "more species disappear in the future"
         ]
       }
   },

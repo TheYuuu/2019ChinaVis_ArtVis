@@ -24,7 +24,7 @@ export default {
     svg.append("circle")
       .attr("id", "ozone_shield")
       .attr("cx",width/2)
-      .attr("cy",0)
+      .attr("cy",-50)
       .attr("r",width/4+50)
       .attr("fill","white")
       .attr('filter',"url(#f1)")

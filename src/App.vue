@@ -6,6 +6,9 @@
       <div class="time-block">
         <p class="title-time">What's going on since Industrial Revolution?</p>
         <p class="title-time" id="RunningTime">loading</p>
+        <button class="title-button" id="Speed-button">Speed Up</button>
+        <button class="title-button" id="Re-button" @click="reload()">Refresh</button>
+        <button class="title-button" id="Ab-button">About</button>
       </div>
       <cloud></cloud>
       <earth ref ="earth"
@@ -14,6 +17,7 @@
       <ozone></ozone>
     </div> 
     <deadList ref="deadList"></deadList>
+    <About></About>
   </div>
 </template>
 
@@ -23,6 +27,7 @@ import cloud from './components/cloud'
 import ozone from './components/ozone'
 import guide from './components/guide'
 import deadList from './components/deadList'
+import About from './components/About'
 
 export default {
   name: 'App',
@@ -31,9 +36,13 @@ export default {
     cloud,
     ozone,
     guide,
-    deadList
+    deadList,
+    About
   },
   methods:{
+    reload(){
+      location.reload()
+    },
     showWords2(){
       this.$refs.guide.showWords2()
     },
@@ -99,6 +108,19 @@ html {
   font-size: 2rem;
   font-weight: bold;
   z-index: 100;
+}
+
+.title-button{
+  opacity: 0;
+  position: relative;
+  font-size: 1rem;
+  font-weight: bold;
+  z-index: 100;
+  background-color: lavender;
+  border-color: lavender;
+  padding: 3px;
+  color: #666;
+  border-radius: 20px;
 }
 
 /* 设置滚动条的样式 */
