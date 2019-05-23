@@ -9,7 +9,7 @@
         <div class="main">
           <div class="imgDiv">
             <img
-              :src="showPic.img"
+              :src="'http://localhost:8080/static/img/img/' + showPic.img"
               alt="loading"
               class="showpic"
               id="showpic"
@@ -40,7 +40,7 @@
               v-on:click="imgClick(index)"
               :key="index"
             >
-              <img :src="item.img" alt
+              <img :src="'http://localhost:8080/static/img/img/' + item.img" alt
               :style="YiXiang(item)">
             </li>
           </template>

@@ -81,6 +81,7 @@ export default {
 .about_con{
   position: fixed;
   width: 350px;
+  min-width: 500px;
   height: 50%;
   min-height: 400px;
   background: white;
@@ -138,7 +139,7 @@ export default {
 
 
 .line1:before, .line1:after {
-    width: 29%
+    width: 30%;
 }
 
 .line2:before, .line2:after {

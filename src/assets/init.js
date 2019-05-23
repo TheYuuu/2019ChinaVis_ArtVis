@@ -28,13 +28,8 @@ var init = function(){
         local: [44.071469, 24.456169],
         name:'Oil_Left',
         lineLocal:[
-<<<<<<< HEAD
-            [6,25],
-            [9,25]
-=======
-            [10,15],
-            [15,15]
->>>>>>> 01f433015fdd40f62b56f53033222f1164966a37
+            [7,18],
+            [10,20]
         ],
         decline:{
             lastRecord:{

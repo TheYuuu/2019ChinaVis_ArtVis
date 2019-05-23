@@ -384,13 +384,8 @@ charts.addLegend = function(){
         .html(function(d){
             return d.code + " " + d.unit + "<br/>"
         })
-<<<<<<< HEAD
-        .attr("x", function(d,i){ return 600 })
-        .attr("y", function(d,i){ return i*25 + 950 })
-=======
         .attr("x", function(d,i){ return 0 + 2*step })
         .attr("y", function(d,i){ return i*25 + height - 10*step })
->>>>>>> 01f433015fdd40f62b56f53033222f1164966a37
         .attr("opacity",0)
         .transition()
         .duration(1000)
@@ -491,10 +486,12 @@ charts.run = function(){
                 }
                 that.lastDelete["People"] = now_people
                 for(let i=0;i<times;i++){
-                    let d = that.population[Math.floor(Math.random() * (that.population.length - 1))]
-                    d.long = d.long + (Math.random() * 8) - 2
-                    d.lat = d.lat + (Math.random() * 8) - 2
+                    let index = Math.floor(Math.random() * (that.population.length - 1))
+                    let d = that.population[index]
+                    let long = d.long + (Math.random() * 32) - 16
+                    let lat = d.lat + (Math.random() * 32) - 16
                     charts.drawanimals(d, '&#128694')
+                    that.population[index] = {long:long, lat:lat, type:"population"}
                 }
         }
         
@@ -629,7 +626,7 @@ charts.on = function(Vue, CONTINENT_Data){
         ])
 
         charts.requestAnimationFrame()
-        // charts.loadButton()
+        //charts.loadButton()
     })
 }
 

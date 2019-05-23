@@ -24,7 +24,7 @@
             height="50"
             width="50"
           >
-            <image x="0" y="0" height="100" width="100" :xlink:href="item.img"></image>
+            <image x="0" y="0" height="100" width="100" :xlink:href=" 'http://localhost:8080/static/img/img/' + item.img "></image>
           </pattern>
         </template>
       </defs>
@@ -79,6 +79,7 @@ export default {
         item.ExtinctionTime = new Date(item.ExtinctionTime)
         item.date = new Date(item.date)
         item.populationNow = item.population
+        item.img = item.img.split("/").pop()
 
         that.data.push({
               name:item.name.split(" ").join("_"),
