@@ -805,10 +805,18 @@ charts.requestAnimationFrame = function(){
                 that.ms=1000
                 run(that)
             }
-            if (that.DateNow.getFullYear()>=new Date().getFullYear()-1 && !that.backTime){
+            if (that.DateNow.getFullYear()>=new Date().getFullYear()-1  && !that.backTime){
                 clearInterval(this.AnimationFrame);
                 that.ms=1
                 that.TimeMachine = 1000*60*60*24;
+                run(that)
+            }
+            if (that.DateNow >=new Date() && !that.backTime){
+                clearInterval(this.AnimationFrame);
+                that.backTime = true;
+                that.DateNow = new Date()
+                that.ms=1000
+                that.TimeMachine = 1000;
                 run(that)
             }
 
