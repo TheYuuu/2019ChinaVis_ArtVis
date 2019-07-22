@@ -2,7 +2,7 @@
 ArtVis works which call for nature protection 
 # ChinaVis2019艺术可视化
 # 工业革命后的地球 
-在线预览：http://129.211.128.212:8080/#/
+在线预览：http://129.211.128.212:8080/#/<br>
 一、	作品简介
 作品回溯了自1500年至网站打开时，物种、环境、人口的变化。通过物种历史变化趋势,推导在人类不作为的情况下，物种灭绝的时间。通过加速时间，分析发现物种正在逐渐减少，环境正在恶化。希望作品能让更多人注意到人的行为对环境和物种的影响。
 自从人类出现以后，特别是工业革命以后，由于人类只注意到具体生物源的实用价值，对其肆意地加以开发，而忽视了生物多样性间接和潜在的价值，使地球生命维持系统受到了人类的威胁，使得地球正在进入第六次大灭绝时期。
@@ -40,11 +40,11 @@ ArtVis works which call for nature protection
 四、	数据说明
 作品中物种数据来源于红名单在录的并且数据详细的物种: https://www.iucnredlist.org,通过计算物种在某一时间内的数量减少情况,粗略估算出物种数量减少速度。
 模块监测数据均从权威网站采集，通过某一年的真实权威报告数据,截止到今年，粗略估计模块监测数据的变化趋势，数据来源如下:
-https://ourworldindata.org
-https://wwf.panda.org
-http://www.poodwaddle.com
-http://www.theworldcounts.com
-https://data.giss.nasa.gov
-https://www.worldometers.info
-数据文件见百度云链接目录文件夹。
+https://ourworldindata.org<br>
+https://wwf.panda.org<br>
+http://www.poodwaddle.com<br>
+http://www.theworldcounts.com<br>
+https://data.giss.nasa.gov<br>
+https://www.worldometers.info<br>
+数据文件见百度云链接目录文件夹。<br>
 
