@@ -39,7 +39,7 @@ ArtVis works which call for nature protection
 
 四、	数据说明
 作品中物种数据来源于红名单在录的并且数据详细的物种: https://www.iucnredlist.org,通过计算物种在某一时间内的数量减少情况,粗略估算出物种数量减少速度。
-模块监测数据均从权威网站采集，通过某一年的真实权威报告数据,截止到今年，粗略估计模块监测数据的变化趋势，数据来源如下:
+模块监测数据均从权威网站采集，通过某一年的真实权威报告数据,截止到今年，粗略估计模块监测数据的变化趋势，数据来源如下:<br>
 https://ourworldindata.org<br>
 https://wwf.panda.org<br>
 http://www.poodwaddle.com<br>
